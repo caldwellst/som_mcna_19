@@ -11,17 +11,18 @@ source("functions/to_alphanumeric_lowercase.R") # function to standardise column
 source("functions/analysisplan_factory.R")  # generate analysis plans
 
 # load questionnaire inputs
-questions <- read.csv("input/questionnaire_questions.csv", 
+questions <- read.csv("input/SOM_JMCNA_HH_Tool_FIN_2019_settlements_questions.csv", 
                       stringsAsFactors=F, check.names=F)
 
-choices <- read.csv("input/questionnaire_choices.csv", 
+choices <- read.csv("input/SOM_JMCNA_HH_Tool_FIN_2019_settlements_choices.csv", 
                     stringsAsFactors=F, check.names=F)
 
 
 # generate data
 
 
-response <- xlsform_fill(questions,choices,1000)
+response <- read.csv("input/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
+                     stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
 
