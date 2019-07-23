@@ -11,27 +11,27 @@ source("functions/to_alphanumeric_lowercase.R") # function to standardise column
 source("functions/analysisplan_factory.R")  # generate analysis plans
 
 # load questionnaire inputs
-questions <- read.csv("input/SOM_JMCNA_HH_Tool_FIN_2019_settlements_questions.csv", 
+questions <- read.csv("input/questionnaire/SOM_JMCNA_HH_Tool_FIN_2019_settlements_questions.csv", 
                       stringsAsFactors=F, check.names=F)
 
-choices <- read.csv("input/SOM_JMCNA_HH_Tool_FIN_2019_settlements_choices.csv", 
+choices <- read.csv("input/questionnaire/SOM_JMCNA_HH_Tool_FIN_2019_settlements_choices.csv", 
                     stringsAsFactors=F, check.names=F)
 
 
-# generate data
-
-
-response <- read.csv("input/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
+# read data
+response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
                      stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
-
 questionnaire <- load_questionnaire(response,questions,choices)
-# generate samplingframe
-samplingframe <- xlsform_generate_samplingframe(choices,c("district","yes_no"))
-# samplingframe <- load_samplingframe("./input/Strata_clusters_population.csv")
 
+#load sampling frame
+source("source/sampling.R")
+# load the sampling frame into an object called samplingframe
+# load the cluster sampling frame into an object called clustersamplingframe
 
+response <- response %>% 
+  left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
 
 # add cluster ids
 
@@ -69,12 +69,8 @@ analysisplan<-make_analysisplan_all_vars(response,
                                          hypothesis.type = "group_difference" 
                                          )
 
-
-response$strata<-paste0(response$district,"__",response$yes_no_idp)
-
-
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
-                 sampling.frame.population.column = "population",
+                 sampling.frame.population.column = "Population",
                  sampling.frame.stratum.column = "strata",
                  data.stratum.column = "strata")
 
