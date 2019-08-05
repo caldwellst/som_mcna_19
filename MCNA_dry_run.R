@@ -25,6 +25,8 @@ response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
                      stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
+response_as_read <- response
+
 questionnaire <- load_questionnaire(response,questions,choices)
 
 #load sampling frame
@@ -46,7 +48,8 @@ response <- response %>%
 # 
 # horizontal operations / recoding
 # 
-# source("source/Pre-existing vulnerability indicators.R")
+source("source/horizontal aggregation.R")
+source("source/Pre-existing vulnerability indicators.R")
 # r <- response %>%
 #   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>%
 #   recode_to(0.25,where.num.larger.equal = 505000,otherwise.to=0) %>%
@@ -75,38 +78,10 @@ analysisplan<-make_analysisplan_all_vars(response,
                                          independent.variable = "yes_no_host",
                                          repeat.for.variable = "region",
                                          hypothesis.type = "group_difference"
-                                         ) %>%
-  filter(dependent.variable == "time_market")
+                                         ) 
+# %>%
+#   filter(dependent.variable == "time_market")
 
-analysisplan2 <- data.frame(
-  research.question = "",
-  sub.research.question = "",
-  # hypothesis = "hp 1",
-  repeat.for.variable = "region",
-  independent.variable = "yes_no_host",
-  independent.variable.type = c("categorical"),
-  # dependent.variable = c("HHEX", "access_to_market_score", "time_market"),
-  # hypothesis.type = c("direct_reporting", "group_difference", "group_difference"),
-  # independent.variable.type = c("categorical"),
-  # dependent.variable.type = c("numerical", "categorical", "categorical"))
-  dependent.variable = c("time_market"),
-  dependent.variable.type = c("categorical"),
-  hypothesis.type = c("group_difference"))
-
-analysisplan3 <- data.frame(
-  research.question = "RQ: not specified (automatic analysisplan)",
-  sub.research.question = "sub RQ not specified (automatic analysisplan)",
-  # hypothesis = "hp 1",
-  repeat.for.variable = "region",
-  independent.variable = "yes_no_host",
-  independent.variable.type = c("categorical"),
-  # dependent.variable = c("HHEX", "access_to_market_score", "time_market"),
-  # hypothesis.type = c("direct_reporting", "group_difference", "group_difference"),
-  # independent.variable.type = c("categorical"),
-  # dependent.variable.type = c("numerical", "categorical", "categorical"))
-  dependent.variable = c("time_market"),
-  dependent.variable.type = c("categorical"),
-  hypothesis.type = c("group_difference"))
 
 response$general_weights <- strata_weight_fun(response)
 
@@ -117,24 +92,3 @@ results <- from_analysisplan_map_to_output(response,
                                            weighting = strata_weight_fun,
                                            cluster_variable_name = "settlement",
                                            questionnaire)
-
-results2 <- from_analysisplan_map_to_output(response, 
-                                            analysisplan = analysisplan2,
-                                            weighting = strata_weight_fun,
-                                            cluster_variable_name = "settlement",
-                                            questionnaire)
-
-results3 <- from_analysisplan_map_to_output(response, 
-                                            analysisplan = analysisplan3,
-                                            weighting = strata_weight_fun,
-                                            cluster_variable_name = "settlement",
-                                            questionnaire)
-
-
-analysisplan
-analysisplan2
-analysisplan3
-
-results$analysisplan
-results2$analysisplan
-results3$analysisplan
