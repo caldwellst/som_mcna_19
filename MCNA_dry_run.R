@@ -44,6 +44,7 @@ response <- response %>%
 
 # horizontal operations / recoding
 # 
+source("source/Pre-existing vulnerability indicators.R")
 # r <- response_filtered_w_clusterids %>%
 #   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>% 
 #   recode_to(0.25,where.num.larger.equal = 505000,otherwise.to=0) %>% 
