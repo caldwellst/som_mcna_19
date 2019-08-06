@@ -50,6 +50,8 @@ response <- response %>%
 # 
 source("source/horizontal aggregation.R")
 source("source/Pre-existing vulnerability indicators.R")
+source("source/education.R")
+
 # r <- response %>%
 #   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>%
 #   recode_to(0.25,where.num.larger.equal = 505000,otherwise.to=0) %>%

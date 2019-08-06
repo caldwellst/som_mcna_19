@@ -1,6 +1,6 @@
 # horizontal aggregation
 ## education
-r <- 
+response <- 
   response %>%
   #1.1 education level
   new_recoding(target = education_level_score) %>%
