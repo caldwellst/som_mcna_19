@@ -23,7 +23,7 @@ response <-
   recode_to(to = 30, where.selected.exactly = "usd_10_50", source = cash_bracket_education) %>%
   recode_to(to = 75, where.selected.exactly = "usd_50_100", source = cash_bracket_education) %>%
   recode_to(to = 100, where.selected.exactly = "usd_more_100", source = cash_bracket_education) %>%
-  recode_to(to = 0, where.selected.exactly =  "no", source = pay_education) %>%
+  # recode_to(to = 0, where.selected.exactly =  "no", source = pay_education) %>%
   # recode_to(to = "dd", where.selected.exactly = "dnk") %>%
   ### health
   new_recoding(target = spent_health_middle, source = cash_bracket_treatment) %>%
@@ -31,6 +31,7 @@ response <-
   recode_to(to = 30, where.selected.exactly = "usd_10_50") %>%
   recode_to(to = 75, where.selected.exactly = "usd_50_100") %>%
   recode_to(to = 100, where.selected.exactly = "usd_more_100") %>%
+  recode_to(to = 0, where.selected.exactly =  "no", source = pay_health) %>%
   # recode_to(to = "dd", where.selected.exactly = "dnk") %>%
   ### water
   new_recoding(target = spent_water_middle, source = how_much_pay_water) %>%

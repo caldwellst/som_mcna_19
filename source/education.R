@@ -51,8 +51,8 @@ response <-
   ## expenditure score
   new_recoding(target = education_expenditure_score) %>%
   recode_to(to = 1, where = education_expenditure_rate <= .25) %>%
-  recode_to(to = 3, where = education_expenditure_rate > .25 & education_expenditure_rate <= 50) %>%
-  recode_to(to = 4, where = education_expenditure_rate > .50 & education_expenditure_rate <= 75) %>%
+  recode_to(to = 3, where = education_expenditure_rate > .25 & education_expenditure_rate <= .50) %>%
+  recode_to(to = 4, where = education_expenditure_rate > .50 & education_expenditure_rate <= .75) %>%
   recode_to(to = 6, where = education_expenditure_rate > .75 & education_expenditure_rate <= 1) %>%
   # recode_to(to = 7, where = education_expenditure_rate > 1) %>%
   #3.2 education expenditure change

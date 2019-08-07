@@ -1,7 +1,7 @@
 # horizontal aggregation
 ## nutrition
 
-r <- 
+response <- 
   response %>%
   #1.1 MUAC coverage
   #1.2 visit from nutrition team
