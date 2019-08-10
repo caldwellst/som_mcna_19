@@ -1,7 +1,7 @@
 # horizontal aggregation
 ## health
 
-r <- 
+response <- 
   response %>%
   #1.1 under 5 morbidity
   ## under 5 morbidity sum
