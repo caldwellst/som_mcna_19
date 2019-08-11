@@ -23,6 +23,12 @@ response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
                      stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
+response <- response %>%
+  select(-ends_with("note")) %>%
+  select(-starts_with("sv_")) %>%
+  select(-starts_with("_"), "_uuid") %>%
+  select(- c(start, end, deviceid, agency, consensus))
+
 questionnaire <- load_questionnaire(response,questions,choices)
 
 #load sampling frame
@@ -32,6 +38,9 @@ source("source/sampling.R")
 
 response <- response %>% 
   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+
+response <- response %>%
+  filter(!is.na(strata))
 
 # add cluster ids
 
@@ -76,11 +85,11 @@ strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
 
 response$general_weights <- strata_weight_fun(response)
 
-response$cluster_id <- paste(response$settlement,response$yes_no_idp,sep = "_")
+# response$cluster_id <- paste(response$settlement,response$yes_no_idp,sep = "_")
 
 results <- from_analysisplan_map_to_output(response, analysisplan = analysisplan,
                                           weighting = strata_weight_fun,
-                                          cluster_variable_name = "cluster_id",
+                                          cluster_variable_name = "settlement",
                                           questionnaire)
 
 
