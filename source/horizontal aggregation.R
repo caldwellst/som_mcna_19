@@ -17,6 +17,15 @@ response <-
 
 response <-
   response %>%
+  ### income_middle_point
+  new_recoding(target = income_middle, source = average_income) %>%
+  recode_to(to = 200, where.selected.exactly = "200more") %>%
+  recode_to(to = 175, where.selected.exactly = "151_200") %>%
+  recode_to(to = 125, where.selected.exactly = "101_150") %>%
+  recode_to(to = 80, where.selected.exactly = "61_100") %>%
+  recode_to(to = 45, where.selected.exactly = "31_60") %>%
+  recode_to(to = 15, where.selected.exactly = "less30") %>%
+  recode_to(to = 10, where.selected.exactly = "none") %>%
   ### education
   new_recoding(target = spent_education_middle) %>%
   recode_to(to = 5, where.selected.exactly = "usd_0_9", source = cash_bracket_education) %>%
@@ -57,3 +66,20 @@ response <-
   recode_to(to = 300, where.selected.exactly = "100more") %>%
   # recode_to(to = "dd", where.selected.exactly = "dnk") %>%
   end_recoding()
+
+
+y_n_to_zero <- function(dataset, y_n_col) {
+  y_n_col_sym <- sym(y_n_col)
+  score_col <- sym(sub(pattern = "_y_n", x = y_n_col, replacement = ""))
+  dataset_r <- dataset %>%
+    dplyr::mutate(!!score_col := ifelse(!!y_n_col_sym == "no", 0, !!score_col))
+  return(dataset_r[[score_col]])
+}
+
+fcs_y_n_names <- grep("y_n", names(response), value = T)
+new_fcs <- lapply(fcs_y_n_names, y_n_to_zero, dataset = response) %>% 
+  do.call(cbind, .) %>% as.data.frame()
+fcs_names <- sub(pattern = "_y_n", x = fcs_y_n_names, replacement = "")
+names(new_fcs) <- fcs_names
+
+response[, fcs_names] <- new_fcs
