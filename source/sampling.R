@@ -30,7 +30,7 @@ samplingframe %>% names()
 samplingframe$strata <- paste0(samplingframe$Stratification, "__", samplingframe$population)
 
 samplingframe <- samplingframe %>%
-  dplyr::select(- population) %>% 
+  dplyr::select(- population) %>%
   as.data.frame()
 
 #verification
