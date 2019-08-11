@@ -25,6 +25,12 @@ response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
                      stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
+response <- response %>%
+  select(-ends_with("note")) %>%
+  select(-starts_with("sv_")) %>%
+  select(-starts_with("_"), "_uuid") %>%
+  select(- c(start, end, deviceid, agency, consensus))
+
 questionnaire <- load_questionnaire(response,questions,choices)
 
 #load sampling frame
@@ -34,6 +40,9 @@ source("source/sampling.R")
 
 response <- response %>% 
   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+
+response <- response %>%
+  filter(!is.na(strata))
 
 # add cluster ids
 
@@ -109,6 +118,11 @@ analysisplan3 <- data.frame(
   dependent.variable = c("time_market"),
   dependent.variable.type = c("categorical"),
   hypothesis.type = c("group_difference"))
+
+strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+                                      sampling.frame.population.column = "Population",
+                                      sampling.frame.stratum.column = "strata",
+                                      data.stratum.column = "strata")
 
 response$general_weights <- strata_weight_fun(response)
 
