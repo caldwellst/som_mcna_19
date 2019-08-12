@@ -128,15 +128,83 @@ r <- response %>%
   recode_to(to = 2, where.selected.exactly = "hygienic") %>%
   recode_to(to = 5, where.selected.exactly = "unhygienic") %>%
   recode_to(to = 7, where.selected.exactly = "v_hygienic") %>%
-
   #7.1 distance to latrine
+  new_recoding(target = distance_latrine_score, source = time_to_reach_latrine) %>%
+  recode_to(to = 1, where.selected.exactly = "less15") %>%
+  recode_to(to = 3, where.selected.exactly = "16_30") %>%
+  recode_to(to = 5, where.selected.exactly = "31_60") %>%
+  recode_to(to = 6, where.selected.exactly = "60_180") %>%
+  recode_to(to = 7, where.selected.exactly = "above180") %>%
   #8.1 faecal disposal
+  new_recoding(target = faecal_matter_disposal_score, source = dispose_children_feaces) %>%
+  recode_to(to = 1, where.selected.exactly = "covered_pit") %>%
+  recode_to(to = 2, where.selected.exactly = "burial") %>%
+  recode_to(to = 5, where.selected.exactly = "burning") %>%
+  recode_to(to = 6, where.selected.exactly = "in_open") %>%
   #8.2 environmental contamination
+  ## environmental contamination sum
+  new_recoding(target = environmental_contamination_sum) %>%
+  recode_directly(to_expression = sum(enviromental_sanitaiton_problems.decying_organic_matter, 
+                                      enviromental_sanitaiton_problems.stagnent_water,
+                                      enviromental_sanitaiton_problems.feacal_matter,
+                                      enviromental_sanitaiton_problems.rodents,
+                                      enviromental_sanitaiton_problems.solid_household_waste)) %>%
+  ## evenvironmental contamination score
+  new_recoding(target = environmental_contamination_score, source = environmental_contamination_sum) %>%
+  recode_to(to = 1, where.num.equal = 0) %>%
+  recode_to(to = 4, where.num.equal = 1) %>%
+  recode_to(to = 5, where.num.equal = 2) %>%
+  recode_to(to = 6, where.num.equal = 3) %>%
+  recode_to(to = 7, where.num.equal = 4) %>%
+  recode_to(to = 8, where.num.equal = 5) %>%
   #9.1 hygiene awareness
+  ## hygiene awareness sum
+  new_recoding(target = hygiene_awareness_sum) %>%
+  recode_directly(to_expression = sum(when_wash_hands.before_eating,
+                                      when_wash_hands.after_defecating, 
+                                      when_wash_hands.before_food_baby,
+                                      when_wash_hands.serving_food,
+                                      when_wash_hands.before_food,
+                                      when_wash_hands.after_baby_poop,
+                                      when_wash_hands.after_eating)) %>%
+  ## hygiene awareness score
+  new_recoding(target = hygiene_awareness_score, source = hygiene_awareness_sum) %>%
+  recode_to(to = 1, where.num.equal = 7) %>%
+  recode_to(to = 2, where.num.smaller.equal = 6) %>%
+  recode_to(to = 3, where.num.equal = 4) %>%
+  recode_to(to = 4, where.num.equal = 3) %>%
+  recode_to(to = 6, where.num.equal = 2) %>%
+  recode_to(to = 7, where.num.equal = 1) %>%
+  recode_to(to = 8, where.num.equal = 0) %>%
   #10.1 soap availability
+  new_recoding(target = soap_access_score, source = access_to_soap) %>%
+  recode_to(to = 1, where.selected.exactly = "yes") %>%
+  recode_to(to = 7, where.selected.exactly = "no") %>%
   #10.2 menstrual materials availability
+  new_recoding(target = menstrual_mat_access_score, source = hygienic_menstruction_materials) %>%
+  recode_to(to = 1, where.selected.exactly = "yes") %>%
+  recode_to(to = 7, where.selected.exactly = "no") %>%
+  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   #11.1 access to hand washing facility
+  new_recoding(target = handwashing_access_score, source = nearest_handwashing_facility) %>%
+  recode_to(to = 1, where.selected.exactly = "less15") %>%
+  recode_to(to = 3, where.selected.exactly = "16_30") %>%
+  recode_to(to = 5, where.selected.exactly = "31_60") %>%
+  recode_to(to = 6, where.selected.exactly = "60_180") %>%
+  recode_to(to = 8, where.selected.exactly = "above180") %>%
   #12.1 aap water
+  new_recoding(target = aap_water_source_score, source = household_been_consulted_water) %>%
+  recode_to(to = 1, where.selected.exactly = "yes") %>%
+  recode_to(to = 4, where.selected.exactly = "no") %>%
+  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   #12.2 aap sanitation
+  new_recoding(target = aap_sanitation_score, source = household_been_consulted_sanitaiton) %>%
+  recode_to(to = 1, where.selected.exactly = "yes") %>%
+  recode_to(to = 4, where.selected.exactly = "no") %>%
+  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   #12.3 aap satisfaction
+  new_recoding(target = aap_satisfaction_score, source = water_sourcces_well_developed) %>%
+  recode_to(to = 1, where.selected.exactly = "yes") %>%
+  recode_to(to = 5, where.selected.exactly = "no") %>%
+  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   end_recoding()
