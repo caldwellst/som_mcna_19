@@ -48,9 +48,9 @@ response <- response %>%
 # 
 # horizontal operations / recoding
 # 
-source("source/horizontal aggregation.R")
-source("source/Pre-existing vulnerability indicators.R")
-source("source/education.R")
+source("source/composite variables/01-horizontal_general.R")
+source("source/composite variables/02-preexisting.R")
+source("source/composite variables/03-education.R")
 
 # r <- response %>%
 #   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>%
