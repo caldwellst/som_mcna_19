@@ -31,6 +31,11 @@ borda_count <- function(..., weights = NULL, exclude = NULL, ranks = 3) {
     summarize_all(sum) # getting the total vote score for each item
   
   table <- table[,order(-table[1,])] # reordering based on score
+<<<<<<< HEAD
+=======
+  print(table)
+  
+>>>>>>> a245f4e398d8a1bcd913beea3aabc899761387c9
   names(table)[1:ranks] # getting the total borda count for each
 }
 
