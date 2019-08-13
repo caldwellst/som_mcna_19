@@ -83,7 +83,10 @@ analysisplan<-make_analysisplan_all_vars(response,
                                          ) 
 # %>%
 #   filter(dependent.variable == "time_market")
-
+strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+                                      sampling.frame.population.column = "Population",
+                                      sampling.frame.stratum.column = "strata",
+                                      data.stratum.column = "strata")
 
 response$general_weights <- strata_weight_fun(response)
 
