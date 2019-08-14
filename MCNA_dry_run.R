@@ -96,11 +96,11 @@ samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
 response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
   select(-wdr)
 
-response_hc_idp <- response %>% dplyr::select(-c(`_id`, `__version__`, `_uuid`, `_submission_time`, `_index`)) %>%
+response_hc_idp <- response %>% dplyr::select(-c(`_uuid`)) %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
   dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
 
-response_refugee_returnee <- response %>% dplyr::select(-c(`_id`, `__version__`, `_uuid`, `_submission_time`, `_index`)) %>%
+response_refugee_returnee <- response %>% dplyr::select(-c(`_uuid`)) %>%
   dplyr::filter(yes_no_host == "no" & yes_no_idp == "no")
 
 questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
