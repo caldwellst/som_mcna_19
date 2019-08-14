@@ -20,9 +20,6 @@ map_to_datatypes<-function(df,questionnaire){
   types
 }
 
-
-
-
 make_analysisplan_all_vars <- function(df,
                                        questionnaire,
                                        repeat.for.variable=NA,
