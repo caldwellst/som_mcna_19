@@ -1,7 +1,7 @@
 # horizontal aggregation
 ## shelter nfi
 
-r <-
+response <- 
   response %>%
   #1.1 shelter density
   #2.1 shelter quality

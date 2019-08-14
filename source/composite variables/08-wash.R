@@ -1,7 +1,8 @@
 # horizontal aggregation
 ## wash
 
-r <- response %>%
+response <- 
+  response %>%
   #1.1 improved drinking water source
   new_recoding(target = drinking_water_source_score, source = primary_source_drinking_water) %>%
   recode_to(to = 1, where.selected.exactly = "piped_system") %>%

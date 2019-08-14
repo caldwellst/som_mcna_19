@@ -25,7 +25,18 @@ response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
                      stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
+
 response_as_read <- response
+
+
+response <- response %>%
+  select(-ends_with("note")) %>%
+  select(-starts_with("sv_")) %>%
+  select(-starts_with("_"), "_uuid") %>%
+  select(- c(start, end, deviceid, agency, consensus))
+
+
+questionnaire <- load_questionnaire(response,questions,choices)
 
 #load sampling frame
 source("source/sampling.R")
@@ -34,6 +45,9 @@ source("source/sampling.R")
 
 response <- response %>% 
   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+
+response <- response %>%
+  filter(!is.na(strata))
 
 # add cluster ids
 
@@ -46,9 +60,17 @@ response <- response %>%
 # 
 # horizontal operations / recoding
 # 
-source("source/horizontal aggregation.R")
-source("source/Pre-existing vulnerability indicators.R")
-source("source/education.R")
+source("source/composite variables/01-horizontal_general.R")
+source("source/composite variables/02-preexisting.R")
+source("source/composite variables/03-education.R")
+source("source/composite variables/04-nutrition.R")
+source("source/composite variables/05-health.R")
+source("source/composite variables/06-shelter_nfi.R")
+source("source/composite variables/07-fsl.R")
+source("source/composite variables/08-wash.R")
+source("source/composite variables/09-protection.R")
+source("source/composite variables/10-mcsi.R")
+
 
 # r <- response %>%
 #   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>%
@@ -70,6 +92,7 @@ source("source/education.R")
 ##to be removed when complete dataset and sampling frame
 samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
 
+
 response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
   select(-wdr)
 
@@ -81,14 +104,15 @@ response_refugee_returnee <- response %>% dplyr::select(-c(`_id`, `__version__`,
   dplyr::filter(yes_no_host == "no" & yes_no_idp == "no")
 
 questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
+response <- response %>% 
+  dplyr::filter(strata %in% samplingframe$strata)
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
 analysisplan_hc_idp <- make_analysisplan_all_vars(response_hc_idp,
                                          questionnaire,
                                          independent.variable = "yes_no_host",
                                          repeat.for.variable = "region",
-                                         hypothesis.type = "group_difference"
-                                         )
+                                         hypothesis.type = "group_difference")
 
 analysisplan_refugee_returnee <- make_analysisplan_all_vars(response_refugee_returnee,
                                                             questionnaire,
@@ -135,10 +159,12 @@ browseURL("hc_idp_test.html")
 
 some_results_refugee_returnee <- results_refugee_returnee[1:200]
 
+
 # not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
 # essentially it handles all the looping over different column values as hierarchies.
 # then each result is visualised by a function passed here that decides how to render each individual result
 # see ?hypegrammaR:::map_to_generic_hierarchical_html
+
 hypegrammaR:::map_to_generic_hierarchical_html(some_results_refugee_returnee,
                                                render_result_with = hypegrammaR:::from_result_map_to_md_table,
                                                by_analysisplan_columns = c("dependent.var","repeat.var.value"),
@@ -150,4 +176,3 @@ hypegrammaR:::map_to_generic_hierarchical_html(some_results_refugee_returnee,
                                                filename = "refugee_returnee_test.html")
 
 browseURL("refugee_returnee_test.html")
-

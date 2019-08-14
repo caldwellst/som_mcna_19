@@ -1,7 +1,7 @@
 # horizontal aggregation
 ## fsl
 
-r <-
+response <- 
   response %>%
   #4.1 FCS computation (from previous code)
   mutate(main_staples_sum = cereals + roots,
