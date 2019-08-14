@@ -54,6 +54,7 @@ response <- response %>%
   dplyr::filter(strata %in% samplingframe$strata)
 
 ##to be removed when the data analysis problem is solved
+response_no_added_variables <- response
 ######
 
 # add cluster ids
@@ -75,20 +76,24 @@ source("source/composite variables/10-mcsi.R")
 
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
-analysisplan<-make_analysisplan_all_vars(response,
+analysisplan<-make_analysisplan_all_vars(response_no_added_variables,
                                          questionnaire,
                                          independent.variable = "yes_no_host",
                                          repeat.for.variable = "region",
                                          hypothesis.type = "group_difference"
                                          ) 
 
+strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+                                      sampling.frame.population.column = "Population",
+                                      sampling.frame.stratum.column = "strata",
+                                      data.stratum.column = "strata")
 
-response$general_weights <- strata_weight_fun(response)
+response$general_weights <- strata_weight_fun(response_no_added_variables)
 
 # response$cluster_id <- paste(response$settlement,response$yes_no_idp,sep = "_")
 
 
-results <- from_analysisplan_map_to_output(response, analysisplan = analysisplan,
+results <- from_analysisplan_map_to_output(response_no_added_variables, analysisplan = analysisplan,
                                           weighting = strata_weight_fun,
                                           cluster_variable_name = "settlement",
                                           questionnaire)
