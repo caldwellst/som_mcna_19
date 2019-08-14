@@ -27,8 +27,6 @@ names(response)<-to_alphanumeric_lowercase(names(response))
 
 response_as_read <- response
 
-questionnaire <- load_questionnaire(response,questions,choices)
-
 #load sampling frame
 source("source/sampling.R")
 # load the sampling frame into an object called samplingframe
@@ -71,16 +69,31 @@ source("source/education.R")
 
 ##to be removed when complete dataset and sampling frame
 samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-response <- response %>% dplyr::select(-c(`_id`, `__version__`, `_uuid`, `_submission_time`, `_index`)) %>%
-  dplyr::filter(strata %in% samplingframe$strata)
+
+response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
+  select(-wdr)
+
+response_hc_idp <- response %>% dplyr::select(-c(`_id`, `__version__`, `_uuid`, `_submission_time`, `_index`)) %>%
+  dplyr::filter(strata %in% samplingframe$strata) %>%
+  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
+
+response_refugee_returnee <- response %>% dplyr::select(-c(`_id`, `__version__`, `_uuid`, `_submission_time`, `_index`)) %>%
+  dplyr::filter(yes_no_host == "no" & yes_no_idp == "no")
+
+questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
-analysisplan<-make_analysisplan_all_vars(response,
+analysisplan_hc_idp <- make_analysisplan_all_vars(response_hc_idp,
                                          questionnaire,
                                          independent.variable = "yes_no_host",
                                          repeat.for.variable = "region",
                                          hypothesis.type = "group_difference"
-                                         ) 
+                                         )
+
+analysisplan_refugee_returnee <- make_analysisplan_all_vars(response_refugee_returnee,
+                                                            questionnaire,
+                                                            repeat.for.variable = "yes_no_returnee",
+                                                            hypothesis.type = "direct_reporting")
 # %>%
 #   filter(dependent.variable == "time_market")
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
@@ -88,12 +101,53 @@ strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.stratum.column = "strata",
                                       data.stratum.column = "strata")
 
-response$general_weights <- strata_weight_fun(response)
+response_hc_idp$general_weights <- strata_weight_fun(response_hc_idp)
 
 # response$cluster_id <- paste(response$settlement,response$yes_no_idp,sep = "_")
 
-results <- from_analysisplan_map_to_output(response, 
-                                           analysisplan = analysisplan,
+results_hc_idp <- from_analysisplan_map_to_output(response_hc_idp, 
+                                           analysisplan = analysisplan_hc_idp,
                                            weighting = strata_weight_fun,
                                            cluster_variable_name = "settlement",
                                            questionnaire)
+
+results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
+                                                            analysisplan = analysisplan_refugee_returnee,
+                                                            questionnaire = questionnaire)
+
+some_results_hc_idp <- results_hc_idp[1:200]
+
+# not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
+# essentially it handles all the looping over different column values as hierarchies.
+# then each result is visualised by a function passed here that decides how to render each individual result
+# see ?hypegrammaR:::map_to_generic_hierarchical_html
+hypegrammaR:::map_to_generic_hierarchical_html(some_results_hc_idp,
+                                               render_result_with = hypegrammaR:::from_result_map_to_md_table,
+                                               by_analysisplan_columns = c("dependent.var","repeat.var.value"),
+                                               by_prefix =  c("",""),
+                                               level = 2,
+                                               questionnaire = questionnaire,
+                                               label_varnames = TRUE,
+                                               dir = "./output",
+                                               filename = "hc_idp_test.html")
+
+browseURL("hc_idp_test.html")
+
+some_results_refugee_returnee <- results_refugee_returnee[1:200]
+
+# not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
+# essentially it handles all the looping over different column values as hierarchies.
+# then each result is visualised by a function passed here that decides how to render each individual result
+# see ?hypegrammaR:::map_to_generic_hierarchical_html
+hypegrammaR:::map_to_generic_hierarchical_html(some_results_refugee_returnee,
+                                               render_result_with = hypegrammaR:::from_result_map_to_md_table,
+                                               by_analysisplan_columns = c("dependent.var","repeat.var.value"),
+                                               by_prefix =  c("",""),
+                                               level = 2,
+                                               questionnaire = questionnaire,
+                                               label_varnames = TRUE,
+                                               dir = "./output",
+                                               filename = "refugee_returnee_test.html")
+
+browseURL("refugee_returnee_test.html")
+
