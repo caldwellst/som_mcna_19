@@ -25,7 +25,15 @@ response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
                      stringsAsFactors = F, check.names = F)
 names(response)<-to_alphanumeric_lowercase(names(response))
 
+
 response_as_read <- response
+
+response <- response %>%
+  select(-ends_with("note")) %>%
+  select(-starts_with("sv_")) %>%
+  select(-starts_with("_"), "_uuid") %>%
+  select(- c(start, end, deviceid, agency, consensus))
+
 
 questionnaire <- load_questionnaire(response,questions,choices)
 
@@ -36,6 +44,9 @@ source("source/sampling.R")
 
 response <- response %>% 
   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+
+response <- response %>%
+  filter(!is.na(strata))
 
 # add cluster ids
 
@@ -71,7 +82,7 @@ source("source/composite variables/03-education.R")
 
 ##to be removed when complete dataset and sampling frame
 samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-response <- response %>% dplyr::select(-c(`_id`, `__version__`, `_uuid`, `_submission_time`, `_index`)) %>%
+response <- response %>% 
   dplyr::filter(strata %in% samplingframe$strata)
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
@@ -81,16 +92,43 @@ analysisplan<-make_analysisplan_all_vars(response,
                                          repeat.for.variable = "region",
                                          hypothesis.type = "group_difference"
                                          ) 
-# %>%
-#   filter(dependent.variable == "time_market")
 
 
 response$general_weights <- strata_weight_fun(response)
 
 # response$cluster_id <- paste(response$settlement,response$yes_no_idp,sep = "_")
 
-results <- from_analysisplan_map_to_output(response, 
-                                           analysisplan = analysisplan,
-                                           weighting = strata_weight_fun,
-                                           cluster_variable_name = "settlement",
-                                           questionnaire)
+
+results <- from_analysisplan_map_to_output(response, analysisplan = analysisplan,
+                                          weighting = strata_weight_fun,
+                                          cluster_variable_name = "settlement",
+                                          questionnaire)
+
+
+# result_labeled <- result$results %>% lapply(map_to_labeled,questionnaire)
+
+# # exporting only small part of results for speed during testing:
+# subset_of_results<- rep(FALSE,length(results$results))
+# subset_of_results[500:700]<-TRUE
+# some_results<-hypegrammaR:::results_subset(results,logical = subset_of_results)
+some_results<-results
+# not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
+# essentially it handles all the looping over different column values as hierarchies.
+# then each result is visualised by a function passed here that decides how to render each individual result
+# see ?hypegrammaR:::map_to_generic_hierarchical_html
+hypegrammaR:::map_to_generic_hierarchical_html(some_results,
+                                               render_result_with = hypegrammaR:::from_result_map_to_md_table,
+                                               by_analysisplan_columns = c("dependent.var","repeat.var.value"),
+                                               by_prefix =  c("",""),
+                                               level = 2,
+                                               questionnaire = questionnaire,
+                                               label_varnames = TRUE,
+                                               dir = "./output",
+                                               filename = "summary_by_dependent_var_then_by_repeat_var.html"
+                                               )
+browseURL("summary_by_dependent_var_then_by_repeat_var.html")
+
+
+# not sure this is working correctly.. next on agenda (:
+# big_table <- hypegrammaR:::map_to_datamerge(results$results, questionnaire = questionnaire, rows = "repeat.var.value")
+
