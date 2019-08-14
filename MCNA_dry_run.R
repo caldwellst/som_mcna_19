@@ -62,6 +62,14 @@ response <- response %>%
 source("source/composite variables/01-horizontal_general.R")
 source("source/composite variables/02-preexisting.R")
 source("source/composite variables/03-education.R")
+source("source/composite variables/04-nutrition.R")
+source("source/composite variables/05-health.R")
+source("source/composite variables/06-shelter_nfi.R")
+source("source/composite variables/07-fsl.R")
+source("source/composite variables/08-wash.R")
+source("source/composite variables/09-protection.R")
+source("source/composite variables/10-mcsi.R")
+
 
 # r <- response %>%
 #   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>%

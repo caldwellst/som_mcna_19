@@ -1,7 +1,8 @@
 # horizontal aggregation
 ## protection
 
-r <- response %>%
+response <- 
+  response %>%
   #1.1 freedom of movement
   new_recoding(target = freedom_movement_score) %>%
   recode_to(to = 1, where = free_movement == "yes") %>%
