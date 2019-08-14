@@ -45,18 +45,19 @@ source("source/sampling.R")
 response <- response %>% 
   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
 
+##to be removed when complete dataset and sampling frame
 response <- response %>%
   filter(!is.na(strata))
 
+samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
+response <- response %>% 
+  dplyr::filter(strata %in% samplingframe$strata)
+
+##to be removed when the data analysis problem is solved
+######
+
 # add cluster ids
 
-# cluster_lookup_table <- read.csv("input/combined_sample_ids.csv", 
-#                          stringsAsFactors=F, check.names=F)
-# 
-# response_filtered_w_clusterids <- response_filtered %>% 
-#   mutate(strata = paste0(lookup_table$district[match(cluster_location_id,cluster_lookup_table$new_ID)],type_hh))
-# 
-# 
 # horizontal operations / recoding
 # 
 source("source/composite variables/01-horizontal_general.R")
@@ -71,27 +72,7 @@ source("source/composite variables/09-protection.R")
 source("source/composite variables/10-mcsi.R")
 
 
-# r <- response %>%
-#   new_recoding(source=how_much_debt, target=hh_with_debt_value) %>%
-#   recode_to(0.25,where.num.larger.equal = 505000,otherwise.to=0) %>%
-# 
-#   new_recoding(target=hh_unemployed) %>%
-#   recode_to(0 ,where=!(is.na(response_filtered$work) | is.na(response_filtered$actively_seek_work))) %>%
-#   recode_to(0.5,where=(work == "no") & (actively_seek_work == "yes")) %>%
-# 
-#   new_recoding(source=reasons_for_debt, target=hh_unable_basic_needs) %>%
-#   recode_to(0.25, where.selected.any = c("health","food","education","basic_hh_expenditure"), otherwise.to=0) %>%
-# 
-#   end_recoding
-#   
-# r <- r %>% mutate(score_livelihoods = hh_with_debt_value+hh_unemployed+hh_unable_basic_needs)
 
-# vertical operations / aggregation
-
-##to be removed when complete dataset and sampling frame
-samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-response <- response %>% 
-  dplyr::filter(strata %in% samplingframe$strata)
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
 analysisplan<-make_analysisplan_all_vars(response,
@@ -113,18 +94,7 @@ results <- from_analysisplan_map_to_output(response, analysisplan = analysisplan
                                           questionnaire)
 
 
-# result_labeled <- result$results %>% lapply(map_to_labeled,questionnaire)
-
-# # exporting only small part of results for speed during testing:
-# subset_of_results<- rep(FALSE,length(results$results))
-# subset_of_results[500:700]<-TRUE
-# some_results<-hypegrammaR:::results_subset(results,logical = subset_of_results)
-some_results<-results
-# not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
-# essentially it handles all the looping over different column values as hierarchies.
-# then each result is visualised by a function passed here that decides how to render each individual result
-# see ?hypegrammaR:::map_to_generic_hierarchical_html
-hypegrammaR:::map_to_generic_hierarchical_html(some_results,
+hypegrammaR:::map_to_generic_hierarchical_html(results,
                                                render_result_with = hypegrammaR:::from_result_map_to_md_table,
                                                by_analysisplan_columns = c("dependent.var","repeat.var.value"),
                                                by_prefix =  c("",""),
@@ -135,8 +105,3 @@ hypegrammaR:::map_to_generic_hierarchical_html(some_results,
                                                filename = "summary_by_dependent_var_then_by_repeat_var.html"
                                                )
 browseURL("summary_by_dependent_var_then_by_repeat_var.html")
-
-
-# not sure this is working correctly.. next on agenda (:
-# big_table <- hypegrammaR:::map_to_datamerge(results$results, questionnaire = questionnaire, rows = "repeat.var.value")
-
