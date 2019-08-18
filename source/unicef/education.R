@@ -82,7 +82,7 @@ education_lookup_table <-
              "5" = c(3,4,4,5,5))
 
 #######education_lvgs_median median calculation NA
-un_r <- 
+un_response <- 
   un_response %>%
   new_recoding(target = education_humanitarian_condition) %>%
   recode_directly(ifelse(education_phywell_median > education_lvgs_median | education_phywell_median > education_coping_median, 
@@ -92,7 +92,7 @@ un_r <-
   recode_directly(ifelse(education_humanitarian_condition %in% c("3", "4", "5"), "in need", "not inneed")) %>%
   end_recoding()
 
-short_df <- un_r  %>%
+short_df <- un_response  %>%
   select(region, settlement, yes_no_host, strata, education_humanitarian_condition, education_pin)
   
 analysisplan<-make_analysisplan_all_vars(short_df,
@@ -182,8 +182,8 @@ severity_phase <- severity_phase %>%
                                        ifelse((s2 + s3 + s4 + s5) > 0.2, 2,
                                               1))))) %>%
   end_recoding()
-
-data_frame_to_write <- list(un_r, pin_table, severity_phase, big_table)
+severity_phase
+data_frame_to_write <- list(un_response, pin_table, severity_phase, big_table)
 names_data_frame_to_write <- c("dataset.csv", "pin_table.csv", "severity_phase.csv", "big_table.csv")
 names_data_frame_to_write <- paste0("output/unicef/", names_data_frame_to_write)
 
