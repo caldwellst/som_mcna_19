@@ -81,6 +81,7 @@ education_lookup_table <-
              "4" = c(3,3,4,4,4),
              "5" = c(3,4,4,5,5))
 
+#######education_lvgs_median median calculation NA
 un_r <- 
   un_response %>%
   new_recoding(target = education_humanitarian_condition) %>%
