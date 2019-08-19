@@ -1,10 +1,49 @@
 # horizontal aggregation
 ## shelter nfi
 
-r <- 
+response <- 
   response %>%
   #1.1 shelter density
-  #2.1 shelter quality
+  new_recoding(target = sd) %>%
+  recode_directly(to_expression = total_hh / (shelter_occupy * 4 )) %>%
+  new_recoding(target = shelter_density_score) %>%
+  recode_to(to = 1, where = sd < 1) %>%
+  recode_to(to = 2, where = sd == 1) %>%
+  recode_to(to = 3, where = sd > 1 & sd <= 1.25) %>%
+  recode_to(to = 4, where = sd > 1.25 & sd <= 1.50) %>%
+  recode_to(to = 5, where = sd > 1.50 & sd <= 1.75) %>%
+  recode_to(to = 6, where = sd > 1.75 & sd <= 2) %>%
+  recode_to(to = 7, where = sd > 2 & sd <= 2.25) %>%
+  recode_to(to = 8, where = sd > 2.25) %>%
+  #2.1 shelter quality 
+  ## shelter components
+  new_recoding(target = primary_floor_material_quality, source = primary_floor_material) %>%
+  recode_to(to = 1, where.selected.any = c("earth", "cement")) %>%
+  recode_to(to = 0,  where.selected.any = c("plastic_sheet", "cloth","vegetation", "none", "other")) %>%
+  new_recoding(target = primary_structural_material_quality, source = primary_structural_material) %>%
+  recode_to(to = 1, where.selected.any = c("wood", "metal", "bricks", "stones")) %>%
+  recode_to(to = 0, where.selected.any = c("other")) %>%
+  new_recoding(target = primary_roof_material_quality, source = primary_roof_material) %>%
+  recode_to(to = 1, where.selected.any = c("earth", "cement", "wood", "cgi", "tin")) %>%
+  recode_to(to = 0, where.selected.any = c("plastic_sheet", "cloth", "vegetation", "none")) %>%
+  new_recoding(target = primary_wall_material_quality, source = primary_wall_material) %>%
+  recode_to(to = 1, where.selected.any = c("earth", "cement", "bricks", "wood", "cgi", "tin")) %>%
+  recode_to(to = 0, where.selected.any = c("plastic_sheet", "cloth", "vegetation", "none")) %>%
+  new_recoding(target = primary_door_material_quality, source = primary_door_material) %>%
+  recode_to(to = 1, where.selected.any = c("wood", "cgi", "tin")) %>%
+  recode_to(to = 0, where.selected.any = c("plastic_sheet", "cloth", "vegetation", "none")) %>%
+  ## shelter quality score
+  new_recoding(target = shelter_quality_score) %>%
+  recode_to(to = 1, where = primary_floor_material_quality == 1 & primary_structural_material_quality == 1 &
+              primary_roof_material_quality == 1 & primary_wall_material_quality == 1 & primary_door_material_quality == 1) %>%
+  recode_to(to = 2, where = primary_floor_material_quality == 0) %>%
+  recode_to(to = 3, where = primary_door_material_quality == 0) %>%
+  recode_to(to = 4, where = primary_wall_material_quality == 0) %>%
+  recode_to(to = 5, where = primary_door_material_quality == 0 & primary_wall_material_quality == 0) %>%
+  recode_to(to = 6, where = primary_structural_material_quality == 0 | primary_roof_material_quality == 0) %>%
+  recode_to(to = 7, where = primary_structural_material_quality == 0 & primary_roof_material_quality == 0) %>%
+  recode_to(to = 8, where = primary_floor_material_quality == 0 & primary_structural_material_quality == 0 &
+              primary_roof_material_quality == 0 & primary_wall_material_quality == 0 & primary_door_material_quality == 0) %>%
   #3.1 shelter condition
   new_recoding(target = shelter_condition_score) %>%
   recode_to(to = 1, where = internal_seperation_rooms == "yes" & 
@@ -19,10 +58,26 @@ r <-
                             theft_from_shelter == "yes") %>%
   recode_to(to = 3, where = internal_seperation_rooms == "yes" & 
                             source_of_light_at_night ==  "yes" &
-                            shelter_lock_from_inside ==  "yes" &
-                            shelter_lock_from_outside == "yes" &
+                            (shelter_lock_from_inside !=  "yes" | shelter_lock_from_outside != "yes") &
+                            theft_from_shelter == "no") %>%
+  recode_to(to = 4, where = internal_seperation_rooms == "yes" & 
+                            source_of_light_at_night ==  "yes" &
+                            (shelter_lock_from_inside !=  "yes" | shelter_lock_from_outside != "yes") &
                             theft_from_shelter == "yes") %>%
-                
+  recode_to(to = 5, where = (internal_seperation_rooms != "yes" | source_of_light_at_night != "yes") & 
+                            (shelter_lock_from_inside ==  "yes" | shelter_lock_from_outside == "yes") &
+                            theft_from_shelter == "no") %>%
+  recode_to(to = 6, where = (internal_seperation_rooms != "yes" | source_of_light_at_night != "yes") & 
+                            (shelter_lock_from_inside ==  "yes" | shelter_lock_from_outside == "yes") &
+                            theft_from_shelter == "yes") %>%
+  recode_to(to = 7, where = internal_seperation_rooms != "yes" & 
+                            source_of_light_at_night != "yes" & 
+                            (shelter_lock_from_inside != "yes" | shelter_lock_from_outside != "yes") &
+                            theft_from_shelter == "no") %>%
+  recode_to(to = 7, where = internal_seperation_rooms != "yes" & 
+                            source_of_light_at_night != "yes" & 
+                            (shelter_lock_from_inside != "yes" | shelter_lock_from_outside != "yes") &
+                            theft_from_shelter == "yes") %>%
   #4.1 shelter damage
   new_recoding(target = shelter_damage_score, source = shelter_damaged_last_90_days) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
@@ -69,7 +124,6 @@ r <-
   recode_to(to = 6, where = nfi_sum < 6 & nfi_sum >= 3) %>%
   recode_to(to = 7, where = nfi_sum < 3 & nfi_sum >= 1) %>%
   recode_to(to = 8, where.num.equal = 0, source = nfi_sum) %>%
-  # recode_to(where.num.larger.equal = )
   end_recoding()
   
   

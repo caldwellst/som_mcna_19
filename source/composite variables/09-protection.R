@@ -23,7 +23,7 @@ response <-
   recode_to(to = 3, where = theft_harassment == "sometimes") %>%
   recode_to(to = 1, where = sgbv == "never" & grave_injury == "never" & abductions == "never" & 
               uxo == "never" & death == "never" & theft_harassment == "never" & light_injury == "never") %>%
-  #4.1 hazardous or exploitive work
+  #4.1 hazardous or exploitive work 
   #5.1 land ownership and documentation
   new_recoding(target = land_ownership_score) %>%
   recode_to(to = 8, where = own_land == "no" & doc_land_tenure == "no" & obtain_title == "no") %>%
@@ -40,6 +40,10 @@ response <-
   recode_to(to = 2, where = hlp_dispute == "yes" & hlp_dispute_mech_use == "yes" & hlp_dispute_mech_satisfaction == "yes") %>%
   recode_to(to = 3, where = hlp_dispute == "yes" & hlp_dispute_mech_use == "no") %>%
   recode_to(to = 4, where = hlp_dispute == "yes" & hlp_dispute_mech_use == "yes" & hlp_dispute_mech_satisfaction == "no") %>%
+  #5.3 land seizure
+  new_recoding(target = land_seizure_score, source =land_grab) %>%
+  recode_to(to = 1, where.selected.any = "no") %>%
+  recode_to(to = 2, where.selected.any = "yes") %>%
   #6.1 GBV referral
   new_recoding(target = sgbv_referral_score) %>%
   recode_to(to = 1, where = sgbv_recourse_awareness == "yes") %>%
@@ -76,11 +80,13 @@ response <-
   recode_to(to = 4, where = child_space == "yes" & child_prot_service == "yes" & child_prot_service_satisfaction == "no") %>%
   recode_to(to = 5, where = child_space == "yes" & child_prot_service == "no") %>%
   recode_to(to = 6, where = child_space == "no" & child_prot_service == "yes" & child_prot_service_satisfaction == "no") %>%
+  recode_to(to = 7, where = child_space == "no" & child_prot_service == "no") %>%
   recode_to(to = 7, where = child_space == "no" & child_prot_service == "no" & child_prot_service_satisfaction == "no") %>%
   #9.1 exploitation
   new_recoding(target = exploitation_score) %>%
   recode_to(to = 1, where = exploit_hum_fee == "no" & exploit_hum_favour == "no") %>%
   recode_to(to = 4, where = exploit_hum_fee == "yes" & exploit_hum_favour == "no") %>%
+  recode_to(to = 5, where = exploit_hum_fee == "no" & exploit_hum_favour == "yes") %>%
   recode_to(to = 6, where = exploit_hum_fee == "yes" & exploit_hum_favour == "yes") %>%
   #10.1 representation of women
   new_recoding(target = women_committee_score, source = women_committee) %>%

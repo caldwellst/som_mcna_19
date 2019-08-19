@@ -6,44 +6,45 @@ response <-
   #1.1 improved drinking water source
   new_recoding(target = drinking_water_source_score, source = primary_source_drinking_water) %>%
   recode_to(to = 1, where.selected.exactly = "piped_system") %>%
-  recode_to(to = 2, where.selected.any = c("tank_and_tap", "vendors")) %>%
-  recode_to(to = 3, where.selected.any = c("borehole", "protected_well_with_hand_pump")) %>%
+  recode_to(to = 2, where.selected.any = c("borehole", "protected_well_with_hand_pump")) %>%
+  recode_to(to = 3, where.selected.any = c("tank_and_tap", "vendors")) %>%
   recode_to(to = 4, where.selected.any = c("protected_well_no_hand_pump", "water_trucking_distrib", "water_kiosk")) %>%
-  recode_to(to = 6, where.selected.exactly = "unprotected_well") %>%
+  recode_to(to = 6, where.selected.any = c("unprotected_well", "other")) %>%
   recode_to(to = 7, where.selected.exactly = "berkad") %>%
   recode_to(to = 8, where.selected.exactly = "river") %>%
-  # recode_to(to = dd, where.selected.exactly = "other") %>%
   #1.2 improved domestic water source
   new_recoding(target = domestics_water_source_score, source = primary_water_for_cooking) %>%
   recode_to(to = 1, where.selected.exactly = "piped_system") %>%
-  recode_to(to = 2, where.selected.any = c("tank_and_tap", "vendors")) %>%
-  recode_to(to = 3, where.selected.any = c("borehole", "protected_well_with_hand_pump")) %>%
+  recode_to(to = 2, where.selected.any = c("borehole", "protected_well_with_hand_pump")) %>%
+  recode_to(to = 3, where.selected.any = c("tank_and_tap", "vendors")) %>%
   recode_to(to = 4, where.selected.any = c("protected_well_no_hand_pump", "water_trucking_distrib", "water_kiosk")) %>%
-  recode_to(to = 6, where.selected.exactly = "unprotected_well") %>%
+  recode_to(to = 6, where.selected.any = c("unprotected_well", "other")) %>%
   recode_to(to = 7, where.selected.exactly = "berkad") %>%
   recode_to(to = 8, where.selected.exactly = "river") %>%
   #1.3 water treatment
   new_recoding(target = water_treatment_score) %>%
   recode_to(to = 1, where.selected.any = c("boiling", "other_filter", "chlorine"), source = water_treat_how) %>%
-  recode_to(to = 2, where = primary_source_drinking_water %in% c("borehole", "protected_well_with_hand_pump") &
-                            treat_drinking_water == "no") %>%
+  recode_to(to = 2, where = primary_source_drinking_water %in% c("borehole", "protected_well_with_hand_pump", "tank_and_tap", "piped_system") &
+                            (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
   recode_to(to = 3, where.selected.exactly = "cloth_filter", source = water_treat_how) %>%
-  recode_to(to = 4, where = primary_source_drinking_water %in% c("protected_well_no_hand_pump", "water_trucking_distrib", "water_kiosk") &
-              treat_drinking_water == "no") %>%
-  recode_to(to = 6, where = primary_source_drinking_water == "unprotected_well" & treat_drinking_water == "no") %>%
-  recode_to(to = 7,  where = primary_source_drinking_water =="berkad" & treat_drinking_water == "no") %>%
-  recode_to(to = 8,  where = primary_source_drinking_water == "river" & treat_drinking_water == "no") %>%
+  recode_to(to = 4, where = primary_source_drinking_water %in% c("protected_well_no_hand_pump") &
+              (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
+  recode_to(to = 5, where = primary_source_drinking_water %in% c("vendors", "water_trucking_distrib", "water_kiosk") &
+              (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
+  recode_to(to = 6, where = primary_source_drinking_water %in% c ("unprotected_well", "other") & (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
+  recode_to(to = 7,  where = primary_source_drinking_water =="berkad" & (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
+  recode_to(to = 8,  where = primary_source_drinking_water == "river" & (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
   #1.4 time to water source
   new_recoding(target = time_to_water_source_score, source = time_to_reach_water_source) %>%
   recode_to(to = 1, where.selected.exactly = "less15") %>%
   recode_to(to = 3, where.selected.exactly = "16_30") %>%
   recode_to(to = 5, where.selected.exactly = "31_60") %>%
-  recode_to(to = 6, where.selected.exactly = "60_180") %>%
-  recode_to(to = 7, where.selected.exactly = "above180") %>%
+  recode_to(to = 7, where.selected.exactly = "60_180") %>%
+  recode_to(to = 8, where.selected.exactly = "above180") %>%
   #2.1 sufficient drinking water quantity
   new_recoding(target = drinking_water_quantity_score, source = enough_drinking_water) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
-  recode_to(to = 6, where.selected.exactly = "no") %>%
+  recode_to(to = 7, where.selected.exactly = "no") %>%
   #2.2 sufficient domestic water quantity
   new_recoding(target = domestic_water_quanity_score, source = enough_cooking_water) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
@@ -56,11 +57,12 @@ response <-
   recode_to(to = 6, where = grepl(pattern = "bucket_lid", x = how_water_stored)) %>%
   recode_to(to = 5, where = grepl(pattern = "jerry_can", x = how_water_stored) & refill_jerrycan == "thrice") %>%
   recode_to(to = 4, where = grepl(pattern = "jerry_can", x = how_water_stored) & refill_jerrycan == "twice") %>%
+  recode_to(to = 4, where = grepl(pattern = "other", x = how_water_stored)) %>%
   recode_to(to = 3, where = grepl(pattern = "jerry_can", x = how_water_stored) & refill_jerrycan == "once") %>%
   recode_to(to = 2, where = grepl(pattern = "water_gallon", x = how_water_stored)) %>%
   recode_to(to = 1, where = grepl(pattern = "water_tank", x = how_water_stored)) %>%
-  #3.1 storage quality
-  new_recoding(target = storage_quality_score) %>%
+  #3.1 jerrycan quality
+  new_recoding(target = jerrycan_quality_score) %>%
   recode_to(to = 6, where = jerrycan_condition.none == 1) %>%
   recode_to(to = 5, where = jerrycan_condition.covered == 0) %>%
   recode_to(to = 4, where = jerrycan_condition.covered == 1 & jerrycan_condition.close_necked == 0) %>%
@@ -77,7 +79,8 @@ response <-
   recode_to(to = 1, where = water_expenditure_rate <= .25) %>%
   recode_to(to = 3, where = water_expenditure_rate > .25 & water_expenditure_rate <= .50) %>%
   recode_to(to = 4, where = water_expenditure_rate > .50 & water_expenditure_rate <= .75) %>%
-  recode_to(to = 6, where = water_expenditure_rate > .75 & water_expenditure_rate <= 1) %>%
+  recode_to(to = 6, where = water_expenditure_rate > .75) %>%
+  # recode_to(to = 6, where = water_expenditure_rate > .75 & water_expenditure_rate <= 1) %>%
   # recode_to(to = 7, where = water_expenditure_rate > 1) %>%
   #4.2 change in water expenditure
   #6.2 expenditure change
@@ -85,7 +88,6 @@ response <-
   recode_to(to = 1, where.selected.exactly = "decrease") %>%
   recode_to(to = 2, where.selected.exactly = "no_change") %>%
   recode_to(to = 4, where.selected.exactly = "increase") %>%
-  # recode_to(to = "dd", where.selected.exactly = "dnk") %>%
   #5.1 use of latrine
   new_recoding(target = latrine_use_score) %>%
   recode_to(to = 1, where = household_access_latrine == "yes_personal") %>%
@@ -95,8 +97,8 @@ response <-
   #5.2 type of latrine
   new_recoding(target = latrine_type_score) %>%
   recode_to(to = 1, where.selected.exactly = "flush_improved", source = latrine_type) %>%
-  recode_to(to = 3, where.selected.exactly = "flush_unimproved", source = latrine_type) %>%
-  recode_to(to = 4, where.selected.exactly = "pit_improved", source = latrine_type) %>%
+  recode_to(to = 3, where.selected.exactly = "pit_improved", source = latrine_type) %>%
+  recode_to(to = 5, where.selected.exactly = "flush_unimproved", source = latrine_type) %>%
   recode_to(to = 6, where.selected.exactly = "pit_unimproved", source = latrine_type) %>%
   # recode_to(to = 8, where = household_access_latrine == "no_latrine") %>%
   # recode_to(to = 8, where.selected.exactly = "other", source = latrine_type)
@@ -134,14 +136,14 @@ response <-
   recode_to(to = 1, where.selected.exactly = "less15") %>%
   recode_to(to = 3, where.selected.exactly = "16_30") %>%
   recode_to(to = 5, where.selected.exactly = "31_60") %>%
-  recode_to(to = 6, where.selected.exactly = "60_180") %>%
-  recode_to(to = 7, where.selected.exactly = "above180") %>%
+  recode_to(to = 7, where.selected.exactly = "60_180") %>%
+  recode_to(to = 8, where.selected.exactly = "above180") %>%
   #8.1 faecal disposal
   new_recoding(target = faecal_matter_disposal_score, source = dispose_children_feaces) %>%
   recode_to(to = 1, where.selected.exactly = "covered_pit") %>%
   recode_to(to = 2, where.selected.exactly = "burial") %>%
   recode_to(to = 5, where.selected.exactly = "burning") %>%
-  recode_to(to = 6, where.selected.exactly = "in_open") %>%
+  recode_to(to = 7, where.selected.exactly = "in_open") %>%
   #8.2 environmental contamination
   ## environmental contamination sum
   new_recoding(target = environmental_contamination_sum) %>%
@@ -191,21 +193,18 @@ response <-
   recode_to(to = 1, where.selected.exactly = "less15") %>%
   recode_to(to = 3, where.selected.exactly = "16_30") %>%
   recode_to(to = 5, where.selected.exactly = "31_60") %>%
-  recode_to(to = 6, where.selected.exactly = "60_180") %>%
+  recode_to(to = 7, where.selected.exactly = "60_180") %>%
   recode_to(to = 8, where.selected.exactly = "above180") %>%
   #12.1 aap water
   new_recoding(target = aap_water_source_score, source = household_been_consulted_water) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
   recode_to(to = 4, where.selected.exactly = "no") %>%
-  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   #12.2 aap sanitation
   new_recoding(target = aap_sanitation_score, source = household_been_consulted_sanitaiton) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
   recode_to(to = 4, where.selected.exactly = "no") %>%
-  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   #12.3 aap satisfaction
   new_recoding(target = aap_satisfaction_score, source = water_sourcces_well_developed) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
   recode_to(to = 5, where.selected.exactly = "no") %>%
-  # recode_to(to = dd, where.selected.exactly = "dnk") %>%
   end_recoding()
