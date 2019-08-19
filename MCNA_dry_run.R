@@ -24,6 +24,10 @@ choices <- read.csv("input/questionnaire/SOM_JMCNA_HH_Tool_FIN_2019_settlements_
 # response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
 #                       stringsAsFactors = F, check.names = F)
 response <- readRDS("input/data/response.RDS")
+
+response <- response[1:500,] #shorter version for working on variables
+response$arrived_current <- as.integer(response$arrived_current) #correctig dates value
+
 names(response)<-to_alphanumeric_lowercase(names(response))
 
 

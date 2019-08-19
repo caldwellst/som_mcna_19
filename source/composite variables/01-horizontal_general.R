@@ -1,6 +1,6 @@
 #general recoding
 
-response <- 
+response <-
   response %>% 
   #Dates: converting dates from excel format
   dplyr::mutate(today = as_date(today, origin = "1899-12-30"),
