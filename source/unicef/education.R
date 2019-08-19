@@ -66,41 +66,149 @@ un_response <-
   recode_to(to = 4, where.num.larger.equal = 13) %>%
   recode_to(to = 5, where.num.larger.equal = 21) %>%
   new_recoding(target = education_lvgs_median) %>%
-  # not counting NAs
-  recode_directly(median(education_level_score, enrollement_rate_score, attendance_rate_score, drop_out_score, na.rm = T)) %>%
+  recode_directly(round(median(c(education_level_score, enrollement_rate_score, attendance_rate_score, drop_out_score), na.rm = T))) %>%
   new_recoding(target = education_coping_median) %>%
-  recode_directly(median(education_coping_score, na.rm = T)) %>%
+  recode_directly(round(median(c(education_coping_score), na.rm = T))) %>%
   new_recoding(target = education_phywell_median) %>%
   recode_directly(1) %>%
   end_recoding()
 
-education_lookup_table <- 
-  data.frame("1" = c(1,1,2,2,3),
-             "2" = c(2,2,2,3,3),
-             "3" = c(2,3,3,3,4),
-             "4" = c(3,3,4,4,4),
-             "5" = c(3,4,4,5,5))
+# 
+# un_response <- 
+#   un_response %>%
+#   new_recoding(target = education_humanitarian_condition) %>%
+#   recode_directly(ifelse(education_phywell_median > education_lvgs_median | education_phywell_median > education_coping_median, 
+#                          as.character(education_phywell_median),
+#                          as.character(lookup_table[education_lvgs_median, education_coping_median]))) %>%
+#   new_recoding(target = education_pin) %>%
+#   recode_directly(ifelse(education_humanitarian_condition %in% c("3", "4", "5"), "in need", "not inneed")) %>%
+#   end_recoding()
+# 
+# short_df <- un_response  %>%
+#   select(region, settlement, yes_no_host, strata, education_humanitarian_condition, education_pin)
+#   
+# analysisplan<-make_analysisplan_all_vars(short_df,
+#                                          questionnaire,
+#                                          independent.variable = "yes_no_host",
+#                                          repeat.for.variable = "region",
+#                                          hypothesis.type = "group_difference") 
+# analysisplan <- analysisplan[c(5:6), ]
+# 
+# strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+#                                       sampling.frame.population.column = "Population",
+#                                       sampling.frame.stratum.column = "strata",
+#                                       data.stratum.column = "strata")
+# 
+# short_df$general_weights <- strata_weight_fun(short_df)
+# 
+# results <- from_analysisplan_map_to_output(short_df, 
+#                                            analysisplan = analysisplan,
+#                                            weighting = strata_weight_fun,
+#                                            cluster_variable_name = "settlement",
+#                                            questionnaire)
+# 
+# 
+# hypegrammaR:::map_to_generic_hierarchical_html(results,
+#                                                render_result_with = hypegrammaR:::from_result_map_to_md_table,
+#                                                by_analysisplan_columns = c("dependent.var","repeat.var.value"),
+#                                                by_prefix =  c("",""),
+#                                                level = 2,
+#                                                questionnaire = questionnaire,
+#                                                label_varnames = TRUE,
+#                                                dir = "./output",
+#                                                filename = "summary_by_dependent_var_then_by_repeat_var.html"
+# )
+# browseURL("summary_by_dependent_var_then_by_repeat_var.html")
+# 
+# big_table <- results$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+# 
+# #pin disagregation geographic area / affected group
+# pin_table <- big_table %>%
+#   select(-c(se, min, max)) %>%
+#   filter(dependent.var == "education_pin", 
+#          dependent.var.value == "in need") %>%
+#   spread(independent.var.value, numbers) %>%
+#   select(region = repeat.var.value,
+#          hc = yes,
+#          idp = no)
+# 
+# #severity phases
+# ## creating table
+# severity_phase <- big_table %>%
+#   select(-c(se, min, max)) %>%
+#   filter(dependent.var == "education_humanitarian_condition") %>%
+#   spread(dependent.var.value, numbers) %>%
+#   mutate(independent.var.value = as.character(independent.var.value)) %>%
+#   select(-c(dependent.var, independent.var, repeat.var)) %>%
+#   rename(region = repeat.var.value,
+#          population_group = independent.var.value) %>%
+#   arrange(region)
+# 
+# ## renaming population group
+# severity_phase$population_group[severity_phase$population_group == "yes"] <- "hc"
+# severity_phase$population_group[severity_phase$population_group == "no"] <- "idp"
+# 
+# 
+# ## adding missing severity phase
+# if(sum(c(1:5) %in% names(severity_phase)) != 5) {
+#   missing_severity_class <- c(1:5)[!(c(1:5) %in% names(severity_phase))]
+#   missing_severity_class <- as.character(missing_severity_class)
+#   severity_phase[, missing_severity_class] <- 0
+# }
+# severity_phase[is.na(severity_phase)] <- 0
+# 
+# ## adding "s" to the severity score names to avoid confusion
+# names(severity_phase)[names(severity_phase) == "1"] <- "s1"
+# names(severity_phase)[names(severity_phase) == "2"] <- "s2"
+# names(severity_phase)[names(severity_phase) == "3"] <- "s3"
+# names(severity_phase)[names(severity_phase) == "4"] <- "s4"
+# names(severity_phase)[names(severity_phase) == "5"] <- "s5"
+# 
+# severity_phase
+# ##selection of the phase
+# severity_phase <- severity_phase %>%
+#   new_recoding(target = education_severity_phase) %>%
+#   recode_directly(ifelse(s5 > .2, 5,
+#                          ifelse((s4 + s5) > 0.2, 4, 
+#                                 ifelse((s3 + s4 + s5) > 0.2, 3,
+#                                        ifelse((s2 + s3 + s4 + s5) > 0.2, 2,
+#                                               1))))) %>%
+#   end_recoding()
+# severity_phase
+# data_frame_to_write <- list(un_response, pin_table, severity_phase, big_table)
+# names_data_frame_to_write <- c("dataset.csv", "pin_table.csv", "severity_phase.csv", "big_table.csv")
+# names_data_frame_to_write <- paste0("output/unicef/", names_data_frame_to_write)
+# 
+# mapply(write.csv, x = data_frame_to_write, file = names_data_frame_to_write, row.names = F)
+# file.copy(from = "output/summary_by_dependent_var_then_by_repeat_var.html", to = "output/unicef/")
 
-#######education_lvgs_median median calculation NA
+
+### wash correction
 un_response <- 
   un_response %>%
   new_recoding(target = education_humanitarian_condition) %>%
   recode_directly(ifelse(education_phywell_median > education_lvgs_median | education_phywell_median > education_coping_median, 
-                         as.character(education_phywell_median),
-                         as.character(education_lookup_table[education_lvgs_median, education_coping_median]))) %>%
+                         education_phywell_median,
+                         lookup_table[education_lvgs_median, education_coping_median])) %>%
   new_recoding(target = education_pin) %>%
-  recode_directly(ifelse(education_humanitarian_condition %in% c("3", "4", "5"), "in need", "not inneed")) %>%
+  recode_directly(ifelse(education_humanitarian_condition >= 3, "in need", "not inneed")) %>%
+  new_recoding(target = education_severe_pin, source = education_humanitarian_condition) %>%
+  recode_to(to = "severe pin", where.num.larger.equal = 4) %>%
+  recode_to(to = "pin", where.num.equal = 3) %>%
+  recode_to(to = "not pin", where.num.smaller.equal = 2) %>%
   end_recoding()
 
+un_response$education_humanitarian_condition <- as.character(un_response$education_humanitarian_condition)
 short_df <- un_response  %>%
-  select(region, settlement, yes_no_host, strata, education_humanitarian_condition, education_pin)
-  
+  select(region, settlement, yes_no_host, strata, education_humanitarian_condition, education_pin, education_severe_pin)
+
 analysisplan<-make_analysisplan_all_vars(short_df,
                                          questionnaire,
                                          independent.variable = "yes_no_host",
                                          repeat.for.variable = "region",
                                          hypothesis.type = "group_difference") 
-analysisplan <- analysisplan[c(5:6), ]
+analysisplan <- analysisplan[c(5:7), ]
+analysisplan
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
@@ -185,7 +293,7 @@ severity_phase <- severity_phase %>%
 severity_phase
 data_frame_to_write <- list(un_response, pin_table, severity_phase, big_table)
 names_data_frame_to_write <- c("dataset.csv", "pin_table.csv", "severity_phase.csv", "big_table.csv")
-names_data_frame_to_write <- paste0("output/unicef/", names_data_frame_to_write)
+names_data_frame_to_write <- paste0("output/unicef/education/", names_data_frame_to_write)
 
 mapply(write.csv, x = data_frame_to_write, file = names_data_frame_to_write, row.names = F)
-file.copy(from = "output/summary_by_dependent_var_then_by_repeat_var.html", to = "output/unicef/")
+file.copy(from = "output/summary_by_dependent_var_then_by_repeat_var.html", to = "output/unicef/education/")
