@@ -14,25 +14,27 @@ response <-
   #2.1 enrollment rate
   new_recoding(target = enrollement_rate) %>%
   recode_directly(to_expression = enrolled_total / school_age_total) %>%
-  recode_directly(ifelse(is.nan(enrollement_rate), 0, enrollement_rate)) %>%
+  ### family with no children?
+  # recode_directly(ifelse(is.na(enrollement_rate), 0, enrollement_rate)) %>% 
   new_recoding(target = enrollement_rate_score) %>%
   recode_to(to = 1, where.num.equal = 1, source = enrollement_rate) %>%
   recode_to(to = 2, where = enrollement_rate < 1 & enrollement_rate >= 0.75) %>%
   recode_to(to = 3, where = enrollement_rate < .75 & enrollement_rate >= 0.50) %>%
   recode_to(to = 4, where = enrollement_rate < .5 & enrollement_rate >= 0.25) %>%
   recode_to(to = 5, where = enrollement_rate < .25 & enrollement_rate >= 0) %>%
-  #2.2 drop-outs
+  # #2.2 drop-outs
   new_recoding(target = drop_out_score) %>%
   recode_to(to = 1, where.selected.exactly = "none", source = drop_out) %>%
   recode_to(to = 3, where.selected.exactly = "some", source = drop_out) %>%
   recode_to(to = 5, where.selected.exactly = "all", source = drop_out) %>%
-  # recode_to(to = NA, where = school_age_total == 0) %>% not working, have to add condition in the previous lines if not 
+  # recode_to(to = NA, where = school_age_total == 0) %>% not working, have to add condition in the previous lines if not
   # corrected in the dataset. something like recode_to(to =1, where = drop_out == "none" & school_age_total > 0)
   # seems NA is not a usable value
   #2.3 attendance rate
   new_recoding(target = attendance_rate) %>%
   recode_directly(to_expression = attend_total / school_age_total) %>%
-  recode_directly(ifelse(is.nan(attendance_rate), 0, attendance_rate)) %>%
+  ### family with no children?
+  # recode_directly(ifelse(is.na(attendance_rate), 0, attendance_rate)) %>%
   new_recoding(target = attendance_rate_score) %>%
   recode_to(to = 1, where.num.equal = 1, source = attendance_rate) %>%
   recode_to(to = 3, where = attendance_rate < 1 & attendance_rate >= 0.75) %>%

@@ -21,8 +21,9 @@ choices <- read.csv("input/questionnaire/SOM_JMCNA_HH_Tool_FIN_2019_settlements_
 
 
 # read data
-response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
-                     stringsAsFactors = F, check.names = F)
+# response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
+#                       stringsAsFactors = F, check.names = F)
+response <- readRDS("input/data/response.RDS")
 names(response)<-to_alphanumeric_lowercase(names(response))
 
 
@@ -33,7 +34,7 @@ response <- response %>%
   select(-ends_with("note")) %>%
   select(-starts_with("sv_")) %>%
   select(-starts_with("_"), "_uuid") %>%
-  select(- c(start, end, deviceid, agency, consensus))
+  select(- c(start, end, deviceid, consensus))
 
 
 questionnaire <- load_questionnaire(response,questions,choices)
@@ -57,6 +58,8 @@ response <- response %>%
 ##to be removed when the data analysis problem is solved
 response_no_added_variables <- response
 ######
+
+##source("unicefledd thinkgs)
 
 # add cluster ids
 
