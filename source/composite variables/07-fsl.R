@@ -158,7 +158,7 @@ response <-
   recode_to(to = 1, where.selected.exactly = "no") %>%
   recode_to(to = 7, where.selected.exactly = "yes") %>%
   #8.1 assets
-  new_recoding(livelihood_assests) %>%
+  new_recoding(livelihood_assests_score) %>%
   recode_to(to = 1, where = own_livestock == "yes" | own_livestock == "yes" | access_saving == "yes") %>%
   recode_to(to = 4, where = own_livestock == "no" | own_livestock == "no" | access_saving == "no") %>%
   #8.2 loss of assets livestock

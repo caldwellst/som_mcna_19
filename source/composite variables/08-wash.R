@@ -46,7 +46,7 @@ response <-
   recode_to(to = 1, where.selected.exactly = "yes") %>%
   recode_to(to = 7, where.selected.exactly = "no") %>%
   #2.2 sufficient domestic water quantity
-  new_recoding(target = domestic_water_quanity_score, source = enough_cooking_water) %>%
+  new_recoding(target = domestic_water_quantity_score, source = enough_cooking_water) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
   recode_to(to = 5, where.selected.exactly = "no") %>%
   #2.3 storage capacity

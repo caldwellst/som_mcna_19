@@ -79,6 +79,9 @@ source("source/composite variables/07-fsl.R")
 source("source/composite variables/08-wash.R")
 source("source/composite variables/09-protection.R")
 source("source/composite variables/10-mcsi.R")
+source("source/composite variables/11-item_repo.R")
+source("source/composite variables/12-final.R")
+
 
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
