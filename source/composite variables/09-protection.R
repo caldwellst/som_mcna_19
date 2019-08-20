@@ -11,7 +11,8 @@ response <-
   recode_to(to = 5, where = free_movement == "no") %>%
   recode_to(to = 6, where = free_movement == "no" & unsafe_male == "yes" & unsafe_female == "yes") %>%
   #2.1 family separation
-  # new_recoding(target = family_separation_score) %>%
+  new_recoding(target = family_separation_score) %>%
+  recode_directly(to_expression = 1) %>%
   #3.1 safety and security concern
   new_recoding(target = safety_security_concern_score) %>%
   recode_to(to = 8, where = sgbv == "always" | grave_injury == "always" | abductions == "always" | 
@@ -24,6 +25,8 @@ response <-
   recode_to(to = 1, where = sgbv == "never" & grave_injury == "never" & abductions == "never" & 
               uxo == "never" & death == "never" & theft_harassment == "never" & light_injury == "never") %>%
   #4.1 hazardous or exploitive work 
+  new_recoding(target = hazardous_work_score) %>%
+  recode_directly(to_expression = 1) %>%
   #5.1 land ownership and documentation
   new_recoding(target = land_ownership_score) %>%
   recode_to(to = 8, where = own_land == "no" & doc_land_tenure == "no" & obtain_title == "no") %>%

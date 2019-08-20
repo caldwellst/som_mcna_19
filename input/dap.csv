@@ -1,0 +1,5 @@
+Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
+MSNI,MSNI,National - HC/IDP,,idp_settlement,categorical,msni,categorical,group_difference
+MSNI,MSNI,Regional  - HC/IDP,region,idp_settlement,categorical,msni,categorical,group_difference
+WASH,time to water source,National - HC/IDP,,idp_settlement,categorical,time_to_reach_water_source,categorical,group_difference
+HEALTH ,where do women give birth,Regional  - HC/IDP,region,idp_settlement,categorical,birth_where,categorical,group_difference

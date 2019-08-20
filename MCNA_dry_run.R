@@ -6,6 +6,7 @@ library(kobostandards) # check inputs for inconsistencies
 library(xlsformfill) # generate fake data for kobo
 library(hypegrammaR) # stats 4 complex samples
 library(composr) # horziontal operations
+library(msni19) # tata!
 
 source("functions/to_alphanumeric_lowercase.R") # function to standardise column headers (like check.names)
 source("functions/analysisplan_factory.R")  # generate analysis plans
@@ -90,8 +91,8 @@ source("source/composite variables/12-final.R")
 samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
 
 
-response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
-  select(-wdr)
+# response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
+#   select(-wdr)
 
 
 response_hc_idp <- response %>% dplyr::select(-c(`_uuid`)) %>%
@@ -105,17 +106,19 @@ questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 response <- response %>% 
   dplyr::filter(strata %in% samplingframe$strata)
 
+#load analysispla
+analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
-analysisplan_hc_idp <- make_analysisplan_all_vars(response_hc_idp,
-                                         questionnaire,
-                                         independent.variable = "yes_no_host",
-                                         repeat.for.variable = "region",
-                                         hypothesis.type = "group_difference")
-
-analysisplan_refugee_returnee <- make_analysisplan_all_vars(response_refugee_returnee,
-                                                            questionnaire,
-                                                            repeat.for.variable = "yes_no_returnee",
-                                                            hypothesis.type = "direct_reporting")
+# analysisplan_hc_idp <- make_analysisplan_all_vars(response_hc_idp,
+#                                          questionnaire,
+#                                          independent.variable = "yes_no_host",
+#                                          repeat.for.variable = "region",
+#                                          hypothesis.type = "group_difference")
+# 
+# analysisplan_refugee_returnee <- make_analysisplan_all_vars(response_refugee_returnee,
+#                                                             questionnaire,
+#                                                             repeat.for.variable = "yes_no_returnee",
+#                                                             hypothesis.type = "direct_reporting")
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
@@ -125,23 +128,21 @@ strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
 response_hc_idp$general_weights <- strata_weight_fun(response_hc_idp)
 
 
-# response$cluster_id <- paste(response$settlement,response$yes_no_idp,sep = "_")
-
 results_hc_idp <- from_analysisplan_map_to_output(response_hc_idp, 
-                                           analysisplan = analysisplan_hc_idp,
+                                           analysisplan = analysisplan,
                                            weighting = strata_weight_fun,
                                            cluster_variable_name = "settlement",
                                            questionnaire)
 
-results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
-                                                            analysisplan = analysisplan_refugee_returnee,
-                                                            questionnaire = questionnaire)
+# results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
+#                                                             analysisplan = analysisplan_refugee_returnee,
+#                                                             questionnaire = questionnaire)
 
 
-some_results_hc_idp <- results_hc_idp[1:200]
+# some_results_hc_idp <- results_hc_idp[1:200]
 
 
-hypegrammaR:::map_to_generic_hierarchical_html(some_results_hc_idp,
+hypegrammaR:::map_to_generic_hierarchical_html(results_hc_idp,
                                                render_result_with = hypegrammaR:::from_result_map_to_md_table,
                                                by_analysisplan_columns = c("dependent.var","repeat.var.value"),
                                                by_prefix =  c("",""),
