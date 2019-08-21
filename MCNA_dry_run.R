@@ -24,10 +24,10 @@ choices <- read.csv("input/questionnaire/SOM_JMCNA_HH_Tool_FIN_2019_settlements_
 # read data
 # response <- read.csv("input/data/REACH_JMCNA_DATA_CLEANING_AMRAN.csv",
 #                       stringsAsFactors = F, check.names = F)
-response <- readRDS("input/data/response.RDS")
+response <- readRDS("input/data/data.RDS")
 
-response <- response[1:500,] #shorter version for working on variables
-response$arrived_current <- as.integer(response$arrived_current) #correctig dates value
+# response <- response[1:500,] #shorter version for working on variables
+# response$arrived_current <- as.integer(response$arrived_current) #correctig dates value
 
 names(response)<-to_alphanumeric_lowercase(names(response))
 
@@ -51,10 +51,11 @@ source("source/sampling.R")
 
 response <- response %>% 
   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
-
+response %>% filter(is.na(strata)) %>% nrow()
 ##to be removed when complete dataset and sampling frame
 response <- response %>%
   filter(!is.na(strata))
+response %>% filter(is.na(strata)) %>% nrow()
 
 samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
 response <- response %>% 
@@ -153,23 +154,23 @@ hypegrammaR:::map_to_generic_hierarchical_html(results_hc_idp,
                                                filename = "hc_idp_test.html")
 
 browseURL("hc_idp_test.html")
-
-some_results_refugee_returnee <- results_refugee_returnee[1:200]
-
-
-# not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
-# essentially it handles all the looping over different column values as hierarchies.
-# then each result is visualised by a function passed here that decides how to render each individual result
-# see ?hypegrammaR:::map_to_generic_hierarchical_html
-
-hypegrammaR:::map_to_generic_hierarchical_html(some_results_refugee_returnee,
-                                               render_result_with = hypegrammaR:::from_result_map_to_md_table,
-                                               by_analysisplan_columns = c("dependent.var","repeat.var.value"),
-                                               by_prefix =  c("",""),
-                                               level = 2,
-                                               questionnaire = questionnaire,
-                                               label_varnames = TRUE,
-                                               dir = "./output",
-                                               filename = "refugee_returnee_test.html")
-
-browseURL("refugee_returnee_test.html")
+# 
+# some_results_refugee_returnee <- results_refugee_returnee[1:200]
+# 
+# 
+# # not sure if this function should be "user facing" or have some wrappers (@Bouke thoughts?)
+# # essentially it handles all the looping over different column values as hierarchies.
+# # then each result is visualised by a function passed here that decides how to render each individual result
+# # see ?hypegrammaR:::map_to_generic_hierarchical_html
+# 
+# hypegrammaR:::map_to_generic_hierarchical_html(some_results_refugee_returnee,
+#                                                render_result_with = hypegrammaR:::from_result_map_to_md_table,
+#                                                by_analysisplan_columns = c("dependent.var","repeat.var.value"),
+#                                                by_prefix =  c("",""),
+#                                                level = 2,
+#                                                questionnaire = questionnaire,
+#                                                label_varnames = TRUE,
+#                                                dir = "./output",
+#                                                filename = "refugee_returnee_test.html")
+# 
+# browseURL("refugee_returnee_test.html")

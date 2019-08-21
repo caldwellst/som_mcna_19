@@ -67,7 +67,7 @@ response <-
   # recode_to(to = "dd", where.selected.exactly = "dnk") %>%
   end_recoding()
 
-
+#function to change the no answer to score 0  to their category.
 y_n_to_zero <- function(dataset, y_n_col) {
   y_n_col_sym <- sym(y_n_col)
   score_col <- sym(sub(pattern = "_y_n", x = y_n_col, replacement = ""))

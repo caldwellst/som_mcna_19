@@ -26,6 +26,7 @@ response <-
   new_recoding(target = pev_score) %>%
   recode_directly(to_expression = round(sum(c(hhvulnerability_score_pev, legal_status_score_pev, dependency_levels_score_pev, 
                                         poverty_score_pev, hhexpenditure_score_pev, displacement_score_pev), na.rm = T) / 16.8)) %>%
+
   #2.education
   #2.1 long_term disruption
   new_recoding(target = long_term_disrup_score_edu) %>%
@@ -259,8 +260,22 @@ response <-
 
 all_scores <- c("pev_score", "edu_score", "nut_score", "health_score", "snfi_score", "fsl_score", "wash_score", "prot_score", "mcsi_score")
 new_order <- c(names(response)[!(names(response) %in% all_scores)], all_scores)
-response <- response[, new_order]                  
-  
+response <- response[, new_order] 
+
+sum(response[, all_scores] == 0)
+response$pev_score <- ifelse(response$pev_score == 0, 1, response$pev_score)
+response$edu_score <- ifelse(response$edu_score == 0, 1, response$edu_score)
+response$nut_score <- ifelse(response$nut_score == 0, 1, response$nut_score)
+response$health_score <- ifelse(response$health_score == 0, 1, response$health_score)
+response$snfi_score <- ifelse(response$snfi_score == 0, 1, response$snfi_score)
+response$fsl_score <- ifelse(response$fsl_score == 0, 1, response$fsl_score)
+response$wash_score <- ifelse(response$wash_score == 0, 1, response$wash_score)
+response$prot_score <- ifelse(response$prot_score == 0, 1, response$prot_score)
+response$mcsi_score <- ifelse(response$mcsi_score == 0, 1, response$mcsi_score)
+sum(response[, all_scores] == 0)
+
+
+
 response$msni <- msni(education_lsg = response$edu_score, 
                        fsl_lsg = response$fsl_score, 
                        health_lsg = response$health_score,
