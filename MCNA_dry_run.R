@@ -7,6 +7,7 @@ library(xlsformfill) # generate fake data for kobo
 library(hypegrammaR) # stats 4 complex samples
 library(composr) # horziontal operations
 library(msni19) # tata!
+library(surveyweights)
 
 source("functions/to_alphanumeric_lowercase.R") # function to standardise column headers (like check.names)
 source("functions/analysisplan_factory.R")  # generate analysis plans
@@ -26,46 +27,32 @@ source("source/sampling.R")
 # load the cluster sampling frame into an object called clustersamplingframe
 # read data
 ##################################   it takes 25 minutes to compute all variables, dont run this all the time
-# response <- readRDS("input/data/data.RDS")
-#  
-# names(response)<-to_alphanumeric_lowercase(names(response))
-# 
-# 
-# response_as_read <- response
-# 
-# 
-# response <- response %>%
-#   select(-ends_with("note")) %>%
-#   select(-starts_with("sv_")) %>%
-#   select(-starts_with("_"), "_uuid") %>%
-#   select(- c(start, end, deviceid, consensus))
-# 
-# 
-# questionnaire <- load_questionnaire(response,questions,choices)
-# 
+response <- readRDS("input/data/00-raw_data.RDS")
 
-# 
-# response <- response %>%
-#   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
-# response %>% filter(is.na(strata)) %>% nrow()
-# ##to be removed when complete dataset and sampling frame
-# response <- response %>%
-#   filter(!is.na(strata))
-# response %>% filter(is.na(strata)) %>% nrow()
-# 
-# samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-# response <- response %>%
-#   dplyr::filter(strata %in% samplingframe$strata)
-# 
-# ##to be removed when the data analysis problem is solved
-# response_no_added_variables <- response
-# ######
-# 
-# ##source("unicefledd thinkgs)
-# 
-# # add cluster ids
-# 
-# # horizontal operations / recoding
+names(response)<-to_alphanumeric_lowercase(names(response))
+
+response <- response %>%
+  select(-ends_with("note")) %>%
+  select(-starts_with("sv_")) %>%
+  select(-starts_with("_"), "_uuid") %>%
+  select(- c(start, end, deviceid, consensus))
+
+response <- response %>%
+  left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+response %>% filter(is.na(strata)) %>% nrow()
+##to be removed when complete dataset and sampling frame
+response <- response %>%
+  filter(!is.na(strata))
+response %>% filter(is.na(strata)) %>% nrow()
+
+samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
+######
+
+##source("unicefledd thinkgs)
+
+# add cluster ids
+
+# horizontal operations / recoding
 # #
 # source("source/composite variables/01-horizontal_general.R")
 # source("source/composite variables/02-preexisting.R")
@@ -80,20 +67,17 @@ source("source/sampling.R")
 # source("source/composite variables/11-item_repo.R")
 # source("source/composite variables/12-final.R")
 # response %>% saveRDS("input/data/02-data_final_scoring21082019.RDS")
+# response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 ################################## END--  it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/02-data_final_scoring21082019.RDS")
+# response <- readRDS("input/data/02-data_final_scoring21082019.RDS")
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
-
-##to be removed when complete dataset and sampling frame
-samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-
 
 # response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
 #   select(-wdr)
 
 
-response_hc_idp <- response %>% dplyr::select(-c(`_uuid`)) %>%
+response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
   dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
 
@@ -101,22 +85,9 @@ response_refugee_returnee <- response %>% dplyr::select(-c(`_uuid`)) %>%
   dplyr::filter(yes_no_host == "no" & yes_no_idp == "no")
 
 questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
-response <- response %>% 
-  dplyr::filter(strata %in% samplingframe$strata)
 
 #load analysispla
 analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
-# make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
-# analysisplan_hc_idp <- make_analysisplan_all_vars(response_hc_idp,
-#                                          questionnaire,
-#                                          independent.variable = "yes_no_host",
-#                                          repeat.for.variable = "region",
-#                                          hypothesis.type = "group_difference")
-# 
-# analysisplan_refugee_returnee <- make_analysisplan_all_vars(response_refugee_returnee,
-#                                                             questionnaire,
-#                                                             repeat.for.variable = "yes_no_returnee",
-#                                                             hypothesis.type = "direct_reporting")
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
@@ -135,9 +106,6 @@ results_hc_idp <- from_analysisplan_map_to_output(response_hc_idp,
 # results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
 #                                                             analysisplan = analysisplan_refugee_returnee,
 #                                                             questionnaire = questionnaire)
-
-
-# some_results_hc_idp <- results_hc_idp[1:200]
 
 
 hypegrammaR:::map_to_generic_hierarchical_html(results_hc_idp,
