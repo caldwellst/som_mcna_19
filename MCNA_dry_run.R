@@ -26,33 +26,33 @@ source("source/sampling.R")
 # load the sampling frame into an object called samplingframe
 # load the cluster sampling frame into an object called clustersamplingframe
 # read data
-##################################   it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/00-raw_data.RDS")
-
-names(response)<-to_alphanumeric_lowercase(names(response))
-
-response <- response %>%
-  select(-ends_with("note")) %>%
-  select(-starts_with("sv_")) %>%
-  select(-starts_with("_"), "_uuid") %>%
-  select(- c(start, end, deviceid, consensus))
-
-response <- response %>%
-  left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
-response %>% filter(is.na(strata)) %>% nrow()
-##to be removed when complete dataset and sampling frame
-response <- response %>%
-  filter(!is.na(strata))
-response %>% filter(is.na(strata)) %>% nrow()
-
-samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-######
-
-##source("unicefledd thinkgs)
-
-# add cluster ids
-
-# horizontal operations / recoding
+#################################   it takes 25 minutes to compute all variables, dont run this all the time
+# response <- readRDS("input/data/00-raw_data.RDS")
+# 
+# names(response)<-to_alphanumeric_lowercase(names(response))
+# 
+# response <- response %>%
+#   select(-ends_with("note")) %>%
+#   select(-starts_with("sv_")) %>%
+#   select(-starts_with("_"), "_uuid") %>%
+#   select(- c(start, end, deviceid, consensus))
+# 
+# response <- response %>%
+#   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+# response %>% filter(is.na(strata)) %>% nrow()
+# ##to be removed when complete dataset and sampling frame
+# response <- response %>%
+#   filter(!is.na(strata))
+# response %>% filter(is.na(strata)) %>% nrow()
+# 
+# samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
+# # ######
+# # 
+# # ##source("unicefledd thinkgs)
+# # 
+# # # add cluster ids
+# # 
+# # horizontal operations / recoding
 # #
 # source("source/composite variables/01-horizontal_general.R")
 # source("source/composite variables/02-preexisting.R")
@@ -66,10 +66,10 @@ samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
 # source("source/composite variables/10-mcsi.R")
 # source("source/composite variables/11-item_repo.R")
 # source("source/composite variables/12-final.R")
-# response %>% saveRDS("input/data/02-data_final_scoring21082019.RDS")
+# response %>% saveRDS("input/data/02-data_final_scoring25082019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
-################################## END--  it takes 25 minutes to compute all variables, dont run this all the time
-# response <- readRDS("input/data/02-data_final_scoring21082019.RDS")
+################################# END--  it takes 25 minutes to compute all variables, dont run this all the time
+response <- readRDS("input/data/02-data_final_scoring25082019.RDS")
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
 
