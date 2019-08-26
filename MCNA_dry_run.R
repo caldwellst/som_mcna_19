@@ -1,5 +1,7 @@
 # setup
 
+remotes::install_github("mabafaba/hypegrammaR", ref = "custom_confidence_levels")
+
 library(dplyr)
 library(koboquest) # manage kobo questionnairs
 library(kobostandards) # check inputs for inconsistencies
@@ -101,7 +103,8 @@ results_hc_idp <- from_analysisplan_map_to_output(response_hc_idp,
                                            analysisplan = analysisplan,
                                            weighting = strata_weight_fun,
                                            cluster_variable_name = "settlement",
-                                           questionnaire)
+                                           questionnaire,
+                                           confidence_level = 0.9)
 
 # results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
 #                                                             analysisplan = analysisplan_refugee_returnee,
