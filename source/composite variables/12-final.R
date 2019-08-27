@@ -1,5 +1,5 @@
 ## scoring
-
+# response <- readRDS("input/data/01-data_before_final_scoring_27082019.RDS")
 response <- 
   response %>%
   #1. pev
@@ -25,7 +25,7 @@ response <-
   ## pev_score
   new_recoding(target = pev_score) %>%
   recode_directly(to_expression = round(sum(c(hhvulnerability_score_pev, legal_status_score_pev, dependency_levels_score_pev, 
-                                        poverty_score_pev, hhexpenditure_score_pev, displacement_score_pev), na.rm = T) / 16.8)) %>%
+                                        poverty_score_pev, hhexpenditure_score_pev, displacement_score_pev), na.rm = T) / 21)) %>%
 
   #2.education
   #2.1 long_term disruption
@@ -48,7 +48,7 @@ response <-
   ##edu score
   new_recoding(target = edu_score) %>%
   recode_directly(to_expression = round(sum(c(long_term_disrup_score_edu, mid_term_disrup_score_edu, 
-                                        cost_score_edu, availability_score_edu, access_score_edu), na.rm = T)/8)) %>%
+                                        cost_score_edu, availability_score_edu, access_score_edu), na.rm = T)/10)) %>%
 
   #3.nutrition
   #3.1 coverage
@@ -67,7 +67,7 @@ response <-
   ## nut score
   new_recoding(target = nut_score) %>%
   recode_directly(to_expression = round(sum(c(coverage_score_nut, use_score_nut, availability_score_nut, 
-                                              access_score_nut), na.rm = T) / 6.2)) %>%
+                                              access_score_nut), na.rm = T) / 7.75)) %>%
   
   #4. health
   #4.1 burden of disease
@@ -96,7 +96,7 @@ response <-
   new_recoding(target = health_score) %>%
   recode_directly(to_expression = round(sum(c(burden_disease_score_health, maternal_health_score_health, vaccination_score_health, 
                                       mental_health_score_health, cost_score_health, availability_score_health, 
-                                      access_score_health), na.rm = T) / 12.8)) %>%
+                                      access_score_health), na.rm = T) / 16)) %>%
   
   #5. snfi
   #5.1 shelter density
@@ -122,7 +122,7 @@ response <-
   new_recoding(target = snfi_score) %>%
   recode_directly(to_expression = round(sum(c(sd_score_snfi, shelter_quality_score_snfi, shelter_condition_score_snfi, 
                                         shelter_damage_score_snfi, security_tenure_score_snfi, nfi_score_snfi), 
-                                        na.rm = T) / 9.2)) %>%
+                                        na.rm = T) / 11.5)) %>%
   
   #6. fsl
   #6.1 source
@@ -154,7 +154,7 @@ response <-
   new_recoding(target = fsl_score) %>%
   recode_directly(to_expression = round(sum(c(source_score_fsl, availability_score_fsl, sufficency_score_fsl, 
                                               consumption_score_fsl, capacity_score_fsl, cost_score_fsl, income_score_fsl, 
-                                              assets_score_fsl), na.rm = T) / 17.2)) %>%
+                                              assets_score_fsl), na.rm = T) / 21.5)) %>%
   
   #7. wash
   #7.1 access to improved water source 
@@ -203,7 +203,7 @@ response <-
                                         cost_score_wash, latrine_use_score_wash, dignified_latrine_score_wash, 
                                         access_latrine_score_wash, environmental_sanitation_score_wash, hygiene_awareness_score_wash,
                                         hygiene_mats_availability_score_wash, access_handwashing_score_wash, aap_score_wash), 
-                                        na.rm = T) / 32)) %>%
+                                        na.rm = T) / 40)) %>%
   
   #prot
   #8.1 freedom of movement
@@ -245,7 +245,7 @@ response <-
   recode_directly(to_expression = round(sum(c(freedom_movement_score_prot, family_separation_score_prot, safety_security_score_prot,
                                         hazardous_work_score_prot, hlp_score_prot, gbv_score_prot, rule_of_law_score_prot, 
                                         child_protection_score_prot, exploitation_score_prot, representation_women_score_prot,
-                                        hc_idp_relation_score_prot), na.rm = T) / 21.2)) %>%
+                                        hc_idp_relation_score_prot), na.rm = T) / 26.5)) %>%
   
   #mcsi
   
@@ -253,7 +253,7 @@ response <-
   new_recoding(target = mcsi_score) %>%
   recode_directly(to_expression = round(sum(c(mcsi_water_score, mcsi_sanitation_score, mcsi_hygienic_mat_score, 
                                         mcsi_food_score, mcsi_shelter_score, mcsi_nfi_score, mcsi_education_score,
-                                        mcsi_health_score), na.rm = T) / 12.8)) %>%
+                                        mcsi_health_score), na.rm = T) / 16)) %>%
    
   end_recoding()
 
@@ -276,18 +276,6 @@ response$wash_score <- ifelse(response$wash_score == 0, 1, response$wash_score)
 response$prot_score <- ifelse(response$prot_score == 0, 1, response$prot_score)
 response$mcsi_score <- ifelse(response$mcsi_score == 0, 1, response$mcsi_score)
 sum(response[, all_scores] == 0)
-
-sum(response[, all_scores] == 5)
-response$pev_score <- ifelse(response$pev_score == 5, 4, response$pev_score)
-response$edu_score <- ifelse(response$edu_score == 5, 4, response$edu_score)
-response$nut_score <- ifelse(response$nut_score == 5, 4, response$nut_score)
-response$health_score <- ifelse(response$health_score == 5, 4, response$health_score)
-response$snfi_score <- ifelse(response$snfi_score == 5, 4, response$snfi_score)
-response$fsl_score <- ifelse(response$fsl_score == 5, 4, response$fsl_score)
-response$wash_score <- ifelse(response$wash_score == 5, 4, response$wash_score)
-response$prot_score <- ifelse(response$prot_score == 5, 4, response$prot_score)
-response$mcsi_score <- ifelse(response$mcsi_score == 5, 4, response$mcsi_score)
-sum(response[, all_scores] == 5)
 
 
 response$msni <- msni(education_lsg = response$edu_score, 
