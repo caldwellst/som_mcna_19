@@ -75,14 +75,16 @@ response <-
                     mental_problems_faced.schiz_emotion +
                     mental_problems_faced.schiz_speech +
                     mental_problems_faced.schiz_delusions) %>%
+  new_recoding(target = mental_health_sum) %>%
+  recode_directly(stressors_sum + depression_sum + schiz_sum) %>%
   ### mental health score
   new_recoding(target = mental_health_score) %>%
-  recode_to(to = 1, where = stressors_sum < 2 & depression_sum < 3 & schiz_sum < 2) %>%
-  recode_to(to = 2, where = stressors_sum < 2 & depression_sum < 3 & schiz_sum < 2 & using_chains == "yes") %>%
-  recode_to(to = 3, where = stressors_sum >= 2) %>%
-  recode_to(to = 4, where = stressors_sum >= 3) %>%
-  recode_to(to = 5, where = stressors_sum >= 3 & using_chains == "yes") %>%
-  recode_to(to = 6, where = stressors_sum >= 5) %>%
+  recode_to(to = 1, where = mental_health_sum  <= 1) %>%
+  recode_to(to = 2, where = mental_health_sum <= 1 & using_chains == "yes") %>%
+  recode_to(to = 3, where = mental_health_sum >= 2) %>%
+  recode_to(to = 4, where = mental_health_sum >= 3) %>%
+  recode_to(to = 5, where = mental_health_sum >= 3 & using_chains == "yes") %>%
+  recode_to(to = 6, where = mental_health_sum >= 5) %>%
   recode_to(to = 7, where = depression_sum >= 3 | schiz_sum >= 2) %>%
   recode_to(to = 8, where = (depression_sum >= 5 & mental_problems_faced.depress_mood == 1 & mental_problems_faced.depress_interest == 1)| 
               schiz_sum >= 3) %>%
@@ -109,10 +111,10 @@ response <-
   recode_to(to = 2, where.selected.exactly = "16_30", source = time_health) %>%
   recode_to(to = 3, where.selected.exactly = "31_60", source = time_health) %>%
   recode_to(to = 4, where.selected.exactly = "60_180", source = time_health) %>%
-  recode_to(to = 5, where = time_health == "31_60" & transport_health %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 5, where = time_health == "31_60" & transport_health %in% c("walking", "bicycle")) %>%
   recode_to(to = 6, where.selected.exactly = "above180", source = time_health) %>%
-  recode_to(to = 7, where = time_health == "60_180" & transport_health %in% c("walking", "bicycle", "cart")) %>%
-  recode_to(to = 8, where = time_health == "above180" & transport_health %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 7, where = time_health == "60_180" & transport_health %in% c("walking", "bicycle")) %>%
+  recode_to(to = 8, where = time_health == "above180" & transport_health %in% c("walking", "bicycle")) %>%
   #6.2 type of health center score
   new_recoding(target = health_facility_score, source = health_facility) %>%
   recode_to(to = 1, where.selected.any = c("government_clinic", "private_clinic")) %>%

@@ -49,7 +49,7 @@ response <-
   new_recoding(target = edu_score) %>%
   recode_directly(to_expression = round(sum(c(long_term_disrup_score_edu, mid_term_disrup_score_edu, 
                                         cost_score_edu, availability_score_edu, access_score_edu), na.rm = T)/8)) %>%
-  
+
   #3.nutrition
   #3.1 coverage
   new_recoding(target = coverage_score_nut) %>%
@@ -262,6 +262,9 @@ all_scores <- c("pev_score", "edu_score", "nut_score", "health_score", "snfi_sco
 new_order <- c(names(response)[!(names(response) %in% all_scores)], all_scores)
 response <- response[, new_order] 
 
+
+lapply(all_scores, function(x) table(response[,x], useNA = "ifany"))
+
 sum(response[, all_scores] == 0)
 response$pev_score <- ifelse(response$pev_score == 0, 1, response$pev_score)
 response$edu_score <- ifelse(response$edu_score == 0, 1, response$edu_score)
@@ -274,6 +277,17 @@ response$prot_score <- ifelse(response$prot_score == 0, 1, response$prot_score)
 response$mcsi_score <- ifelse(response$mcsi_score == 0, 1, response$mcsi_score)
 sum(response[, all_scores] == 0)
 
+sum(response[, all_scores] == 5)
+response$pev_score <- ifelse(response$pev_score == 5, 4, response$pev_score)
+response$edu_score <- ifelse(response$edu_score == 5, 4, response$edu_score)
+response$nut_score <- ifelse(response$nut_score == 5, 4, response$nut_score)
+response$health_score <- ifelse(response$health_score == 5, 4, response$health_score)
+response$snfi_score <- ifelse(response$snfi_score == 5, 4, response$snfi_score)
+response$fsl_score <- ifelse(response$fsl_score == 5, 4, response$fsl_score)
+response$wash_score <- ifelse(response$wash_score == 5, 4, response$wash_score)
+response$prot_score <- ifelse(response$prot_score == 5, 4, response$prot_score)
+response$mcsi_score <- ifelse(response$mcsi_score == 5, 4, response$mcsi_score)
+sum(response[, all_scores] == 5)
 
 
 response$msni <- msni(education_lsg = response$edu_score, 
@@ -284,3 +298,6 @@ response$msni <- msni(education_lsg = response$edu_score,
                        wash_lsg = response$wash_score,
                        capacity_gaps = rep(1, nrow(response)),
                        impact = rep(1, nrow(response)))
+
+
+response$msni %>% table(useNA = "ifany")

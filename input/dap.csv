@@ -1,5 +1,41 @@
 Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
-PEV,PEV,National - HC/IDP,,idp_settlement,categorical,pev_score,categorical,group_difference
-PEV,PEV,Regional  - HC/IDP,region,idp_settlement,categorical,pev_score,categorical,group_difference
-WASH,time to water source,National - HC/IDP,,idp_settlement,categorical,time_to_reach_water_source,categorical,group_difference
-HEALTH ,where do women give birth,Regional  - HC/IDP,region,idp_settlement,categorical,birth_where,categorical,group_difference
+,Pre-existing vulnerabilities,National - HC/IDP,,yes_no_host,categorical,pev_score,categorical,group_difference
+,Education,National - HC/IDP,,yes_no_host,categorical,edu_score,categorical,group_difference
+,Nutrition,National - HC/IDP,,yes_no_host,categorical,nut_score,categorical,group_difference
+,Health,National - HC/IDP,,yes_no_host,categorical,health_score,categorical,group_difference
+,Shelter_NFI,National - HC/IDP,,yes_no_host,categorical,snfi_score,categorical,group_difference
+,WASH,National - HC/IDP,,yes_no_host,categorical,wash_score,categorical,group_difference
+,Food Security Livelihoods,National - HC/IDP,,yes_no_host,categorical,fsl_score,categorical,group_difference
+,Protection,National - HC/IDP,,yes_no_host,categorical,prot_score,categorical,group_difference
+,Availability of school - Time taken to…,National - HC/IDP,,yes_no_host,categorical,time_to_school_score,categorical,group_difference
+,Access to school ,National - HC/IDP,,yes_no_host,categorical,access_to_school_score,categorical,group_difference
+,Availability of nutrition centre - Time taken to…,National - HC/IDP,,yes_no_host,categorical,time_to_nutrition_center_score,categorical,group_difference
+,Access to centre,National - HC/IDP,,yes_no_host,categorical,access_to_nutrition_center_score,categorical,group_difference
+,Availability of healthcare - Time taken to…,National - HC/IDP,,yes_no_host,categorical,time_to_health_score,categorical,group_difference
+,Access to healthcare,National - HC/IDP,,yes_no_host,categorical,health_access_score,categorical,group_difference
+,Availability of market - Time taken to…,National - HC/IDP,,yes_no_host,categorical,access_to_market_score,categorical,group_difference
+,Availability of water source - Time taken to…,National - HC/IDP,,yes_no_host,categorical,time_to_water_source_score,categorical,group_difference
+,Availability of latrines - Time taken to…,National - HC/IDP,,yes_no_host,categorical,distance_latrine_score,categorical,group_difference
+,Availability of handwashing - Time taken to…,National - HC/IDP,,yes_no_host,categorical,handwashing_access_score,categorical,group_difference
+,Loss of income source,National - HC/IDP,,yes_no_host,categorical,lost_income_score,categorical,group_difference
+,Loss of livestock,National - HC/IDP,,yes_no_host,categorical,lost_livestock_score,categorical,group_difference
+,Loss of land,National - HC/IDP,,yes_no_host,categorical,lost_land_cultivation_score,categorical,group_difference
+,Lost employment floods,National - HC/IDP,,yes_no_host,categorical,reason_lost_employment.flood,categorical,group_difference
+,Lost employment drought,National - HC/IDP,,yes_no_host,categorical,reason_lost_employment.drought,categorical,group_difference
+,Lost employment conflict,National - HC/IDP,,yes_no_host,categorical,reason_lost_employment.conflict,categorical,group_difference
+,Poverty level score,National - HC/IDP,,yes_no_host,categorical,poverty_score_pev,categorical,group_difference
+,Displacement push reasons,National - By primary income earner ,,breadwinner,categorical,disp_why1,categorical,group_difference
+,Displacement push reasons,National - By primary income earner ,,breadwinner,categorical,disp_why2,categorical,group_difference
+,Displacement pull reasons,National - By primary income earner ,,breadwinner,categorical,dest_loc_why1,categorical,group_difference
+,Displacement pull reasons,National - By primary income earner ,,breadwinner,categorical,dest_loc_why2,categorical,group_difference
+,AAP Water consultation,National - HC/IDP,,yes_no_host,categorical,aap_water_source_score,categorical,group_difference
+,AAP Sanitation consultation,National - HC/IDP,,yes_no_host,categorical,aap_sanitation_score,categorical,group_difference
+,AAP Water and Sanitation satisfaction,National - HC/IDP,,yes_no_host,categorical,aap_satisfaction_score,categorical,group_difference
+,AAP contact by NGO,National - HC/IDP,,yes_no_host,categorical,aap_contact,categorical,group_difference
+,AAP grievance mechanisms,National - HC/IDP,,yes_no_host,categorical,aap_grievance,categorical,group_difference
+,AAP negative outcomes in community,National - HC/IDP,,yes_no_host,categorical,aap_neg_outcome,categorical,group_difference
+,AAP security on route barrier,National - HC/IDP,,yes_no_host,categorical,barrier_hum.barrier_sec_route,categorical,group_difference
+,AAP camp manager exclusion barrier,National - HC/IDP,,yes_no_host,categorical,barrier_hum.barrier_excluded,categorical,group_difference
+,AAP physical no access barrier,National - HC/IDP,,yes_no_host,categorical,barrier_hum.barrier_physical,categorical,group_difference
+,AAP informational barrier,National - HC/IDP,,yes_no_host,categorical,barrier_hum.barrier_info,categorical,group_difference
+,AAP security at point barrier,National - HC/IDP,,yes_no_host,categorical,barrier_hum.barrier_sec_point,categorical,group_difference

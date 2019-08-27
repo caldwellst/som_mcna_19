@@ -27,13 +27,13 @@ response <-
   recode_to(to = 2, where = primary_source_drinking_water %in% c("borehole", "protected_well_with_hand_pump", "tank_and_tap", "piped_system") &
                             (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
   recode_to(to = 3, where.selected.exactly = "cloth_filter", source = water_treat_how) %>%
-  recode_to(to = 4, where = primary_source_drinking_water %in% c("protected_well_no_hand_pump") &
-              (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
-  recode_to(to = 5, where = primary_source_drinking_water %in% c("vendors", "water_trucking_distrib", "water_kiosk") &
-              (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
-  recode_to(to = 6, where = primary_source_drinking_water %in% c ("unprotected_well", "other") & (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
-  recode_to(to = 7,  where = primary_source_drinking_water =="berkad" & (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
-  recode_to(to = 8,  where = primary_source_drinking_water == "river" & (treat_drinking_water == "no" | water_treat_how == "other") ) %>%
+  recode_to(to = 4, where = primary_source_drinking_water %in% c("protected_well_no_hand_pump") & treat_drinking_water == "no") %>%
+  recode_to(to = 5, where = primary_source_drinking_water %in% c("vendors", "water_trucking_distrib", "water_kiosk") & 
+              treat_drinking_water == "no") %>%
+  recode_to(to = 5, where.selected.exactly = "other", source = water_treat_how) %>%
+  recode_to(to = 6, where = primary_source_drinking_water %in% c ("unprotected_well", "other") & treat_drinking_water == "no") %>%
+  recode_to(to = 7,  where = primary_source_drinking_water =="berkad" & treat_drinking_water == "no") %>%
+  recode_to(to = 8,  where = primary_source_drinking_water == "river" & treat_drinking_water == "no") %>%
   #1.4 time to water source
   new_recoding(target = time_to_water_source_score, source = time_to_reach_water_source) %>%
   recode_to(to = 1, where.selected.exactly = "less15") %>%
@@ -98,10 +98,8 @@ response <-
   new_recoding(target = latrine_type_score) %>%
   recode_to(to = 1, where.selected.exactly = "flush_improved", source = latrine_type) %>%
   recode_to(to = 3, where.selected.exactly = "pit_improved", source = latrine_type) %>%
-  recode_to(to = 5, where.selected.exactly = "flush_unimproved", source = latrine_type) %>%
+  recode_to(to = 5, where.selected.any = c("flush_unimproved", "other"), source = latrine_type) %>%
   recode_to(to = 6, where.selected.exactly = "pit_unimproved", source = latrine_type) %>%
-  # recode_to(to = 8, where = household_access_latrine == "no_latrine") %>%
-  # recode_to(to = 8, where.selected.exactly = "other", source = latrine_type)
   #6.1 gender segregation
   new_recoding(target = gender_separation_latrine_score) %>%
   recode_to(to = 5, where = latrines_seperated_by_gender == "no") %>%

@@ -71,10 +71,10 @@ response <-
   recode_to(to = 2, where.selected.exactly = "16_30", source = time_school) %>%
   recode_to(to = 3, where.selected.exactly = "31_60", source = time_school) %>%
   recode_to(to = 4, where.selected.exactly = "60_180", source = time_school) %>%
-  recode_to(to = 5, where = time_school == "31_60" & transport_school %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 5, where = time_school == "31_60" & transport_school %in% c("walking", "bicycle")) %>%
   recode_to(to = 6, where.selected.exactly = "above180", source = time_school) %>%
-  recode_to(to = 7, where = time_school == "60_180" & transport_school %in% c("walking", "bicycle", "cart")) %>%
-  recode_to(to = 8, where = time_school == "above180" & transport_school %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 7, where = time_school == "60_180" & transport_school %in% c("walking", "bicycle")) %>%
+  recode_to(to = 8, where = time_school == "above180" & transport_school %in% c("walking", "bicycle")) %>%
   #5.1 access to school
   new_recoding(target = access_to_school_score, source = access_school) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%

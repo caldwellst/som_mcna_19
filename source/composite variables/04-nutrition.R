@@ -36,10 +36,10 @@ response <-
   recode_to(to = 2, where.selected.exactly = "16_30", source = nearest_nutrition_center) %>%
   recode_to(to = 3, where.selected.exactly = "31_60", source = nearest_nutrition_center) %>%
   recode_to(to = 4, where.selected.exactly = "60_180", source = nearest_nutrition_center) %>%
-  recode_to(to = 5, where = nearest_nutrition_center == "31_60" & transport_type_used %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 5, where = nearest_nutrition_center == "31_60" & transport_type_used %in% c("walking", "bicycle")) %>%
   recode_to(to = 6, where.selected.exactly = "above180", source = nearest_nutrition_center) %>%
-  recode_to(to = 7, where = nearest_nutrition_center == "60_180" & transport_type_used %in% c("walking", "bicycle", "cart")) %>%
-  recode_to(to = 8, where = nearest_nutrition_center == "above180" & transport_type_used %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 7, where = nearest_nutrition_center == "60_180" & transport_type_used %in% c("walking", "bicycle")) %>%
+  recode_to(to = 8, where = nearest_nutrition_center == "above180" & transport_type_used %in% c("walking", "bicycle")) %>%
   #4.1 access to nutrition center
   new_recoding(access_to_nutrition_center_score, source = access_nearest_nutrition_center) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%

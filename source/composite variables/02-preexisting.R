@@ -82,14 +82,25 @@ response <-
   recode_to(to = 8, where.selected.exactly = "4hmore") %>%
   # Poverty levels
   ## 4.1 poverty_level_income
-  new_recoding(target = income_score, source = average_income) %>%
-  recode_to(to = 2, where.selected.exactly = "200more") %>%
-  recode_to(to = 3, where.selected.exactly = "151_200") %>%
-  recode_to(to = 4, where.selected.exactly = "101_150") %>%
-  recode_to(to = 5, where.selected.exactly = "61_100") %>%
-  recode_to(to = 6, where.selected.exactly = "31_60") %>%
-  recode_to(to = 7, where.selected.exactly = "less30") %>%
-  recode_to(to = 8, where.selected.exactly = "none") %>%
+  new_recoding(target = income_per_capita) %>%
+  recode_directly(to_expression = income_middle / total_hh) %>%
+  new_recoding(target = income_score) %>%
+  recode_to(to = 7, where = income_per_capita <= 30) %>%
+  recode_to(to = 6, where = income_per_capita > 30) %>%
+  recode_to(to = 5, where = income_per_capita > 60) %>%
+  recode_to(to = 4, where = income_per_capita > 100) %>%
+  recode_to(to = 3, where = income_per_capita > 150) %>%
+  recode_to(to = 2, where = income_per_capita > 200) %>%
+  recode_to(to = 8, where = average_income == "none") %>%
+  # kept in case we reverting to the income_score rather than income_per_capita
+  # new_recoding(target = income_score, source = average_income) %>%
+  # recode_to(to = 2, where.selected.exactly = "200more") %>%
+  # recode_to(to = 3, where.selected.exactly = "151_200") %>%
+  # recode_to(to = 4, where.selected.exactly = "101_150") %>%
+  # recode_to(to = 5, where.selected.exactly = "61_100") %>%
+  # recode_to(to = 6, where.selected.exactly = "31_60") %>%
+  # recode_to(to = 7, where.selected.exactly = "less30") %>%
+  # recode_to(to = 8, where.selected.exactly = "none") %>%
   ## 4.5 debt income ratio
   ### income_middle_point
   #see horizontal aggregation for all expenditure convertion

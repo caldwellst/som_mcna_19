@@ -45,39 +45,22 @@ response <-
   recode_to(to = 8, where = primary_floor_material_quality == 0 & primary_structural_material_quality == 0 &
               primary_roof_material_quality == 0 & primary_wall_material_quality == 0 & primary_door_material_quality == 0) %>%
   #3.1 shelter condition
-  new_recoding(target = shelter_condition_score) %>%
-  recode_to(to = 1, where = internal_seperation_rooms == "yes" & 
-                            source_of_light_at_night ==  "yes" &
-                            shelter_lock_from_inside ==  "yes" &
-                            shelter_lock_from_outside == "yes" &
-                            theft_from_shelter == "no") %>%
-  recode_to(to = 2, where = internal_seperation_rooms == "yes" & 
-                            source_of_light_at_night ==  "yes" &
-                            shelter_lock_from_inside ==  "yes" &
-                            shelter_lock_from_outside == "yes" &
-                            theft_from_shelter == "yes") %>%
-  recode_to(to = 3, where = internal_seperation_rooms == "yes" & 
-                            source_of_light_at_night ==  "yes" &
-                            (shelter_lock_from_inside !=  "yes" | shelter_lock_from_outside != "yes") &
-                            theft_from_shelter == "no") %>%
-  recode_to(to = 4, where = internal_seperation_rooms == "yes" & 
-                            source_of_light_at_night ==  "yes" &
-                            (shelter_lock_from_inside !=  "yes" | shelter_lock_from_outside != "yes") &
-                            theft_from_shelter == "yes") %>%
-  recode_to(to = 5, where = (internal_seperation_rooms != "yes" | source_of_light_at_night != "yes") & 
-                            (shelter_lock_from_inside ==  "yes" | shelter_lock_from_outside == "yes") &
-                            theft_from_shelter == "no") %>%
-  recode_to(to = 6, where = (internal_seperation_rooms != "yes" | source_of_light_at_night != "yes") & 
-                            (shelter_lock_from_inside ==  "yes" | shelter_lock_from_outside == "yes") &
-                            theft_from_shelter == "yes") %>%
-  recode_to(to = 7, where = internal_seperation_rooms != "yes" & 
-                            source_of_light_at_night != "yes" & 
-                            (shelter_lock_from_inside != "yes" | shelter_lock_from_outside != "yes") &
-                            theft_from_shelter == "no") %>%
-  recode_to(to = 7, where = internal_seperation_rooms != "yes" & 
-                            source_of_light_at_night != "yes" & 
-                            (shelter_lock_from_inside != "yes" | shelter_lock_from_outside != "yes") &
-                            theft_from_shelter == "yes") %>%
+  new_recoding(target = shelter_condition_sum) %>%
+  recode_directly(to_expression = (ifelse(internal_seperation_rooms == "yes", 1, 0)) * 2 +
+                                  (ifelse(source_of_light_at_night == "yes", 1, 0)) * 2 +
+                                  (ifelse(shelter_lock_from_inside == "yes", 1, 0)) * 1 +
+                                  (ifelse(shelter_lock_from_outside == "yes", 1, 0)) * 1 +
+                                  (ifelse(theft_from_shelter == "no", 1, 0)) * 1) %>%
+  mutate(shelter_condition_sum = ifelse(is.na(shelter_occupy), NA, shelter_condition_sum)) %>%
+  new_recoding(target = shelter_condition_score, source = shelter_condition_sum) %>%
+  recode_to(to = 1, where.num.equal = 7) %>%
+  recode_to(to = 2, where.num.equal = 6) %>%
+  recode_to(to = 3, where.num.equal = 5) %>%
+  recode_to(to = 4, where.num.equal = 4) %>%
+  recode_to(to = 5, where.num.equal = 3) %>%
+  recode_to(to = 6, where.num.equal = 2) %>%
+  recode_to(to = 7, where.num.equal = 1) %>%
+  recode_to(to = 8, where.num.equal = 0) %>%
   #4.1 shelter damage
   new_recoding(target = shelter_damage_score, source = shelter_damaged_last_90_days) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%

@@ -28,7 +28,7 @@ source("source/sampling.R")
 # load the sampling frame into an object called samplingframe
 # load the cluster sampling frame into an object called clustersamplingframe
 # read data
-#################################   it takes 25 minutes to compute all variables, dont run this all the time
+# #################################   it takes 25 minutes to compute all variables, dont run this all the time
 # response <- readRDS("input/data/00-raw_data.RDS")
 # 
 # names(response)<-to_alphanumeric_lowercase(names(response))
@@ -49,11 +49,11 @@ source("source/sampling.R")
 # 
 # samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
 # # ######
-# # 
+# #
 # # ##source("unicefledd thinkgs)
-# # 
+# #
 # # # add cluster ids
-# # 
+# #
 # # horizontal operations / recoding
 # #
 # source("source/composite variables/01-horizontal_general.R")
@@ -67,11 +67,12 @@ source("source/sampling.R")
 # source("source/composite variables/09-protection.R")
 # source("source/composite variables/10-mcsi.R")
 # source("source/composite variables/11-item_repo.R")
+# response %>% saveRDS("input/data/01-data_composite_27082019.RDS")
 # source("source/composite variables/12-final.R")
-# response %>% saveRDS("input/data/02-data_final_scoring25082019.RDS")
+# response %>% saveRDS("input/data/02-data_final_scoring27082019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 ################################# END--  it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/02-data_final_scoring25082019.RDS")
+response <- readRDS("input/data/02-data_final_scoring27082019.RDS")
 
 # make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
 

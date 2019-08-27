@@ -43,31 +43,35 @@ response <-
   recode_to(to = "acceptable", where.num.larger.equal = 42) %>%
   recode_to(to = "borderline", where.num.smaller = 42) %>%
   recode_to(to = "poor", where.num.smaller = 28) %>%
-
   #1.1 food source and change
+  ## sustainable source
+  new_recoding(target = type_source_food, source = source_food) %>%
+  recode_to(to = "sustainable", where.selected.any = c("purchased", "cultivated", "livestock", "fishing")) %>%
+  recode_to(to = "peer", where.selected.any = c("NGO_aid", "government_aid", "familyfriends")) %>%
+  recode_to(to = "not_sustainable", where.selected.any = c("foraging", "hunting", "barter", "other")) %>%
+  new_recoding(target = type_change_source_food, source = source_change) %>%
+  recode_to(to = "better", where.selected.any = c("change_to_purchase", "change_to_production")) %>%
+  recode_to(to = "no_change", where.selected.any = c("not_changed", "dnk")) %>%
+  recode_to(to = "worse", where.selected.any = c("change_to_borrow", "change_to_aid", "change_to_gift", "change_to_barter",
+                                                 "change_to_wild")) %>%
   new_recoding(target = food_source_and_change_score) %>%
-  recode_to(to = 1, where = source_food.purchased == 1 & source_change == "not_changed") %>%
-  recode_to(to = 2, where = source_change == "change_to_purchase") %>%
-  recode_to(to = 3, where = (source_food.cultivated == 1 | source_food.livestock == 1 | source_food.fishing == 1) &
-                              source_change == "not_changed") %>%
-  recode_to(to = 4, where = (source_food.cultivated == 1 | source_food.livestock == 1 | source_food.fishing == 1) &
-              source_change == "change_to_production") %>%
-  recode_to(to = 5, where = (source_food.ngo_aid == 1 | source_food.government_aid == 1) & source_change == "not_changed") %>%
-  recode_to(to = 6, where = (source_food.ngo_aid == 1 | source_food.government_aid == 1) & source_change == "change_to_aid") %>%
-  recode_to(to = 7, where = (source_food.barter == 1 | source_food.familyfriends == 1 | source_food.foraging == 1 | source_food.hunting == 1) &
-                          source_change == "not_changed") %>%
-  recode_to(to = 8, where = (source_food.barter == 1 | source_food.familyfriends == 1 | source_food.foraging == 1 | source_food.hunting == 1) &
-                          source_change %in% c("change_to_aid", "change_to_gift", "change_to_barter", "change_to_wild")) %>%
+  recode_to(to = 1, where = type_source_food == "sustainable" & type_change_source_food == "no_change") %>%
+  recode_to(to = 2, where = type_change_source_food == "better") %>%
+  recode_to(to = 3, where = type_source_food == "peer" & type_change_source_food == "no_change") %>%
+  recode_to(to = 4, where = type_source_food == "not_sustainable" & type_change_source_food == "no_change") %>%
+  recode_to(to = 5, where = type_source_food == "sustainable" & type_change_source_food == "worse") %>%
+  recode_to(to = 6, where = type_source_food == "peer" & type_change_source_food == "worse") %>%
+  recode_to(to = 7, where = type_source_food == "not_sustainable" & type_change_source_food == "worse") %>%
   #2.1 availability of markets
   new_recoding(target = access_to_market_score) %>%
   recode_to(to = 1, where.selected.exactly = "less15", source = time_market) %>%
   recode_to(to = 2, where.selected.exactly = "16_30", source = time_market) %>%
   recode_to(to = 3, where.selected.exactly = "31_60", source = time_market) %>%
   recode_to(to = 4, where.selected.exactly = "60_180", source = time_market) %>%
-  recode_to(to = 5, where = time_market == "31_60" & transport_market %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 5, where = time_market == "31_60" & transport_market %in% c("walking", "bicycle")) %>%
   recode_to(to = 6, where.selected.exactly = "above180", source = time_market) %>%
-  recode_to(to = 7, where = time_market == "60_180" & transport_market %in% c("walking", "bicycle", "cart")) %>%
-  recode_to(to = 8, where = time_market == "above180" & transport_market %in% c("walking", "bicycle", "cart")) %>%
+  recode_to(to = 7, where = time_market == "60_180" & transport_market %in% c("walking", "bicycle")) %>%
+  recode_to(to = 8, where = time_market == "above180" & transport_market %in% c("walking", "bicycle")) %>%
   #3.1 suffencient quantity
   new_recoding(target = sufficent_quantity_score, source = food_now) %>%
   recode_to(to = 1, where.selected.exactly = "yes") %>%
@@ -92,31 +96,23 @@ response <-
   recode_to(to = 7, where = fcs_ranking == "poor" & fcs < 22 & fcs >= 15) %>%
   recode_to(to = 8, where = fcs_ranking == "poor" & fcs < 15) %>%
   #4.2 change in consumption patterns
-  new_recoding(target = change_consumption_score) %>%
-  recode_to(to = 1, where = change_food.amount_increased == 1 & 
-                            change_food.quality_increased == 1 & 
-                            change_food.variety_increased == 1) %>%
-  recode_to(to = 2, where = change_food.amount_increased == 1 & 
-                            change_food.quality_increased == 1 & 
-                            change_food.variety_reduced == 1) %>%
-  recode_to(to = 3, where = change_food.amount_increased == 1 & 
-                            change_food.quality_reduced == 1 & 
-                            change_food.variety_increased == 1) %>%
-  recode_to(to = 4, where = change_food.amount_increased == 1 & 
-                            change_food.quality_reduced == 1 &
-                            change_food.variety_reduced == 1) %>%
-  recode_to(to = 5, where = change_food.amount_reduced == 1 & 
-                            change_food.quality_increased == 1 & 
-                            change_food.variety_increased == 1) %>%
-  recode_to(to = 6, where = change_food.amount_reduced == 1 & 
-                            change_food.quality_increased == 1 &
-                            change_food.variety_reduced == 1) %>%
-  recode_to(to = 7, where = change_food.amount_reduced == 1 & 
-                            change_food.quality_reduced == 1 & 
-                            change_food.variety_increased == 1) %>%
-  recode_to(to = 8, where = change_food.amount_reduced == 1 & 
-                            change_food.quality_reduced == 1 & 
-                            change_food.variety_reduced == 1) %>%
+  new_recoding(target = change_consumption_sum) %>%
+  recode_directly(to_expression = change_food.amount_increased * 3 +
+                    change_food.quality_increased * 2 +
+                    change_food.variety_increased * 1 +
+                    change_food.none * 0 +
+                    change_food.amount_reduced * (-3) +
+                    change_food.quality_reduced * (-2) + 
+                    change_food.variety_reduced * (-1)) %>%
+  new_recoding(target = change_consumption_score, source = change_consumption_sum) %>%
+  recode_to(to = 1, where.num.equal = 6) %>%
+  recode_to(to = 2, where.num.smaller.equal = 5) %>%
+  recode_to(to = 3, where.num.smaller.equal = 3) %>%
+  recode_to(to = 4, where.num.smaller.equal = 1) %>%
+  recode_to(to = 5, where.num.smaller.equal = -1) %>%
+  recode_to(to = 6, where.num.smaller.equal = -3) %>%
+  recode_to(to = 7, where.num.smaller.equal = -5) %>%
+  recode_to(to = 8, where.num.equal = -6)  %>%
   #5.1 capacity to prepare food
   new_recoding(target = capacity_prepare_food_score) %>%
   recode_to(to = 1, where = water == "yes" & fuel == "yes" & cooking_utensils == "yes") %>%
@@ -149,7 +145,7 @@ response <-
   recode_to(to = 1, where.selected.any = c("business", "contracted_job", "rent")) %>%
   recode_to(to = 3, where.selected.any = c("livestock")) %>%
   recode_to(to = 4, where.selected.any = c("cash_fishing", "cash_farming", "daily_labour")) %>%
-  recode_to(to = 5, where.selected.any = c("subsistence_farming_fishin")) %>%
+  recode_to(to = 5, where.selected.any = c("subsistence_farming_fishin", "other")) %>%
   recode_to(to = 6, where.selected.any = c("remittances", "humanitarian_assisstance")) %>%
   recode_to(to = 7, where.selected.any = c("sale_humanitarian_assistance")) %>%
   recode_to(to = 8, where.selected.any = c("none")) %>%
