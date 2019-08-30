@@ -1,6 +1,6 @@
 # setup
 
-remotes::install_github("mabafaba/hypegrammaR", ref = "custom_confidence_levels")
+remotes::install_github("mabafaba/hypegrammaR")
 
 library(dplyr)
 library(koboquest) # manage kobo questionnairs
