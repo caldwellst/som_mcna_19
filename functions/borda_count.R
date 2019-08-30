@@ -3,6 +3,7 @@ library(dplyr)
 library(tibble)
 library(stringr)
 library(tidyr)
+library(scales)
 
 # replace values for column with NAs based on values within a vector
 
@@ -18,28 +19,37 @@ make_na <- function(x, vals) {
 #' @param weights weight vector. Should be the same length as vectors provided for ranking
 #' @param exclude vector of values to exclude from ranking analysis
 #' @param ranks number of ranks to be calculated
-borda_count <- function(df, columns, weighting_function = NULL, exclude = NULL, ranks = 3) {
+borda_count <- function(df, columns, weighting_function = NULL, exclude = NULL, ranks = 3, return_names = T) {
+  df <- mutate_at(df, columns, make_na, "") %>%
+    filter_at(columns, any_vars(!is.na(.)))
+  
   if (is.null(weighting_function)) {
     weights <- rep(1, nrow(df))
   } else {
     weights <- weighting_function(df)
   }
   
-  exclude <- c("", exclude)
+  df <- select(df, columns)
   
-  df <- df[, columns]
-  if (!is.null(exclude)) {
-    df <- map(df, make_na, exclude) # excluding values in the vector provided above
-  }
   vals <- map(df, ~ unique(.x[!is.na(.x)]))
   vals <- unique(unlist(vals)) # getting unique values to rank
   ranks <- min(ranks, length(vals)) # ensuring that end result doesn't have NA values for calculating for non-existent rankings
   table <- map_dfc(vals, ~ tibble(!!(.x) := map_dbl(df, function(x) sum((x == .x) * weights, na.rm = T)))) %>% # counting the weighted occurences of each value
     mutate_all(~ .x * (length(vals) - 1:n() + 1))  %>% # multiplying row values by their borda rank
-    summarize_all(sum) # getting the total vote score for each item
-
+    summarize_all(sum)
+  
   table <- table[,order(-table[1,])] # reordering based on score
-  paste(names(table)[1:ranks], collapse = " ") # getting the total borda count for each
+  
+  table <- table %>%
+    mutate_all(~ scales::percent(.x / rowSums(table)))# getting the total vote score for each item
+
+  names <- paste(names(table)[1:ranks], collapse = " ") # getting the total borda count for each
+  percents <- paste(table[1, 1:ranks], collapse = " ")
+  if (return_names) {
+    names
+  } else {
+    percents
+  }
 }
 
 #' get borda counts for questions defined by script CSV
@@ -63,7 +73,8 @@ borda_applier <- function(script, df, weighting_function) {
     borda_analyzer,
     df,
     weighting_function) %>%
-    separate(result, into = paste0("rank_", 1:max(script$ranks)), sep = " ")
+    separate(result, into = paste0("rank_", 1:max(script$ranks)), sep = " ") %>%
+    separate(percent, into = paste0("percent_", 1:max(script$ranks)), sep = " ")
 }
 
 borda_analyzer <- function(vars, exclude, disaggregate, repeat_var, ranks, df, weighting_function) {
@@ -91,6 +102,7 @@ borda_analyzer <- function(vars, exclude, disaggregate, repeat_var, ranks, df, w
   
   mutate(repeats,
          result = map_chr(data, borda_count, vars, weighting_function, exclude, ranks),
+         percent = map_chr(data, borda_count, vars, weighting_function, exclude, ranks, return_names = F),
          vars = paste(vars, collapse = " ")) %>%
-    select(vars, !!sym(repeat_var), !!sym(disaggregate), result)
+    select(vars, !!sym(repeat_var), !!sym(disaggregate), result, percent)
 }
