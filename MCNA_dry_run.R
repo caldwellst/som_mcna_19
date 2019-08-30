@@ -1,8 +1,5 @@
 # setup
 
-
-remotes::install_github("mabafaba/hypegrammaR")
-
 library(dplyr)
 library(koboquest) # manage kobo questionnairs
 library(kobostandards) # check inputs for inconsistencies

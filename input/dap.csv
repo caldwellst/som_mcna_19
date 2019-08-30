@@ -1,12 +1,12 @@
 Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
-,Pre-existing vulnerabilities,National - HC/IDP,,yes_no_host,categorical,pev_score,categorical,group_difference
-,Education,National - HC/IDP,,yes_no_host,categorical,edu_score,categorical,group_difference
-,Nutrition,National - HC/IDP,,yes_no_host,categorical,nut_score,categorical,group_difference
-,Health,National - HC/IDP,,yes_no_host,categorical,health_score,categorical,group_difference
-,Shelter_NFI,National - HC/IDP,,yes_no_host,categorical,snfi_score,categorical,group_difference
-,WASH,National - HC/IDP,,yes_no_host,categorical,wash_score,categorical,group_difference
-,Food Security Livelihoods,National - HC/IDP,,yes_no_host,categorical,fsl_score,categorical,group_difference
-,Protection,National - HC/IDP,,yes_no_host,categorical,prot_score,categorical,group_difference
-,MCSI,,,yes_no_host,categorical,mcsi_score,categorical,group_difference
-,Impact,,,yes_no_host,categorical,impact_score,categorical,group_difference
-,MSNI,,,yes_no_host,categorical,msni,categorical,group_difference
+,Pre-existing vulnerabilities,National - HC/IDP,district,yes_no_host,categorical,pev_score,categorical,group_difference
+,Education,National - HC/IDP,district,yes_no_host,categorical,edu_score,categorical,group_difference
+,Nutrition,National - HC/IDP,district,yes_no_host,categorical,nut_score,categorical,group_difference
+,Health,National - HC/IDP,district,yes_no_host,categorical,health_score,categorical,group_difference
+,Shelter_NFI,National - HC/IDP,district,yes_no_host,categorical,snfi_score,categorical,group_difference
+,WASH,National - HC/IDP,district,yes_no_host,categorical,wash_score,categorical,group_difference
+,Food Security Livelihoods,National - HC/IDP,district,yes_no_host,categorical,fsl_score,categorical,group_difference
+,Protection,National - HC/IDP,district,yes_no_host,categorical,prot_score,categorical,group_difference
+,MCSI,,district,yes_no_host,categorical,mcsi_score,categorical,group_difference
+,Impact,,district,yes_no_host,categorical,impact_score,categorical,group_difference
+,MSNI,,district,yes_no_host,categorical,msni,categorical,group_difference

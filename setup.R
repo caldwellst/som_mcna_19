@@ -25,6 +25,7 @@ install.packages("testthat")
 install.packages("tibble")
 install.packages("tidyr")
 install.packages("utils")
+install.packages("readxl")
 
 devtools::install_github(
   "mabafaba/koboquest",

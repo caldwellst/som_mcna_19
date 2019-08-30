@@ -93,6 +93,19 @@ response <- response %>%
   left_join(select(list_districts, district, admin2Name, admin2Pcod, statex7), by = "district") %>%
   rename(district_ocha = admin2Name)
     
-  
-  
+
+response <- response %>% mutate(female_hh = ifelse(household_expenditure.female_13 == 1 | 
+                                       household_expenditure.eldery_female == 1 |
+                                       household_expenditure.adult_female == 1 |
+                                       household_expenditure.female_14_17 == 1, yes = "female_hh",no =  "not_female_hh"),
+                    child_hh = ifelse(household_expenditure.male_14_17 == 1 |
+                                      household_expenditure.male_13 == 1 |
+                                      household_expenditure.female_13 == 1 |
+                                      household_expenditure.female_14_17 == 1, "child_hh", "not_child_hh"), 
+                    eldery_hh = ifelse(household_expenditure.eldery_male == 1 |
+                                      household_expenditure.eldery_female == 1, "eldery_hh", "not_eldery"),
+                    pwd_hh = ifelse(person_with_disabilities == "yes", "hh_with_plw", "hh_without_pwd"))
+
+
+
   
