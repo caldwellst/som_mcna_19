@@ -83,3 +83,16 @@ fcs_names <- sub(pattern = "_y_n", x = fcs_y_n_names, replacement = "")
 names(new_fcs) <- fcs_names
 
 response[, fcs_names] <- new_fcs
+
+
+#adding the correct pre 91 district definition, district pcode and states
+
+list_districts <- read.csv("input/list_districts.csv", stringsAsFactors = F)
+
+response <- response %>%
+  left_join(select(list_districts, district, admin2Name, admin2Pcod, statex7), by = "district") %>%
+  rename(district_ocha = admin2Name)
+    
+  
+  
+  

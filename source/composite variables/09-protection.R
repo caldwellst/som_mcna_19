@@ -17,6 +17,7 @@ response <-
   recode_to(to = 5, where.selected.any = c("m_u_18", "f_u_18"), source = separation_age_gender) %>%
   recode_to(to = 6, where = (separation_age_gender.m_a_18 == 1 | separation_age_gender.f_a_18 == 1) &
                             (separation_age_gender.m_u_18 == 1 | separation_age_gender.f_u_18 == 1)) %>%
+  recode_to(to = 2, where.selected.any = c("left_study", "left_work"), source = separation_reasons) %>%
   #3.1 safety and security concern
   new_recoding(target = safety_security_concern_score) %>%
   recode_to(to = 8, where = sgbv == "always" | grave_injury == "always" | abductions == "always" | 

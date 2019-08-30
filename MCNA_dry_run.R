@@ -1,5 +1,6 @@
 # setup
 
+
 remotes::install_github("mabafaba/hypegrammaR")
 
 library(dplyr)
@@ -67,18 +68,13 @@ source("source/sampling.R")
 # source("source/composite variables/09-protection.R")
 # source("source/composite variables/10-mcsi.R")
 # source("source/composite variables/11-item_repo.R")
-# response %>% saveRDS("input/data/01-data_composite_27082019.RDS")
-# source("source/composite variables/12-final.R")
-# response %>% saveRDS("input/data/02-data_final_scoring27082019.RDS")
+# source("source/composite variables/12-impact.R")
+# source("source/composite variables/13-skip_logic.R")
+# source("source/composite variables/14-final.R")
+# response %>% saveRDS("input/data/02-data_final_scoring29082019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 ################################# END--  it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/02-data_final_scoring27082019.RDS")
-
-# make analysisplan including all questions as dependent variable by HH type, repeated for each governorate:
-
-# response <- koboquest:::to_alphanumeric_lowercase_colnames_df(response) %>%
-#   select(-wdr)
-
+response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
@@ -127,7 +123,6 @@ browseURL("hc_idp_test.html")
 
 big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
 write.csv(big_table, "output/big_table.csv", row.names = F)
-# response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 # 
 # some_results_refugee_returnee <- results_refugee_returnee[1:200]
 # 
