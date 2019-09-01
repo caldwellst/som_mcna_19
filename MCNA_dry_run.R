@@ -70,7 +70,7 @@ source("source/sampling.R")
 # source("source/composite variables/14-final.R")
 # response %>% saveRDS("input/data/02-data_final_scoring29082019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
-################################# END--  it takes 25 minutes to compute all variables, dont run this all the time
+################################ END--  it takes 25 minutes to compute all variables, dont run this all the time
 response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 
 response_hc_idp <- response %>%
@@ -82,8 +82,10 @@ response_refugee_returnee <- response %>% dplyr::select(-c(`_uuid`)) %>%
 
 questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 
-#load analysispla
-source("source/maps_FS.R")
+## FS production
+source("source/look_up_table.R")
+# source("source/maps_FS.R")
+
 analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,

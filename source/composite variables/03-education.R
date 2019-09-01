@@ -10,13 +10,13 @@ response <-
   response %>%
   #1.1 education level
   new_recoding(target = education_level_score) %>%
-  recode_to(to = 1, where = tertiary_degree == "one" | tertiary_degree == "two_more") %>%
-  recode_to(to = 2, where = vocational_degree == "two_more") %>%
-  recode_to(to = 3, where = vocational_degree == "one" | secondary_degree == "two_more") %>%
-  recode_to(to = 4, where = secondary_degree == "one" | primary_degree == "two_more") %>%
-  recode_to(to = 5, where = primary_degree == "one") %>%
   recode_to(to = 6, where = tertiary_degree %in% c("none", "dnk") & vocational_degree %in% c("none", "dnk")  & 
               secondary_degree %in% c("none", "dnk")  & primary_degree %in% c("none", "dnk")) %>%
+  recode_to(to = 5, where = primary_degree == "one") %>%
+  recode_to(to = 4, where = secondary_degree == "one" | primary_degree == "two_more") %>%
+  recode_to(to = 3, where = vocational_degree == "one" | secondary_degree == "two_more") %>%
+  recode_to(to = 2, where = vocational_degree == "two_more") %>%
+  recode_to(to = 1, where = tertiary_degree == "one" | tertiary_degree == "two_more") %>%
   #2.1 enrollment rate
   new_recoding(target = enrollement_rate) %>%
   recode_directly(to_expression = enrolled_total / school_age_total) %>%

@@ -19,9 +19,6 @@ big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic
 write.csv(big_table, "output/maps/big_table.csv", row.names = F)
 
 
-list_districts <- read.csv("input/list_districts.csv", stringsAsFactors = F)
-
-
 idp_score_maps <- big_table %>% 
   filter(independent.var.value == "IDP", 
          dependent.var.value == "in_need") %>% 
@@ -32,7 +29,9 @@ idp_score_maps <- big_table %>%
   ## sometimes we have districts with 100% IDP in needs but it just means we came accross 1 IDP living in HC settlement. 
   ## So we are removing the information on districts without IDP
   filter(repeat.var.value %in% list_districts$admin2Pcod[list_districts$assessed_jmcna_idp == "yes"]) %>% 
-  left_join(select(list_districts, admin2Pcod, admin2Name), by = c("repeat.var.value" = "admin2Pcod"))
+  left_join(select(list_districts, admin2Pcod, admin2Name, representiveness_idp), by = c("repeat.var.value" = "admin2Pcod")) %>%
+  filter(representiveness_idp %in% c("acceptable", "informative"))
+
 
 idp_score_maps <- idp_score_maps[!duplicated(idp_score_maps$repeat.var.value),] ##remove duplicates row, not sure why different strata give severals duplicates row when combine
 idp_score_maps[is.na(idp_score_maps)] <- 0
@@ -44,7 +43,9 @@ host_score_maps <- big_table %>%
   select(dependent.var, dependent.var.value, independent.var.value, numbers, repeat.var.value) %>% 
   spread(dependent.var, numbers) %>%
   arrange(repeat.var.value) %>%
-  left_join(select(list_districts, admin2Pcod, admin2Name), by = c("repeat.var.value" = "admin2Pcod"))
+  left_join(select(list_districts, admin2Pcod, admin2Name, representiveness_hc), by = c("repeat.var.value" = "admin2Pcod")) %>%
+  filter(representiveness_hc %in% c("acceptable", "informative"))
 host_score_maps <- host_score_maps[!duplicated(host_score_maps$repeat.var.value),] ##remove duplicates row, not sure why different strata give severals duplicates row when combine
 host_score_maps[is.na(host_score_maps)] <- 0
 host_score_maps %>% write.csv("output/maps/host_score_maps.csv", row.names = F)
+

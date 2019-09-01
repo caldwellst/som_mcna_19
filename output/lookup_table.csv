@@ -1,0 +1,77 @@
+"num","region","district","n","admin2Name","admin2Pcod","admin2RefN","admin1Name","admin1Pcod","date","validOn","Shape_Length","Shape_Area","statex7","assessed_jmcna_idp","representiveness_hc","representiveness_idp"
+1,"awdal","baki",147,"Baki","SO1102","Baki","Awdal","SO11",41796,42830,2.879697677,0.285992354,"somaliland","","acceptable",NA
+2,"awdal","borama",244,"Borama","SO1101","Borama","Awdal","SO11",41796,42830,2.375823634,0.265852421,"somaliland","yes","acceptable","acceptable"
+3,"awdal","lughaye",210,"Lughaye","SO1103","Lughaye","Awdal","SO11",41796,42830,2.326136999,0.272917588,"somaliland","yes","acceptable","acceptable"
+4,"awdal","zeylac",127,"Zeylac","SO1104","Zeylac","Awdal","SO11",41796,42830,4.250417491,0.520597395,"somaliland","","acceptable",NA
+5,"bakool","ceel_barde",183,"Ceel Barde","SO2502","Ceel Barde","Bakool","SO25",41796,42830,3.652668796,0.624814331,"sws","yes","informative","acceptable"
+6,"bakool","waajid",161,"Waajid","SO2504","Waajid","Bakool","SO25",41796,42830,1.910049388,0.22824555,"sws","yes","acceptable","acceptable"
+7,"bakool","xudur",142,"Xudur","SO2501","Xudur","Bakool","SO25",41796,42830,3.286972607,0.442283017,"sws","yes","acceptable","acceptable"
+8,"banadir","abdulaziz",6,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+9,"banadir","boondheere",8,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+10,"banadir","daynile",199,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+11,"banadir","dharkenley",217,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+12,"banadir","hamar_jaab_jab",6,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+13,"banadir","hamar_weyne",6,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+14,"banadir","hawl_wadaag",86,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+15,"banadir","hodan",215,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+16,"banadir","kahda",179,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+17,"banadir","karaan",29,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+18,"banadir","shangaani",2,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+19,"banadir","shibis",21,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+20,"banadir","waaberi",14,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+21,"banadir","wadajir",18,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+22,"banadir","wardhiigleey",55,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"banadir","yes","acceptable","acceptable"
+23,"bari","bandarbayla",174,"Bandarbeyla","SO1602","Bandarbeyla","Bari","SO16",41796,42830,4.579219324,0.930208302,"puntland","","acceptable",NA
+24,"bari","bossaso",271,"Bossaso","SO1601","Bossaso","Bari","SO16",41796,42830,3.505128223,0.65285396,"puntland","yes","acceptable","acceptable"
+25,"bari","iskushuban",217,"Iskushuban","SO1604","Iskushuban","Bari","SO16",41796,42830,7.152209738,1.52266785,"puntland","","acceptable",NA
+26,"bari","qardho",107,"Qardho","SO1606","Qardho","Bari","SO16",41796,42830,5.601527596,1.534152135,"puntland","","acceptable",NA
+27,"bay","baidoa",191,"Baydhaba","SO2401","Baydhaba","Bay","SO24",41796,42830,4.405898568,1.050438196,"sws","yes","acceptable","acceptable"
+28,"bay","buur_hakaba",160,"Buur Hakaba","SO2402","Buur Hakaba","Bay","SO24",41796,42830,5.078485513,1.465704488,"sws","","acceptable",NA
+29,"galgaduud","cabudwaaq",267,"Cabudwaaq","SO1902","Cabudwaaq","Galgaduud","SO19",41796,42830,3.611803681,0.505778127,"galmudug","yes","acceptable","acceptable"
+30,"galgaduud","cadaado",208,"Cadaado","SO1903","Cadaado","Galgaduud","SO19",41796,42830,3.012345114,0.523914772,"galmudug","yes","acceptable","acceptable"
+31,"galgaduud","dhuusamarreeb",167,"Dhuusamarreeb","SO1901","Dhuusamarreeb","Galgaduud","SO19",41796,42830,4.642548164,1.035564428,"galmudug","yes","informative","acceptable"
+32,"gedo","baardheere",89,"Baardheere","SO2602","Baardheere","Gedo","SO26",41796,42830,5.857782319,1.246004488,"jubaland","yes","acceptable","remove"
+33,"gedo","belet_xaawo",147,"Belet Xaawo","SO2603","Belet Xaawo","Gedo","SO26",41796,42830,2.536162212,0.315643737,"jubaland","yes","informative","remove"
+34,"gedo","ceel_waaq",110,"Ceel Waaq","SO2604","Ceel Waaq","Gedo","SO26",41796,42830,3.111785536,0.636707968,"jubaland","yes","acceptable","acceptable"
+35,"gedo","doolow",153,"Doolow","SO2605","Doolow","Gedo","SO26",41796,42830,1.618486368,0.131879049,"jubaland","yes","acceptable","acceptable"
+36,"gedo","garbahaarey",117,"Garbahaarey","SO2601","Garbahaarey","Gedo","SO26",41796,42830,3.779278179,0.676878765,"jubaland","yes","informative","acceptable"
+37,"gedo","luuq",118,"Luuq","SO2606","Luuq","Gedo","SO26",41796,42830,3.481200997,0.672345893,"jubaland","yes","acceptable","remove"
+38,"hiraan","belet_weyne",239,"Belet Weyne","SO2001","Belet Weyne","Hiraan","SO20",41796,42830,5.235164973,1.211825293,"hirshabelle","yes","acceptable","acceptable"
+39,"hiraan","mataban",12,"Belet Weyne","SO2001","Belet Weyne","Hiraan","SO20",41796,42830,5.235164973,1.211825293,"hirshabelle","","acceptable",NA
+40,"lower_juba","afmadow",180,"Afmadow","SO2802","Afmadow","Lower Juba","SO28",41796,42830,5.875211335,2.179875204,"jubaland","yes","informative","acceptable"
+41,"lower_juba","badhaadhe",26,"Badhaadhe","SO2803","Badhaadhe","Lower Juba","SO28",41796,42830,4.623677092,0.784892734,"jubaland","","acceptable",NA
+42,"lower_juba","jamaame",3,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"jubaland","",NA,NA
+43,"lower_juba","kismayo",169,"Kismaayo","SO2801","Kismaayo","Lower Juba","SO28",41796,42830,5.170948262,0.756835883,"jubaland","yes","acceptable","acceptable"
+44,"lower_shabelle","afgooye",228,"Afgooye","SO2302","Afgooye","Lower Shabelle","SO23",41796,42830,2.525169559,0.317669326,"sws","yes","acceptable","acceptable"
+44,"lower_shabelle","afgooye",228,"Afgooye","SO2302","Afgooye","Lower Shabelle","SO23",41796,42830,2.525169559,0.317669326,"sws","yes","acceptable","acceptable"
+45,"lower_shabelle","baraawe",2,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"sws","",NA,NA
+46,"lower_shabelle","kurtunwaarey",1,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"sws","",NA,NA
+47,"lower_shabelle","marka",72,"Marka","SO2301","Marka","Lower Shabelle","SO23",41796,42830,1.794989017,0.083916193,"sws","","acceptable",NA
+48,"lower_shabelle","qoryooley",146,"Qoryooley","SO2305","Qoryooley","Lower Shabelle","SO23",41796,42830,2.274556907,0.26134584,"sws","","acceptable",NA
+49,"lower_shabelle","sablaale",2,"Banadir","SO2201","Banadir","Banadir","SO22",41796,42830,0.949529493,0.020534301,"sws","",NA,NA
+50,"lower_shabelle","wanla_weyn",227,"Wanla Weyn","SO2307","Wanla Weyn","Lower Shabelle","SO23",41796,42830,2.889252075,0.464690561,"sws","yes","acceptable","acceptable"
+51,"middle_shabelle","balcad",84,"Balcad","SO2103","Balcad","Middle Shabelle","SO21",41796,42830,2.445588752,0.343748301,"hirshabelle","","acceptable",NA
+52,"middle_shabelle","jowhar",216,"Jowhar","SO2101","Jowhar","Middle Shabelle","SO21",41796,42830,2.63676858,0.377190811,"hirshabelle","yes","acceptable","acceptable"
+53,"mudug","gaalkacyo_north",192,"Gaalkacyo","SO1801","Gaalkacyo","Mudug","SO18",41796,42830,5.878384132,1.241945362,"galmudug","yes","acceptable","acceptable"
+54,"mudug","gaalkacyo_south",184,"Gaalkacyo","SO1801","Gaalkacyo","Mudug","SO18",41796,42830,5.878384132,1.241945362,"galmudug","yes","acceptable","acceptable"
+55,"mudug","galdogob",159,"Galdogob","SO1802","Galdogob","Mudug","SO18",41796,42830,1.787466243,0.160190744,"galmudug","yes","acceptable","acceptable"
+56,"mudug","hobyo",181,"Hobyo","SO1803","Hobyo","Mudug","SO18",41796,42830,5.637765306,2.07020965,"galmudug","yes","acceptable","acceptable"
+57,"mudug","jariiban",84,"Jariiban","SO1804","Jariiban","Mudug","SO18",41796,42830,3.645836616,0.888928987,"galmudug","","acceptable",NA
+58,"nugaal","burtinle",170,"Burtinle","SO1702","Burtinle","Nugaal","SO17",41796,42830,3.97803441,0.792740302,"puntland","yes","acceptable","acceptable"
+59,"nugaal","eyl",136,"Eyl","SO1703","Eyl","Nugaal","SO17",41796,42830,4.120752491,0.759768802,"puntland","","acceptable",NA
+60,"nugaal","garowe",230,"Garoowe","SO1701","Garoowe","Nugaal","SO17",41796,42830,3.805419828,0.705708802,"puntland","yes","acceptable","acceptable"
+61,"sanaag","badhan",178,"Laasqoray","SO1503","Laasqoray","Sanaag","SO15",41796,42830,5.196501897,1.00786576,"somaliland","yes","acceptable","acceptable"
+62,"sanaag","ceel_afweyn",148,"Ceel Afweyn","SO1502","Ceel Afweyn","Sanaag","SO15",41796,42830,4.523250375,1.293887623,"somaliland","yes","acceptable","acceptable"
+63,"sanaag","ceerigaabo",230,"Ceerigaabo","SO1501","Ceerigaabo","Sanaag","SO15",41796,42830,6.394642167,2.145678021,"somaliland","yes","acceptable","informative"
+64,"sanaag","laasqoray",106,"Laasqoray","SO1503","Laasqoray","Sanaag","SO15",41796,42830,5.196501897,1.00786576,"somaliland","","acceptable",NA
+65,"sool","caynabo",218,"Caynabo","SO1402","Caynabo","Sool","SO14",41796,42830,3.707233125,0.664216679,"somaliland","yes","acceptable","acceptable"
+66,"sool","laas_caanood",221,"Laas Caanood","SO1401","Laas Caanood","Sool","SO14",41796,42830,4.621514676,0.949600258,"somaliland","yes","acceptable","acceptable"
+67,"sool","taleex",148,"Taleex","SO1403","Taleex","Sool","SO14",41796,42830,3.32915287,0.706621654,"somaliland","yes","acceptable","acceptable"
+68,"sool","xudun",204,"Xudun","SO1404","Xudun","Sool","SO14",41796,42830,3.603030047,0.74898379,"somaliland","yes","acceptable","acceptable"
+69,"togdheer","burco",215,"Burco","SO1301","Burco","Togdheer","SO13",41796,42830,5.223396098,1.322604171,"somaliland","yes","acceptable","acceptable"
+70,"togdheer","buuhoodle",177,"Buuhoodle","SO1302","Buuhoodle","Togdheer","SO13",41796,42830,2.992904688,0.557960328,"somaliland","yes","informative","acceptable"
+71,"togdheer","owdweyne",202,"Owdweyne","SO1303","Owdweyne","Togdheer","SO13",41796,42830,3.534404559,0.687828912,"somaliland","yes","acceptable","acceptable"
+72,"togdheer","sheikh",131,"Sheikh","SO1304","Sheikh","Togdheer","SO13",41796,42830,2.448755777,0.244200675,"somaliland","","acceptable",NA
+73,"woqooyi_galbeed","berbera",155,"Berbera","SO1202","Berbera","Woqooyi Galbeed","SO12",41796,42830,5.249877899,0.844918549,"somaliland","yes","acceptable","acceptable"
+74,"woqooyi_galbeed","gebiley",194,"Gebiley","SO1203","Gebiley","Woqooyi Galbeed","SO12",41796,42830,2.544797931,0.352701316,"somaliland","yes","acceptable","acceptable"
+75,"woqooyi_galbeed","hargeysa",246,"Hargeysa","SO1201","Hargeysa","Woqooyi Galbeed","SO12",41796,42830,4.58280614,1.128872191,"somaliland","yes","acceptable","acceptable"
