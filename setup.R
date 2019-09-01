@@ -63,11 +63,12 @@ devtools::install_github(
   build_opts = c()
 )
 
-devtools::install_github(
-  "mabafaba/msni19", 
-  build_vignettes = TRUE, build_opts = c() )
+# devtools::install_github(
+#   "mabafaba/msni19", 
+#   build_vignettes = TRUE, build_opts = c() )
 
 
+remotes::install_github("caldwellst/msni19")
 
 
 

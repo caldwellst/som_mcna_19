@@ -45,10 +45,10 @@ response <-
   new_recoding(target = access_score_edu) %>%
   recode_directly(to_expression = sum(c(access_to_school_score), na.rm = T)) %>%
   
-  ##edu score
+  ##edu score -- cost_score_edu not counted in the sum
   new_recoding(target = edu_score) %>%
   recode_directly(to_expression = round(sum(c(long_term_disrup_score_edu, mid_term_disrup_score_edu, 
-                                        cost_score_edu, availability_score_edu, access_score_edu), na.rm = T)/10)) %>%
+                                         availability_score_edu, access_score_edu), na.rm = T)/10)) %>%
 
   #3.nutrition
   #3.1 coverage
@@ -92,10 +92,10 @@ response <-
   new_recoding(target = access_score_health) %>%
   recode_directly(to_expression = sum(c(health_access_score), na.rm = T)) %>%
   
-  ##health
+  ##health -- cost_score_health not counted in the score
   new_recoding(target = health_score) %>%
   recode_directly(to_expression = round(sum(c(burden_disease_score_health, maternal_health_score_health, vaccination_score_health, 
-                                      mental_health_score_health, cost_score_health, availability_score_health, 
+                                      mental_health_score_health, availability_score_health, 
                                       access_score_health), na.rm = T) / 16)) %>%
   
   #5. snfi
@@ -150,10 +150,10 @@ response <-
   new_recoding(target = assets_score_fsl) %>%
   recode_directly(to_expression = sum(c(livelihood_assests_score, lost_livestock_score, lost_land_cultivation_score), na.rm = T)) %>%
   
-  ## fsl
+  ## fsl -- cost_score_fsl not counted in the score
   new_recoding(target = fsl_score) %>%
   recode_directly(to_expression = round(sum(c(source_score_fsl, availability_score_fsl, sufficency_score_fsl, 
-                                              consumption_score_fsl, capacity_score_fsl, cost_score_fsl, income_score_fsl, 
+                                              consumption_score_fsl, capacity_score_fsl, income_score_fsl, 
                                               assets_score_fsl), na.rm = T) / 21.5)) %>%
   
   #7. wash
@@ -197,11 +197,11 @@ response <-
   new_recoding(target = aap_score_wash) %>%
   recode_directly(to_expression = sum(c(aap_water_source_score, aap_sanitation_score, aap_satisfaction_score), na.rm = T)) %>%
   
-  ##wash score
+  ##wash score -- cost_score_wash,  hygiene_awareness_score_wash not counted in the score
   new_recoding(target = wash_score) %>%
   recode_directly(to_expression = round(sum(c(improved_water_source_score_wash, suffiency_score_wash, safe_storage_score_wash,
-                                        cost_score_wash, latrine_use_score_wash, dignified_latrine_score_wash, 
-                                        access_latrine_score_wash, environmental_sanitation_score_wash, hygiene_awareness_score_wash,
+                                        latrine_use_score_wash, dignified_latrine_score_wash, 
+                                        access_latrine_score_wash, environmental_sanitation_score_wash,
                                         hygiene_mats_availability_score_wash, access_handwashing_score_wash, aap_score_wash), 
                                         na.rm = T) / 40)) %>%
   
@@ -303,3 +303,14 @@ response$msni <- msni(education_lsg = response$edu_score,
 
 
 response$msni %>% table(useNA = "ifany")
+
+
+change_2_cat <- function(df, lsg_2_cat) {
+  new_col <- rep(NA, nrow(df))
+  new_col <- ifelse(df[[lsg_2_cat]] < 3, "not_in_need", "in_need")
+  return(new_col)
+}
+
+binary_scores <- lapply(X = all_scores, FUN = change_2_cat, df = response) %>% do.call(cbind, .) %>% data.frame(stringsAsFactors = F)
+names(binary_scores) <- paste0(all_scores, "_2_cat")
+response <- cbind(response, binary_scores)

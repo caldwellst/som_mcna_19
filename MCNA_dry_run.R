@@ -83,6 +83,7 @@ response_refugee_returnee <- response %>% dplyr::select(-c(`_uuid`)) %>%
 questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 
 #load analysispla
+source("source/maps_FS.R")
 analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,

@@ -106,6 +106,12 @@ response <- response %>% mutate(female_hh = ifelse(household_expenditure.female_
                                       household_expenditure.eldery_female == 1, "eldery_hh", "not_eldery"),
                     pwd_hh = ifelse(person_with_disabilities == "yes", "hh_with_plw", "hh_without_pwd"))
 
+response$population_group <- NA
+response$population_group[response[["yes_no_host"]] == "yes"] <- "not_displaced"  
+response$population_group[response[["yes_no_idp"]] == "yes"] <- "IDP"  
+response$population_group[response[["yes_no_returnee"]] == "yes"] <- "returnee"  
+response$population_group[response[["yes_no_returnee"]] == "no"] <- "refugee"  
+
 
 
   
