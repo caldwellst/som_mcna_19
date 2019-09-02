@@ -30,9 +30,9 @@ rows_to_add <- big_table %>% filter(dependent.var %in% grep("_score$", big_table
 
 big_table <- rbind(big_table, rows_to_add)
 
-no_independent_var <- big_table %>% 
-  filter(is.na(independent.var) | independent.var == "NA", 
-         dependent.var.value %in% c(1:5, TRUE, "in_need")) %>%
+no_independent_var <-  big_table %>% 
+  filter(is.na(independent.var) | independent.var == "NA",
+         !(dependent.var.value %in% c(FALSE, "not_in_need", "no_lsg_no_cg", "not_female_hh")))  %>%
   mutate(merge_name = paste0(dependent.var, "__", "NA__", dependent.var.value)) %>%
   select(merge_name, numbers) %>%
   arrange(merge_name) %>%
@@ -76,6 +76,8 @@ page_order_fun <- function(x) {
 
 page_order <- c(
   #page1
+  grep("female_hh__NA__", names(merge), value = T),
+  grep("total_hh__NA__", names(merge), value = T),
   grep("msni_2_cat__NA", names(merge), value = T),
   grep("big_bar_msni__NA__", names(merge), value = T),
   
@@ -85,10 +87,18 @@ page_order <- c(
   #page3 - 10
   lapply(order_lsg, page_order_fun) %>% do.call(c,.),
   #page 11
-  grep("at_least_lsg_above_sev_3__NA__TRUE", names(merge), value = T))
+  grep("at_least_lsg_above_sev_3__NA__TRUE", names(merge), value = T),
+  grep("lsg_cg__NA__one_lsg_no_cg", names(merge), value = T),
+  grep("lsg_cg__NA__one_lsg_one_cg", names(merge), value = T),
+  grep("lsg_cg__NA__no_lsg_one_cg", names(merge), value = T))
 
 merge <- merge[, page_order] * 100
 
 merge <- merge[, names(merge)[!(names(merge) %in%  grep("\\.[1-9]$", names(merge), value = T))]] #removing the duplicates with the big_bar
 
-merge %>% write.csv("output/merge_FS.csv", row.names = F)
+merge %>% write.csv("output/merge_FS_no_pictures.csv", row.names = F)
+
+
+
+
+ 
