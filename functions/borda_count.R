@@ -81,22 +81,25 @@ borda_analyzer <- function(vars, exclude, disaggregate, repeat_var, ranks, df, w
   if (!is.na(repeat_var)) {
     if (!is.na(disaggregate)) {
       repeats <- df %>%
-        group_by(!!sym(repeat_var), !!sym(disaggregate)) %>%
+        rename(repeat_var = !!sym(repeat_var), disaggregation = !!sym(disaggregate)) %>%
+        group_by(repeat_var, disaggregation) %>%
         nest
     } else {
       repeats <- df %>%
-        group_by(!!sym(repeat_var)) %>%
+        rename(repeat_var = !!sym(repeat_var)) %>%
+        group_by(repeat_var) %>%
         nest %>%
-        add_column(!!sym(disaggregate) := NA)
+        add_column(disaggregation = NA)
     }
     
   } else if (!is.na(disaggregate)) {
     repeats <- df %>%
-      group_by(!!sym(disaggregate)) %>%
+      rename(disaggregation = !!sym(disaggregate)) %>%
+      group_by(disaggregation) %>%
       nest %>%
-      add_column(!!sym(repeat_var))
+      add_column(repeat_var = NA)
   } else {
-    repeats <- tibble(region = NA, yes_no_host = NA, data = nest(df)) %>%
+    repeats <- tibble(repeat_var = NA, disaggregation = NA, data = nest(df)) %>%
       unnest
   }
   
@@ -104,5 +107,5 @@ borda_analyzer <- function(vars, exclude, disaggregate, repeat_var, ranks, df, w
          result = map_chr(data, borda_count, vars, weighting_function, exclude, ranks),
          percent = map_chr(data, borda_count, vars, weighting_function, exclude, ranks, return_names = F),
          vars = paste(vars, collapse = " ")) %>%
-    select(vars, !!sym(repeat_var), !!sym(disaggregate), result, percent)
+    select(vars, repeat_var, disaggregation, result, percent)
 }
