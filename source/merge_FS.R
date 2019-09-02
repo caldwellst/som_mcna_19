@@ -59,8 +59,61 @@ names(value_big_bars_to_add) <- paste0("big_bar_", names_big_bars_to_add)
 
 merge <- cbind(merge, value_big_bars_to_add)
 
+sum(is.na(response[, names(response)[23:38]]))
+
+demo <- response_hc_idp %>%
+  #makes category
+  mutate(female_18_59 = females_18_40 + females_41_59,
+         male_18_59 = males_18_40 + males_41_59,
+         female_6_17 = females_5_12 + females_13_15 + females_16_17,
+         male_6_17 = males_5_12 + males_13_15 + males_16_17,
+         females_05 = females_0_6m + females_6m_4y,
+         males_05 = males_0_6m + males_6m_4y,
+         total_hh = males_0_6m + males_6m_4y + females_0_6m + females_6m_4y + females_5_12 + females_13_15 + 
+           females_16_17 + males_5_12+  males_13_15+  males_16_17+ females_18_40+ females_41_59 + males_18_40+ 
+           males_41_59 +  males_60_over + females_60_over,
+  #weigthed groups
+         female_60_w = females_60_over * general_weights,
+         male_60_w = males_60_over * general_weights,
+         female_18_59_w = female_18_59 * general_weights,
+         male_18_59w = male_18_59 * general_weights,
+         female_6_17w = female_6_17 * general_weights,
+         male_6_17_w = male_6_17 * general_weights,
+         females_05w = females_05 * general_weights,
+         males_05w = males_05 * general_weights,
+         hh_w = total_hh * general_weights) %>%
+  #sum
+  summarise(total_female_60_w = sum(female_60_w),
+            total_male_60_w = sum(male_60_w),
+            total_female_18_59_w = sum(female_18_59_w),
+            total_male_18_59w = sum(male_18_59w),
+            total_female_6_17w = sum(female_6_17w),
+            total_male_6_17_w = sum(male_6_17_w),
+            total_females_05w = sum(females_05w),
+            total_males_05w = sum(males_05w),
+            total_hh_w = sum(hh_w),
+            total_female_w = total_female_60_w + total_female_18_59_w + total_female_6_17w + total_females_05w,
+            total_male_w = total_male_60_w + total_male_18_59w + total_male_6_17_w + total_males_05w) %>%
+  #prop
+  mutate(perc_total_female = total_female_w / total_hh_w,
+         perc_total_male = total_male_w / total_hh_w, 
+         perc_total_female_60 = total_female_60_w / total_hh_w, 
+         perc_total_male_60 = total_male_60_w / total_hh_w, 
+         perc_total_female_18_59 = total_female_18_59_w / total_hh_w, 
+         perc_total_male_18_59 = total_male_18_59w / total_hh_w, 
+         perc_total_female_6_17 = total_female_6_17w / total_hh_w, 
+         perc_total_male_6_17 = total_male_6_17_w / total_hh_w, 
+         perc_total_females_05 = total_females_05w / total_hh_w, 
+         perc_total_males_05 = total_males_05w / total_hh_w,
+         verif1 = perc_total_female + perc_total_male,
+         verif2 = perc_total_female_60 + perc_total_male_60 + perc_total_female_18_59 + perc_total_male_18_59 +
+           perc_total_female_6_17 + perc_total_male_6_17 + perc_total_females_05 + perc_total_males_05) %>%
+  select(grep("perc_total", names(.), value = T))
+
+merge <- cbind(merge, demo)
+
 order_lsg <- c("wash_score", "health_score", "snfi_score", "edu_score", "prot_score",
-                                            "mcsi_score", "pev_score", "impact_score") 
+               "mcsi_score", "pev_score", "impact_score") 
 
 page_order_fun <- function(x) {
   general_sev_3_above <- paste0(x, "_2_cat__NA")
@@ -76,11 +129,11 @@ page_order_fun <- function(x) {
 
 page_order <- c(
   #page1
+  grep("perc_total", names(merge), value = T),
   grep("female_hh__NA__", names(merge), value = T),
   grep("total_hh__NA__", names(merge), value = T),
   grep("msni_2_cat__NA", names(merge), value = T),
   grep("big_bar_msni__NA__", names(merge), value = T),
-  
   grep("msni__NA__", names(merge), value = T),
   #page2
   grep("msni_2_cat__po", names(merge), value = T),
@@ -88,17 +141,17 @@ page_order <- c(
   lapply(order_lsg, page_order_fun) %>% do.call(c,.),
   #page 11
   grep("at_least_lsg_above_sev_3__NA__TRUE", names(merge), value = T),
+  grep("lsg_or_cg__NA", names(merge), value = T),
   grep("lsg_cg__NA__one_lsg_no_cg", names(merge), value = T),
   grep("lsg_cg__NA__one_lsg_one_cg", names(merge), value = T),
   grep("lsg_cg__NA__no_lsg_one_cg", names(merge), value = T))
 
-merge <- merge[, page_order] * 100
+merge <- merge[, page_order] 
+merge[, (names(merge) != "total_hh__NA__NA")] <- merge[, (names(merge) != "total_hh__NA__NA")] * 100
 
 merge <- merge[, names(merge)[!(names(merge) %in%  grep("\\.[1-9]$", names(merge), value = T))]] #removing the duplicates with the big_bar
 
 merge %>% write.csv("output/merge_FS_no_pictures.csv", row.names = F)
-
-
 
 
  

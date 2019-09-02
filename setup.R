@@ -70,6 +70,12 @@ devtools::install_github(
 
 remotes::install_github("caldwellst/msni19")
 
+devtools::install_github(
+  "ellieallien/Setviz",
+  build_opts = c()
+)
+
+
 
 
 

@@ -47,3 +47,4 @@ Indicator Group / Sector,research.question,sub.research.question,repeat.for.vari
 ,average size,,,,,total_hh,numerical,direct_reporting
 ,female hh,,,,,female_hh,categorical,direct_reporting
 ,lsg and cg,,,,,lsg_cg,categorical,direct_reporting
+,lsg or cg,,,,,lsg_or_cg,categorical,direct_reporting

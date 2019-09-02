@@ -329,3 +329,6 @@ response$lsg_cg[response$at_least_lsg_above_sev_3 == T & response$mcsi_score_2_c
 response$lsg_cg[response$at_least_lsg_above_sev_3 == F & response$mcsi_score_2_cat == "in_need"] <- "no_lsg_one_cg"
 response$lsg_cg[response$at_least_lsg_above_sev_3 == F & response$mcsi_score_2_cat == "not_in_need"] <- "no_lsg_no_cg"
 
+
+response$lsg_or_cg <- FALSE
+response$lsg_or_cg[response$at_least_lsg_above_sev_3 == T | response$mcsi_score_2_cat == "in_need"] <- TRUE

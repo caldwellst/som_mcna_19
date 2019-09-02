@@ -70,35 +70,35 @@ msni19::index_chart(df_to_plot,
 
 
 # sunburst page 2 group A : 
-msni19::sunburst_msni(df_to_plot,
+msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "IDP"),
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page2_full_sunburst_A",
+                      plot_name = "page2_full_sunburst_A_idp",
                       path = "output/graphs/")
 # sunburst page 2 group B :
-msni19::sunburst_msni(df_to_plot,
+msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "not_displaced"),
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page2_full_sunburst_B",
+                      plot_name = "page2_full_sunburst_B_hc",
                       path = "output/graphs/")
-# sunburst page 2 group C :
-msni19::sunburst_msni(df_to_plot,
-                      msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
-                      protection_lsg = "prot_score", shelter_lsg = "snfi_score",
-                      wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
-                      fsl_wash_branch = T,
-                      weighting_function = weighting_function,
-                      print_plot = T,
-                      plot_name = "page2_full_sunburst_C",
-                      path = "output/graphs/")
+# # sunburst page 2 group C :
+# msni19::sunburst_msni(df_to_plot,
+#                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
+#                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
+#                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
+#                       fsl_wash_branch = T,
+#                       weighting_function = weighting_function,
+#                       print_plot = T,
+#                       plot_name = "page2_full_sunburst_C",
+#                       path = "output/graphs/")
 
 # any lsg graph bar and line
 make_bar_line_graph <- function(df, page, lsg_to_graph) {
