@@ -1,0 +1,94 @@
+analysisplan <- read.csv("input/dap_merge_FS.csv", stringsAsFactors = F)
+
+strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+                                      sampling.frame.population.column = "Population",
+                                      sampling.frame.stratum.column = "strata",
+                                      data.stratum.column = "strata")
+
+response_hc_idp$general_weights <- strata_weight_fun(response_hc_idp)
+
+
+results_hc_idp <- from_analysisplan_map_to_output(response_hc_idp, 
+                                                  analysisplan = analysisplan,
+                                                  weighting = strata_weight_fun,
+                                                  cluster_variable_name = "settlement",
+                                                  questionnaire,
+                                                  confidence_level = 0.9)
+
+big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .) %>%
+  select(dependent.var, independent.var, dependent.var.value, independent.var.value, numbers)
+
+rows_to_add <- big_table %>% filter(dependent.var %in% grep("_score$", big_table$dependent.var, value = T)) %>%
+  group_by(dependent.var, independent.var.value) %>%
+  summarise(n = n()) %>%
+  filter(n < 4) %>% 
+  mutate(dependent.var.value = 4,
+         independent.var = ifelse(is.na(independent.var.value), NA, "population_group"),
+         numbers = 0) %>% 
+  select(-n) %>%
+  data.frame(stringsAsFactors = F)
+
+big_table <- rbind(big_table, rows_to_add)
+
+no_independent_var <- big_table %>% 
+  filter(is.na(independent.var) | independent.var == "NA", 
+         dependent.var.value %in% c(1:5, TRUE, "in_need")) %>%
+  mutate(merge_name = paste0(dependent.var, "__", "NA__", dependent.var.value)) %>%
+  select(merge_name, numbers) %>%
+  arrange(merge_name) %>%
+  spread(merge_name, numbers)
+
+with_independent_var <-big_table %>% 
+  filter(!is.na(independent.var), 
+         dependent.var.value %in% c(1:5, TRUE, "in_need")) %>% 
+  mutate(merge_name = paste0(dependent.var, "__", independent.var, "__", independent.var.value, "__", dependent.var.value)) %>%
+  select(merge_name, numbers) %>% 
+  arrange(merge_name) %>%
+  spread(merge_name, numbers)
+
+
+merge <- cbind(no_independent_var, with_independent_var)
+
+names_big_bars_to_add <- grep("NA__[1-9]$", names(merge), value = T)
+add_big_bars <- function(x) {
+  score_to_add <- merge[,x] * 10 # *10 for the bar size
+  return(score_to_add)
+}
+value_big_bars_to_add <- lapply(names_big_bars_to_add, add_big_bars) %>% do.call(cbind, .) %>% data.frame()
+names(value_big_bars_to_add) <- paste0("big_bar_", names_big_bars_to_add)
+
+merge <- cbind(merge, value_big_bars_to_add)
+
+order_lsg <- c("wash_score", "health_score", "snfi_score", "edu_score", "prot_score",
+                                            "mcsi_score", "pev_score", "impact_score") 
+
+page_order_fun <- function(x) {
+  general_sev_3_above <- paste0(x, "_2_cat__NA")
+  general_big_bar <- paste0("big_bar_", x)
+  general_score_na <- paste0(x, "__NA")
+  per_pop_sev_3_above <- paste0(x, "_2_cat__pop")
+  order_to_add <- c(grep(general_sev_3_above, names(merge), value = T),
+                    grep(general_big_bar, names(merge), value = T),
+                    grep(general_score_na, names(merge), value = T),
+                    grep(per_pop_sev_3_above, names(merge), value = T))
+  return(order_to_add)
+}
+
+page_order <- c(
+  #page1
+  grep("msni_2_cat__NA", names(merge), value = T),
+  grep("big_bar_msni__NA__", names(merge), value = T),
+  
+  grep("msni__NA__", names(merge), value = T),
+  #page2
+  grep("msni_2_cat__po", names(merge), value = T),
+  #page3 - 10
+  lapply(order_lsg, page_order_fun) %>% do.call(c,.),
+  #page 11
+  grep("at_least_lsg_above_sev_3__NA__TRUE", names(merge), value = T))
+
+merge <- merge[, page_order] * 100
+
+merge <- merge[, names(merge)[!(names(merge) %in%  grep("\\.[1-9]$", names(merge), value = T))]] #removing the duplicates with the big_bar
+
+merge %>% write.csv("output/merge_FS.csv", row.names = F)

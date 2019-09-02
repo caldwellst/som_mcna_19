@@ -1,7 +1,5 @@
 #make the graphs
 
-# remotes::install_github("caldwellst/msni19")
-# remotes::install_github("ellieallien/surveyweights")
 library(dplyr)
 library(koboquest) # manage kobo questionnairs
 library(kobostandards) # check inputs for inconsistencies
@@ -72,41 +70,37 @@ msni19::index_chart(df_to_plot,
 
 
 # sunburst page 2 group A : 
-msni19::sunburst_msni(
-  # dplyr::filter(response_hc_idp, yes_no_host == "no"),
+msni19::sunburst_msni(df_to_plot,
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page_2_full_sunburst_A",
+                      plot_name = "page2_full_sunburst_A",
                       path = "output/graphs/")
 # sunburst page 2 group B :
-msni19::sunburst_msni(
-  # dplyr::filter(response_hc_idp, yes_no_host == "no"),
+msni19::sunburst_msni(df_to_plot,
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page_2_full_sunburst_B",
+                      plot_name = "page2_full_sunburst_B",
                       path = "output/graphs/")
 # sunburst page 2 group C :
-msni19::sunburst_msni( 
-  # dplyr::filter(response_hc_idp, yes_no_host == "no"),
+msni19::sunburst_msni(df_to_plot,
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page_2_full_sunburst_C",
+                      plot_name = "page2_full_sunburst_C",
                       path = "output/graphs/")
 
 # any lsg graph bar and line
-
 make_bar_line_graph <- function(df, page, lsg_to_graph) {
   graph_name_bar <- paste0(page, "_", lsg_to_graph, "_bar")
   bar_gr <- msni19::index_chart(df,
@@ -147,93 +141,59 @@ mapply(make_bar_line_graph, page = simple_chart_and_page$page, lsg_to_graph = si
        MoreArgs = list(df = df_to_plot))
 
 #page 11 radar
-
-msni19::radar_graph(response_hc_idp, 
-                    lsg = c("pev_score", 
-                            "edu_score", 
+msni19::radar_graph(df_to_plot, 
+                    lsg = c("edu_score", 
                             "nut_score", 
                             "health_score", 
                             "snfi_score",
                             "fsl_score",
                             "wash_score", 
-                            "prot_score",
-                            "mcsi_score", 
-                            "impact_score"),
-                    lsg_labels = c("PEV",
-                                   "Edu",
+                            "prot_score"),
+                    lsg_labels = c("Edu",
                                    "Nutri",
                                    "Health",
                                    "SNFI",
-                                   "Food security", 
+                                   "Food sec", 
                                    "WASH", 
-                                   "Prot", 
-                                   "MCSI", 
-                                   "Impact"),
+                                   "Prot"),
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
                     group_labels = c("Non-displaced","IDPs"),
                     weighting_function = weighting_function,
-                    print_plot = F,
-                    plot_name = "radar",
+                    print_plot = T,
+                    plot_name = "page11_radar",
+                    legend_position = "bottom", 
                     path = "output/graphs/")
 
-lsg <- c("pev_score", "edu_score", "nut_score",
+#page 11 line graph
+lsg <- c("edu_score", "nut_score",
          "health_score", "snfi_score", "fsl_score", 
-         "wash_score", "prot_score", "mcsi_score", 
-         "impact_score")
+         "wash_score", "prot_score")
 
 # Making graph of % of households by # of indices that are >= 3
-msni19::severity_lines(response_hc_idp,
+msni19::severity_lines(df_to_plot,
                        lsg,
                        group = "yes_no_host",
                        group_order = c("yes", "no"),
                        group_labels = c("Non-displaced","IDPs"),
                        weighting_function = weighting_function,
                        print_plot = T,
-                       plot_name = "severity_lines",
+                       plot_name = "page11_over3",
                        path = "output/graphs/")
 
-msni19::sunburst_msni(response_hc_idp, 
-                      msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
-                        protection_lsg = "prot_score", shelter_lsg = "snfi_score",
-                        wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
-                      # weighting_function = weighting_function,
-                      print_plot = T,
-                      plot_name = "general_sunburst",
-                      path = "output/graphs/")
-
-
-# Only for households with MSNI >= 4
-msni19::sunburst_msni(response_hc_idp, 
-                      msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
-                        protection_lsg = "prot_score", shelter_lsg = "snfi_score",
-                        wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
-                      msni_filter = c(4, 5),
-                      # weighting_function = weighting_function,
-                      print_plot = T,
-                      plot_name = "severe_msni_sunburst",
-                      path = "output/graphs/")
-
-# Only for non-displaced households
-msni19::sunburst_msni(dplyr::filter(response_hc_idp, yes_no_host == "no"),
-                      msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
-                        protection_lsg = "prot_score", shelter_lsg = "snfi_score", 
-                        wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
-                      # weighting_function = weighting_function,
-                      print_plot = T,
-                      plot_name = "non_displaced_sunburst",
-                      path = "output/graphs/")
-
+#page 11 venn
 # venn diagram of households with any LSG >= 3 (REACH red) and those with capacity gaps >= 3 (REACH light grey)
 
-msni19::venn_msni(response_hc_idp, 
+msni19::venn_msni(df_to_plot, 
                   lsg = c("edu_score", 
                           "snfi_score", 
                           "fsl_score", 
                           "health_score", 
                           "prot_score",
-                          "wash_score"),
+                          "wash_score",
+                          "nut_score"),
                   capacity_gaps = "mcsi_score",
                   weighting_function = weighting_function,
                   print_plot = T,
+                  plot_name = "page11_venn",
                   path = "output/graphs/")

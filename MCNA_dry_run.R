@@ -85,6 +85,7 @@ questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 ## FS production
 source("source/look_up_table.R")
 # source("source/maps_FS.R")
+# source("source/merge_FS.R")
 
 analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
 

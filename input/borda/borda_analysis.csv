@@ -1,3 +1,3 @@
 variable_1,variable_2,variable_3,variable_4,variable_5,disaggregate,repeat_var,exclude,ranks
-food_barrier_first,food_barrier_second,food_barrier_third,,,yes_no_host,region,none other,3
-water_access_barrier_first,water_access_barrier_second,water_access_barrier_third,,,yes_no_host,region,none other,2
+disp_why1,disp_why2,,,,yes_no_host,region,none other,2
+dest_loc_why1,dest_loc_why2,,,,yes_no_host,region,none other,2

@@ -311,6 +311,21 @@ change_2_cat <- function(df, lsg_2_cat) {
   return(new_col)
 }
 
-binary_scores <- lapply(X = all_scores, FUN = change_2_cat, df = response) %>% do.call(cbind, .) %>% data.frame(stringsAsFactors = F)
-names(binary_scores) <- paste0(all_scores, "_2_cat")
+binary_scores <- lapply(X = c(all_scores, "msni"), FUN = change_2_cat, df = response) %>% do.call(cbind, .) %>% data.frame(stringsAsFactors = F)
+names(binary_scores) <- paste0(c(all_scores, "msni"), "_2_cat")
 response <- cbind(response, binary_scores)
+
+lsg <- c("edu_score", "nut_score", "health_score", "snfi_score", "fsl_score", "wash_score", "prot_score")
+
+response$num_above_sev_3 <- rowSums(response[, lsg] > 2)
+response$at_least_lsg_above_sev_3 <- NA
+response$at_least_lsg_above_sev_3[response$num_above_sev_3 == 0] <- FALSE
+response$at_least_lsg_above_sev_3[response$num_above_sev_3 > 0] <- TRUE
+
+response$mcsi_score_2_cat %>% table()
+response$lsg_cg <- NA
+response$lsg_cg[response$at_least_lsg_above_sev_3 == T & response$mcsi_score_2_cat == "not_in_need"] <- "one_lsg_no_cg"
+response$lsg_cg[response$at_least_lsg_above_sev_3 == T & response$mcsi_score_2_cat == "in_need"] <- "one_lsg_one_cg"
+response$lsg_cg[response$at_least_lsg_above_sev_3 == F & response$mcsi_score_2_cat == "in_need"] <- "no_lsg_one_cg"
+response$lsg_cg[response$at_least_lsg_above_sev_3 == F & response$mcsi_score_2_cat == "not_in_need"] <- "no_lsg_no_cg"
+

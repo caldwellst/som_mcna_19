@@ -1,69 +1,69 @@
 "vars","region","yes_no_host","rank_1","rank_2","rank_3","percent_1","percent_2","percent_3"
-"food_barrier_first food_barrier_second food_barrier_third","hiraan","yes","cost","access","availability","34.6%","28.6%","18.2%"
-"food_barrier_first food_barrier_second food_barrier_third","middle_shabelle","no","cost","access","availability","32.8%","24.3%","23.0%"
-"food_barrier_first food_barrier_second food_barrier_third","middle_shabelle","yes","cost","access","availability","30.1%","27.6%","16.8%"
-"food_barrier_first food_barrier_second food_barrier_third","hiraan","no","cost","access","availability","35.6%","28.7%","21.8%"
-"food_barrier_first food_barrier_second food_barrier_third","nugaal","yes","access","cost","availability","32.3%","28.6%","21.1%"
-"food_barrier_first food_barrier_second food_barrier_third","nugaal","no","access","cost","availability","35.5%","29.3%","26.7%"
-"food_barrier_first food_barrier_second food_barrier_third","bari","yes","cost","access","none","31.3%","27.4%","16.2%"
-"food_barrier_first food_barrier_second food_barrier_third","bari","no","access","cost","availability","34.5%","32.0%","20.4%"
-"food_barrier_first food_barrier_second food_barrier_third","sanaag","no","cost","none","access","39.6%","22.1%","20.5%"
-"food_barrier_first food_barrier_second food_barrier_third","sanaag","yes","cost","access","availability","34.1%","28.3%","15.5%"
-"food_barrier_first food_barrier_second food_barrier_third","togdheer","yes","cost","none","access","30.4%","19.6%","18.6%"
-"food_barrier_first food_barrier_second food_barrier_third","togdheer","no","cost","access","capacity","41.1%","26.2%","16.9%"
-"food_barrier_first food_barrier_second food_barrier_third","sool","yes","cost","none","access","33.6%","23.6%","21.7%"
-"food_barrier_first food_barrier_second food_barrier_third","sool","no","none","cost","access","37.7%","24.2%","19.7%"
-"food_barrier_first food_barrier_second food_barrier_third","woqooyi_galbeed","no","cost","access","availability","35.7%","30.2%","20.1%"
-"food_barrier_first food_barrier_second food_barrier_third","awdal","no","cost","availability","access","37.1%","24.1%","22.1%"
-"food_barrier_first food_barrier_second food_barrier_third","woqooyi_galbeed","yes","cost","access","none","32.0%","24.2%","23.0%"
-"food_barrier_first food_barrier_second food_barrier_third","awdal","yes","cost","availability","access","34.3%","21.5%","19.0%"
-"food_barrier_first food_barrier_second food_barrier_third","gedo","no","access","cost","availability","29.4%","28.9%","20.3%"
-"food_barrier_first food_barrier_second food_barrier_third","gedo","yes","cost","access","availability","31.0%","23.7%","22.0%"
-"food_barrier_first food_barrier_second food_barrier_third","lower_juba","yes","cost","access","availability","29.5%","26.5%","22.5%"
-"food_barrier_first food_barrier_second food_barrier_third","lower_juba","no","cost","availability","access","34.3%","27.1%","21.1%"
-"food_barrier_first food_barrier_second food_barrier_third","galgaduud","yes","cost","access","none","27.9%","25.1%","17.3%"
-"food_barrier_first food_barrier_second food_barrier_third","galgaduud","no","access","cost","capacity","34.9%","27.6%","16.8%"
-"food_barrier_first food_barrier_second food_barrier_third","mudug","yes","cost","access","none","29.3%","22.5%","17.3%"
-"food_barrier_first food_barrier_second food_barrier_third","mudug","no","cost","access","availability","28.6%","25.3%","19.1%"
-"food_barrier_first food_barrier_second food_barrier_third","banadir","no","cost","access","capacity","25.8%","25.2%","18.2%"
-"food_barrier_first food_barrier_second food_barrier_third","lower_shabelle","no","access","cost","availability","29.5%","25.4%","24.3%"
-"food_barrier_first food_barrier_second food_barrier_third","lower_shabelle","yes","access","cost","availability","31.8%","29.4%","19.6%"
-"food_barrier_first food_barrier_second food_barrier_third","banadir","yes","cost","access","availability","27.9%","27.3%","17.7%"
-"food_barrier_first food_barrier_second food_barrier_third","bay","yes","access","cost","availability","31.6%","29.6%","19.1%"
-"food_barrier_first food_barrier_second food_barrier_third","bay","no","access","cost","availability","31.5%","28.8%","20.7%"
-"food_barrier_first food_barrier_second food_barrier_third","bakool","yes","cost","access","availability","32.9%","26.3%","23.0%"
-"food_barrier_first food_barrier_second food_barrier_third","bakool","no","cost","access","availability","35.2%","25.9%","22.8%"
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","hiraan","yes","quality","capacity",NA,"26.1%","23.7%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","middle_shabelle","no","none","availibility",NA,"19.7%","19.3%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","middle_shabelle","yes","none","capacity",NA,"21.3%","18.1%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","hiraan","no","availibility","capacity",NA,"26.5%","25.2%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","nugaal","yes","capacity","availibility",NA,"22.2%","22.0%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","nugaal","no","access","quality",NA,"22.5%","22.2%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","bari","yes","quality","capacity",NA,"23.1%","21.1%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","bari","no","capacity","quality",NA,"31.0%","25.4%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","sanaag","no","availibility","quality",NA,"24.7%","22.1%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","sanaag","yes","capacity","availibility",NA,"22.4%","17.5%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","togdheer","yes","none","capacity",NA,"22.5%","19.8%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","togdheer","no","quality","waiting_time",NA,"33.0%","29.3%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","sool","yes","availibility","quality",NA,"21.2%","18.2%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","sool","no","none","quality",NA,"38.7%","17.1%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","woqooyi_galbeed","no","availibility","quality",NA,"28.0%","25.8%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","awdal","no","capacity","access",NA,"26.4%","23.1%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","woqooyi_galbeed","yes","none","availibility",NA,"21.8%","21.4%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","awdal","yes","capacity","quality",NA,"25.9%","21.4%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","gedo","no","quality","availibility",NA,"26.6%","26.5%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","gedo","yes","capacity","quality",NA,"27.2%","22.9%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","lower_juba","yes","availibility","capacity",NA,"25.1%","23.6%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","lower_juba","no","capacity","availibility",NA,"24.2%","22.0%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","galgaduud","yes","none","capacity",NA,"21.6%","18.0%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","galgaduud","no","quality","capacity",NA,"23.6%","20.2%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","mudug","yes","quality","none",NA,"21.5%","19.5%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","mudug","no","capacity","availibility",NA,"22.9%","19.8%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","banadir","no","availibility","capacity",NA,"20.5%","19.7%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","lower_shabelle","no","quality","waiting_time",NA,"20.8%","16.3%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","lower_shabelle","yes","quality","access",NA,"21.5%","18.5%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","banadir","yes","availibility","capacity",NA,"23.6%","20.0%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","bay","yes","availibility","quality",NA,"25.5%","22.2%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","bay","no","quality","availibility",NA,"28.6%","25.8%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","bakool","yes","availibility","quality",NA,"27.8%","23.4%",NA
-"water_access_barrier_first water_access_barrier_second water_access_barrier_third","bakool","no","capacity","quality",NA,"21.9%","21.6%",NA
+"disp_why1 disp_why2","hiraan","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","middle_shabelle","no","arrival_ags","conflict_community","conflict_surrounding","36.5%","18.6%","11.3%"
+"disp_why1 disp_why2","middle_shabelle","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","hiraan","no","drought","threats","arrival_ags","18.1%","16.7%","15.6%"
+"disp_why1 disp_why2","nugaal","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","nugaal","no","conflict_surrounding","lack_job","drought","19.8%","13.2%","12.3%"
+"disp_why1 disp_why2","bari","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","bari","no","conflict_community","conflict_fear","lack_job","23.3%","16.7%","15.8%"
+"disp_why1 disp_why2","sanaag","no","drought","lack_water","conflict_surrounding","21.1%","15.8%","15.3%"
+"disp_why1 disp_why2","sanaag","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","togdheer","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","togdheer","no","lack_job","lack_food","lack_water","27.5%","26.3%","16.0%"
+"disp_why1 disp_why2","sool","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","sool","no","conflict_community","lack_health","drought","32.0%","28.5%","16.9%"
+"disp_why1 disp_why2","woqooyi_galbeed","no","conflict_community","drought","lack_water","25.3%","22.6%","10.9%"
+"disp_why1 disp_why2","awdal","no","flooding","lack_food","none","29.3%","25.2%","14.0%"
+"disp_why1 disp_why2","woqooyi_galbeed","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","awdal","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","gedo","no","drought","conflict_surrounding","conflict_fear","25.4%","14.3%","13.6%"
+"disp_why1 disp_why2","gedo","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","lower_juba","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","lower_juba","no","lack_job","drought","conflict_community","25.6%","18.6%","11.2%"
+"disp_why1 disp_why2","galgaduud","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","galgaduud","no","threats","conflict_community","arrival_ags","27.2%","21.4%","9.83%"
+"disp_why1 disp_why2","mudug","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","mudug","no","lack_job","conflict_fear","conflict_community","22.2%","13.0%","13.0%"
+"disp_why1 disp_why2","banadir","no","drought","conflict_community","none","19.7%","15.9%","12.6%"
+"disp_why1 disp_why2","lower_shabelle","no","conflict_community","threats","arrival_ags","16.3%","15.5%","13.8%"
+"disp_why1 disp_why2","lower_shabelle","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","banadir","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","bay","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","bay","no","lack_job","conflict_community","drought","19.8%","19.1%","17.1%"
+"disp_why1 disp_why2","bakool","yes","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2","bakool","no","conflict_community","conflict_fear","arrival_ags","24.4%","18.1%","18.1%"
+"dest_loc_why1 dest_loc_why2","hiraan","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","middle_shabelle","no","no_conflict","food_dist",NA,"49.2%","16.1%",NA
+"dest_loc_why1 dest_loc_why2","middle_shabelle","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","hiraan","no","no_conflict","food_dist",NA,"29.9%","16.5%",NA
+"dest_loc_why1 dest_loc_why2","nugaal","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","nugaal","no","shelter","local_food",NA,"30.1%","18.0%",NA
+"dest_loc_why1 dest_loc_why2","bari","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","bari","no","work_income","no_conflict",NA,"31.1%","30.4%",NA
+"dest_loc_why1 dest_loc_why2","sanaag","no","water","local_food",NA,"25.6%","19.0%",NA
+"dest_loc_why1 dest_loc_why2","sanaag","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","togdheer","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","togdheer","no","water","work_income",NA,"17.9%","15.8%",NA
+"dest_loc_why1 dest_loc_why2","sool","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","sool","no","no_conflict","health_ser",NA,"34.5%","28.2%",NA
+"dest_loc_why1 dest_loc_why2","woqooyi_galbeed","no","work_income","health_ser",NA,"22.6%","20.8%",NA
+"dest_loc_why1 dest_loc_why2","awdal","no","educ_ser","food_dist",NA,"22.0%","20.4%",NA
+"dest_loc_why1 dest_loc_why2","woqooyi_galbeed","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","awdal","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","gedo","no","no_conflict","work_income",NA,"32.6%","23.7%",NA
+"dest_loc_why1 dest_loc_why2","gedo","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","lower_juba","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","lower_juba","no","work_income","health_ser",NA,"23.8%","13.9%",NA
+"dest_loc_why1 dest_loc_why2","galgaduud","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","galgaduud","no","educ_ser","work_income",NA,"14.1%","13.1%",NA
+"dest_loc_why1 dest_loc_why2","mudug","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","mudug","no","no_conflict","work_income",NA,"23.0%","21.1%",NA
+"dest_loc_why1 dest_loc_why2","banadir","no","no_conflict","work_income",NA,"19.5%","17.0%",NA
+"dest_loc_why1 dest_loc_why2","lower_shabelle","no","no_conflict","shelter",NA,"23.9%","12.8%",NA
+"dest_loc_why1 dest_loc_why2","lower_shabelle","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","banadir","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","bay","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","bay","no","work_income","no_conflict",NA,"30.1%","29.7%",NA
+"dest_loc_why1 dest_loc_why2","bakool","yes","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2","bakool","no","no_conflict","food_dist",NA,"43.0%","18.0%",NA

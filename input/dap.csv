@@ -1,12 +1,36 @@
-Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
-,Pre-existing vulnerabilities,National - HC/IDP,district,yes_no_host,categorical,pev_score,categorical,group_difference
-,Education,National - HC/IDP,district,yes_no_host,categorical,edu_score,categorical,group_difference
-,Nutrition,National - HC/IDP,district,yes_no_host,categorical,nut_score,categorical,group_difference
-,Health,National - HC/IDP,district,yes_no_host,categorical,health_score,categorical,group_difference
-,Shelter_NFI,National - HC/IDP,district,yes_no_host,categorical,snfi_score,categorical,group_difference
-,WASH,National - HC/IDP,district,yes_no_host,categorical,wash_score,categorical,group_difference
-,Food Security Livelihoods,National - HC/IDP,district,yes_no_host,categorical,fsl_score,categorical,group_difference
-,Protection,National - HC/IDP,district,yes_no_host,categorical,prot_score,categorical,group_difference
-,MCSI,,district,yes_no_host,categorical,mcsi_score,categorical,group_difference
-,Impact,,district,yes_no_host,categorical,impact_score,categorical,group_difference
-,MSNI,,district,yes_no_host,categorical,msni,categorical,group_difference
+Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type,
+,Pre-existing vulnerabilities,,,population_group,categorical,pev_score,categorical,group_difference,
+,Education,,,population_group,categorical,edu_score,categorical,group_difference,
+,Nutrition,,,population_group,categorical,nut_score,categorical,group_difference,
+,Health,,,population_group,categorical,health_score,categorical,group_difference,
+,Shelter_NFI,,,population_group,categorical,snfi_score,categorical,group_difference,
+,WASH,,,population_group,categorical,wash_score,categorical,group_difference,
+,Food Security Livelihoods,,,population_group,categorical,fsl_score,categorical,group_difference,
+,Protection,,,population_group,categorical,prot_score,categorical,group_difference,
+,MCSI,,,population_group,categorical,mcsi_score,categorical,group_difference,
+,Impact,,,population_group,categorical,impact_score,categorical,group_difference,
+,MSNI,,,population_group,categorical,msni,categorical,group_difference,
+,Pre-existing vulnerabilities binary,,,population_group,,pev_score_2cat,categorical,group_difference,
+,Education binary,,,population_group,,edu_score_2cat,categorical,group_difference,
+,Nutrition binary,,,population_group,,nut_score_2cat,categorical,group_difference,
+,Health binary,,,population_group,,health_score_2cat,categorical,group_difference,
+,Shelter_NFI binary,,,population_group,,snfi_score_2cat,categorical,group_difference,
+,WASH binary,,,population_group,,wash_score_2cat,categorical,group_difference,
+,Food Security Livelihoods binary,,,population_group,,fsl_score_2cat,categorical,group_difference,
+,Protection binary,,,population_group,,prot_score_2cat,categorical,group_difference,
+,MCSI binary,,,population_group,,mcsi_score_2cat,categorical,group_difference,
+,Impact binary,,,population_group,,impact_score_2cat,categorical,group_difference,
+,MSNI binary,,,population_group,,msni_2cat,categorical,group_difference,
+,Pre-existing vulnerabilities,,,,,pev_score,categorical,direct_reporting,
+,Education,,,,,edu_score,categorical,direct_reporting,
+,Nutrition,,,,,nut_score,categorical,direct_reporting,
+,Health,,,,,health_score,categorical,direct_reporting,
+,Shelter_NFI,,,,,snfi_score,categorical,direct_reporting,
+,WASH,,,,,wash_score,categorical,direct_reporting,
+,Food Security Livelihoods,,,,,fsl_score,categorical,direct_reporting,
+,Protection,,,,,prot_score,categorical,direct_reporting,
+,MCSI,,,,,mcsi_score,categorical,direct_reporting,
+,Impact,,,,,impact_score,categorical,direct_reporting,
+,MSNI,,,,,msni,categorical,direct_reporting,
+,MSNI_cat,,,,,msni_2_cat,categorical,direct_reporting,
+,One lsg above 3,,,,,at_least_lsg_above_sev_3,categorical,direct_reporting,
