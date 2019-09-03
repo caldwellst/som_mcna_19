@@ -104,7 +104,7 @@ response <- response %>% mutate(female_hh = ifelse(household_expenditure.female_
                                       household_expenditure.female_14_17 == 1, "child_hh", "not_child_hh"), 
                     eldery_hh = ifelse(household_expenditure.eldery_male == 1 |
                                       household_expenditure.eldery_female == 1, "eldery_hh", "not_eldery"),
-                    pwd_hh = ifelse(person_with_disabilities == "yes", "hh_with_plw", "hh_without_pwd"))
+                    pwd_hh = ifelse(person_with_disabilities == "yes", "hh_with_pwd", "hh_without_pwd"))
 
 response$population_group <- NA
 response$population_group[response[["yes_no_host"]] == "yes"] <- "not_displaced"  
@@ -112,6 +112,35 @@ response$population_group[response[["yes_no_idp"]] == "yes"] <- "IDP"
 response$population_group[response[["yes_no_returnee"]] == "yes"] <- "returnee"  
 response$population_group[response[["yes_no_returnee"]] == "no"] <- "refugee"  
 
+response <- response %>% mutate(plw_hh = ifelse(plw == "yes", TRUE, FALSE),
+  mental_heath_issue_hh = ifelse((mental_problems_faced.none != 1 & mental_problems_faced.dnk != 1), TRUE, FALSE),
+  no_difficulty_hh = ifelse(is.na(no_difficulty) | no_difficulty == 0, FALSE, TRUE),
+  minor_difficulties_hh = ifelse(is.na(minor_difficulties) | minor_difficulties == 0, FALSE, TRUE),
+  some_difficulties_hh = ifelse(is.na(some_difficulties) | some_difficulties == 0, FALSE, TRUE),
+  a_lot_hh = ifelse(is.na(a_lot) | a_lot == 0, FALSE, TRUE),
+  cannot_carry_hh = ifelse(is.na(cannot_carry) | cannot_carry == 0, FALSE, TRUE),
+  qty_working_pers = ifelse(working_persons == 0, "0person",
+                            ifelse(working_persons == 1, "1person",
+                                   ifelse(working_persons == 2, "2persons", "3persons_plus"))),
+  lost_employment_hh = ifelse(lost_employment > 0, TRUE, FALSE))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
+                    

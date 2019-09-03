@@ -124,6 +124,7 @@ browseURL("hc_idp_test.html")
 
 big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
 write.csv(big_table, "output/big_table.csv", row.names = F)
+source("source/make_long_table.R")
 # 
 # some_results_refugee_returnee <- results_refugee_returnee[1:200]
 # 

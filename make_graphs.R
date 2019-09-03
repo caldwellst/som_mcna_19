@@ -19,7 +19,8 @@ response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 source("source/sampling.R")
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
-  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
+  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") %>%
+  filter(statex7 == "somaliland")
 
 weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.frame = samplingframe,
                                                                       data = response_hc_idp,
@@ -197,3 +198,22 @@ msni19::venn_msni(df_to_plot,
                   print_plot = T,
                   plot_name = "page11_venn",
                   path = "output/graphs/")
+
+
+#page 11 intersection
+msni19::index_intersections(df_to_plot,
+                            lsg =  c("edu_score", "snfi_score", "fsl_score", "health_score",
+                                     "prot_score", "wash_score", "nut_score"),
+                            lsg_labels = c("Education",
+                                           "Shelter",
+                                           "Food",
+                                           "Health",
+                                           "Protection",
+                                           "WASH",
+                                           "Nutrition"),
+                            weighting_function = weighting_function,
+                            print_plot = F,
+                            plot_name = "page11_intersection",
+                            path = "output/graphs/")
+
+

@@ -75,7 +75,7 @@ devtools::install_github(
   build_opts = c()
 )
 
-
+remotes::install_github("caldwellst/setviz")
 
 
 
