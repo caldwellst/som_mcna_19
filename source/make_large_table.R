@@ -1,9 +1,6 @@
 #make large table
 big_table$repeat.var.value[is.na(big_table$repeat.var.value)] <- "national"
 
-big_table <- big_table %>%
-  filter(repeat.var.value %in% c("national", "somaliland", "banadir"))
-
 variable_to_split_log_by <- "repeat.var.value"
 repeat_var_large <- big_table[[variable_to_split_log_by]]
 big_table_list <- big_table %>% split.data.frame(list(repeat_var_large))
