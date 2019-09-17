@@ -20,8 +20,7 @@ big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic
 write.csv(big_table, "output/big_table.csv", row.names = F)
 big_table$repeat.var.value[is.na(big_table$repeat.var.value)] <- "national"
 
-big_table <- big_table %>%
-  filter(repeat.var.value %in% c("national", "somaliland", "banadir"))
+big_table <- big_table 
 
 variable_to_split_log_by <- "repeat.var.value"
 repeat_var_long <- big_table[[variable_to_split_log_by]]
@@ -61,8 +60,8 @@ long_table %>% write.csv("output/long_table.csv", row.names = F)
 #            male_6_17 = males_5_12 + males_13_15 + males_16_17,
 #            females_05 = females_0_6m + females_6m_4y,
 #            males_05 = males_0_6m + males_6m_4y,
-#            total_hh = males_0_6m + males_6m_4y + females_0_6m + females_6m_4y + females_5_12 + females_13_15 + 
-#              females_16_17 + males_5_12+  males_13_15+  males_16_17+ females_18_40+ females_41_59 + males_18_40+ 
+#            total_hh = males_0_6m + males_6m_4y + females_0_6m + females_6m_4y + females_5_12 + females_13_15 +
+#              females_16_17 + males_5_12+  males_13_15+  males_16_17+ females_18_40+ females_41_59 + males_18_40+
 #              males_41_59 +  males_60_over + females_60_over,
 #            #weigthed groups
 #            female_60_w = females_60_over * general_weights,
@@ -89,14 +88,14 @@ long_table %>% write.csv("output/long_table.csv", row.names = F)
 #               total_male_w = total_male_60_w + total_male_18_59w + total_male_6_17_w + total_males_05w) %>%
 #     #prop
 #     mutate(perc_total_female = total_female_w / total_hh_w,
-#            perc_total_male = total_male_w / total_hh_w, 
-#            perc_total_female_60 = total_female_60_w / total_hh_w, 
-#            perc_total_male_60 = total_male_60_w / total_hh_w, 
-#            perc_total_female_18_59 = total_female_18_59_w / total_hh_w, 
-#            perc_total_male_18_59 = total_male_18_59w / total_hh_w, 
-#            perc_total_female_6_17 = total_female_6_17w / total_hh_w, 
-#            perc_total_male_6_17 = total_male_6_17_w / total_hh_w, 
-#            perc_total_females_05 = total_females_05w / total_hh_w, 
+#            perc_total_male = total_male_w / total_hh_w,
+#            perc_total_female_60 = total_female_60_w / total_hh_w,
+#            perc_total_male_60 = total_male_60_w / total_hh_w,
+#            perc_total_female_18_59 = total_female_18_59_w / total_hh_w,
+#            perc_total_male_18_59 = total_male_18_59w / total_hh_w,
+#            perc_total_female_6_17 = total_female_6_17w / total_hh_w,
+#            perc_total_male_6_17 = total_male_6_17_w / total_hh_w,
+#            perc_total_females_05 = total_females_05w / total_hh_w,
 #            perc_total_males_05 = total_males_05w / total_hh_w,
 #            verif1 = perc_total_female + perc_total_male,
 #            verif2 = perc_total_female_60 + perc_total_male_60 + perc_total_female_18_59 + perc_total_male_18_59 +
@@ -107,18 +106,17 @@ long_table %>% write.csv("output/long_table.csv", row.names = F)
 # 
 # variable_to_split_log_by <- "statex7"
 # repeat_var_long <- response_hc_idp[[variable_to_split_log_by]]
-# df_list <- response_hc_idp %>% 
+# df_list <- response_hc_idp %>%
 #   split.data.frame(list(repeat_var_long))
 # 
 # 
 # national_demo <- make_demo_table(response_hc_idp)
 # national_demo$repeat.var.value <- "national"
 # 
-# states_demo <- lapply(df_list, make_demo_table) %>% do.call(rbind, .) 
+# states_demo <- lapply(df_list, make_demo_table) %>% do.call(rbind, .)
 # states_demo$repeat.var.value <- row.names(states_demo)
 # states_demo$repeat.var.value <- sub(pattern = "\\.[1-9]", replacement = "", states_demo$repeat.var.value)
 # 
 # 
-# all_demo <- rbind(national_demo,states_demo) %>%
-#   filter(repeat.var.value %in% c("national", "somaliland", "banadir"))
+# all_demo <- rbind(national_demo,states_demo) 
 # all_demo %>% write.csv("output/all_demographics.csv", row.names = F)

@@ -73,6 +73,10 @@ source("source/sampling.R")
 ################################ END--  it takes 25 minutes to compute all variables, dont run this all the time
 response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 
+#small typo correction
+response$vaccination_children[response$vaccination_children == "All"] <- "all"
+
+
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
   dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
@@ -86,8 +90,10 @@ questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 source("source/look_up_table.R")
 # source("source/maps_FS.R")
 # source("source/merge_FS.R")
+# source("make_graphs.R")
+# source("source/hno_table.R")
 
-analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
+analysisplan <- read.csv("input/data_health.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",

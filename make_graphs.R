@@ -19,8 +19,9 @@ response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 source("source/sampling.R")
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
-  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") %>%
-  filter(statex7 == "somaliland")
+  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") 
+# %>%
+#   filter(statex7 == "sws")
 
 weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.frame = samplingframe,
                                                                       data = response_hc_idp,

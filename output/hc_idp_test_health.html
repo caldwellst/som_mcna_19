@@ -12,7 +12,7 @@
 
 <meta name="author" content="IMPACT Initiatives" />
 
-<meta name="date" content="2019-09-04" />
+<meta name="date" content="2019-09-17" />
 
 <title>Analysisplan report</title>
 
@@ -250,7 +250,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Analysisplan report</h1>
 <h4 class="author">IMPACT Initiatives</h4>
-<h4 class="date">2019-09-04</h4>
+<h4 class="date">2019-09-17</h4>
 
 </div>
 
@@ -261,9 +261,9 @@ div.tocify {
 # - by_analysisplan_columns
 # - by_prefix
 # - render_result_with</code></pre>
-<p>[1] 1.260865e-42 [1] 5.86513e-08 [1] 0.1061328 [1] 0.01452246 [1] 3.240213e-13 [1] 9.769682e-09 [1] 1.634084e-05 [1] 8.177335e-06 [1] 2.060864e-13 [1] 4.501383e-53 [1] 1.448423e-14 [1] 2.227154e-42 [1] 0.2295036 [1] 0.1289149 [1] 0.1894554 [1] 3.238023e-13 [1] 1.682161e-05 [1] 0.03044347 [1] 0.1095161 [1] 3.556415e-07 [1] 6.869157e-12 [1] 1.41051e-07</p>
-<div id="pev_score" class="section level2">
-<h2>pev_score</h2>
+<p>[1] 0.0004070475 [1] 0.01316688 [1] 0.02872686 [1] 0.7350244 [1] 0.05976326 [1] 0.2568789 [1] 0.2366926 [1] 0.001609481 [1] 0.9770812 [1] 0.2244157 [1] 0.0003087645 [1] 0.6638782 [1] 0.02123429 [1] 0.1832917 [1] 0.8820331 [1] 0.3032931 [1] 0.04434092 [1] 0.06492576 [1] 2.371044e-08 [1] 0.0006463136 [1] 0.001327589 [1] 0.4355424 [1] 0.8025136 [1] 0.03744776 [1] 0.4188203 [1] 8.155545e-06 [1] 2.504357e-05 [1] 0.003521822 [1] 0.1890753 [1] 0.003836945 [1] 0.002724623 [1] 0.2008347 [1] 0.3530669 [1] 0.03776398 [1] 0.003511832</p>
+<div id="child_health" class="section level2">
+<h2>child_health</h2>
 <div id="na" class="section level3">
 <h3>NA</h3>
 by population_group
@@ -274,13 +274,28 @@ by population_group
 Subset
 </th>
 <th style="text-align:left;">
-1
+Acute Watery Diarrhoea (3 or more liqid stools)
 </th>
 <th style="text-align:left;">
-2
+Don’t know
 </th>
 <th style="text-align:left;">
-3
+Fever
+</th>
+<th style="text-align:left;">
+Malaria
+</th>
+<th style="text-align:left;">
+Malnutrition (diagnosed by health or nutrition center)
+</th>
+<th style="text-align:left;">
+None
+</th>
+<th style="text-align:left;">
+Other
+</th>
+<th style="text-align:left;">
+Respiratory problems
 </th>
 </tr>
 </thead>
@@ -290,13 +305,28 @@ Subset
 IDP
 </td>
 <td style="text-align:left;">
-4% (2%-6%)
+13% (9%-16%)
 </td>
 <td style="text-align:left;">
-34% (29%-39%)
+6% (3%-10%)
 </td>
 <td style="text-align:left;">
-62% (57%-67%)
+42% (36%-49%)
+</td>
+<td style="text-align:left;">
+35% (29%-41%)
+</td>
+<td style="text-align:left;">
+17% (12%-22%)
+</td>
+<td style="text-align:left;">
+27% (22%-32%)
+</td>
+<td style="text-align:left;">
+5% (2%-9%)
+</td>
+<td style="text-align:left;">
+8% (4%-13%)
 </td>
 </tr>
 <tr>
@@ -304,28 +334,42 @@ IDP
 not_displaced
 </td>
 <td style="text-align:left;">
+13% (10%-17%)
+</td>
+<td style="text-align:left;">
 5% (3%-8%)
 </td>
 <td style="text-align:left;">
-77% (73%-81%)
+32% (27%-37%)
 </td>
 <td style="text-align:left;">
-17% (14%-20%)
+27% (20%-33%)
+</td>
+<td style="text-align:left;">
+13% (11%-16%)
+</td>
+<td style="text-align:left;">
+41% (36%-46%)
+</td>
+<td style="text-align:left;">
+4% (2%-5%)
+</td>
+<td style="text-align:left;">
+6% (3%-9%)
 </td>
 </tr>
 </tbody>
 </table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
 <table>
 <thead>
 <tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
-result.F
+F
 </th>
 <th style="text-align:right;">
-result.p.value
+p.value
 </th>
 <th style="text-align:right;">
 parameters.ndf
@@ -341,19 +385,159 @@ name
 <tbody>
 <tr>
 <td style="text-align:left;">
-F
+child_health.malaria
 </td>
 <td style="text-align:right;">
-102.7426
+4.8013124
 </td>
 <td style="text-align:right;">
-0
+0.0287269
 </td>
 <td style="text-align:right;">
-1.99156
+1
 </td>
 <td style="text-align:right;">
-1652.995
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.fever
+</td>
+<td style="text-align:right;">
+6.1741964
+</td>
+<td style="text-align:right;">
+0.0131669
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.awd
+</td>
+<td style="text-align:right;">
+0.1146283
+</td>
+<td style="text-align:right;">
+0.7350244
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.respiratory_problems
+</td>
+<td style="text-align:right;">
+1.2873452
+</td>
+<td style="text-align:right;">
+0.2568789
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.malnutrition
+</td>
+<td style="text-align:right;">
+3.5540662
+</td>
+<td style="text-align:right;">
+0.0597633
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.other
+</td>
+<td style="text-align:right;">
+0.8687945
+</td>
+<td style="text-align:right;">
+0.3515715
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.dnk
+</td>
+<td style="text-align:right;">
+0.1496138
+</td>
+<td style="text-align:right;">
+0.6990080
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+child_health.none
+</td>
+<td style="text-align:right;">
+12.6060506
+</td>
+<td style="text-align:right;">
+0.0004070
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
@@ -363,8 +547,8 @@ Pearson’s X^2: Rao &amp; Scott adjustment
 </table>
 </div>
 </div>
-<div id="edu_score" class="section level2">
-<h2>edu_score</h2>
+<div id="child_health.none" class="section level2">
+<h2>child_health.none</h2>
 <div id="na-1" class="section level3">
 <h3>NA</h3>
 by population_group
@@ -375,16 +559,10 @@ by population_group
 Subset
 </th>
 <th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
 1
-</th>
-<th style="text-align:left;">
-2
-</th>
-<th style="text-align:left;">
-3
-</th>
-<th style="text-align:left;">
-4
 </th>
 </tr>
 </thead>
@@ -394,16 +572,10 @@ Subset
 IDP
 </td>
 <td style="text-align:left;">
-46% (42%-51%)
+73% (68%-78%)
 </td>
 <td style="text-align:left;">
-50% (45%-54%)
-</td>
-<td style="text-align:left;">
-4% (2%-6%)
-</td>
-<td style="text-align:left;">
-0%
+27% (22%-32%)
 </td>
 </tr>
 <tr>
@@ -411,16 +583,10 @@ IDP
 not_displaced
 </td>
 <td style="text-align:left;">
-62% (57%-67%)
+59% (54%-64%)
 </td>
 <td style="text-align:left;">
-35% (31%-39%)
-</td>
-<td style="text-align:left;">
-3% (2%-4%)
-</td>
-<td style="text-align:left;">
-0%
+41% (36%-46%)
 </td>
 </tr>
 </tbody>
@@ -454,16 +620,16 @@ name
 F
 </td>
 <td style="text-align:right;">
-16.96837
+12.60605
 </td>
 <td style="text-align:right;">
-1e-07
+0.000407
 </td>
 <td style="text-align:right;">
-1.978194
+1
 </td>
 <td style="text-align:right;">
-1641.901
+797
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
@@ -473,8 +639,8 @@ Pearson’s X^2: Rao &amp; Scott adjustment
 </table>
 </div>
 </div>
-<div id="nut_score" class="section level2">
-<h2>nut_score</h2>
+<div id="child_health.fever" class="section level2">
+<h2>child_health.fever</h2>
 <div id="na-2" class="section level3">
 <h3>NA</h3>
 by population_group
@@ -485,16 +651,2748 @@ by population_group
 Subset
 </th>
 <th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
 1
 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+58% (51%-64%)
+</td>
+<td style="text-align:left;">
+42% (36%-49%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+68% (63%-73%)
+</td>
+<td style="text-align:left;">
+32% (27%-37%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
 <th style="text-align:left;">
-2
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
 </th>
 <th style="text-align:left;">
-3
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+6.174196
+</td>
+<td style="text-align:right;">
+0.0131669
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="child_health.malaria" class="section level2">
+<h2>child_health.malaria</h2>
+<div id="na-3" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
 </th>
 <th style="text-align:left;">
-4
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+65% (59%-71%)
+</td>
+<td style="text-align:left;">
+35% (29%-41%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+73% (67%-80%)
+</td>
+<td style="text-align:left;">
+27% (20%-33%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+4.801312
+</td>
+<td style="text-align:right;">
+0.0287269
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="child_health.awd" class="section level2">
+<h2>child_health.awd</h2>
+<div id="na-4" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+87% (84%-91%)
+</td>
+<td style="text-align:left;">
+13% (9%-16%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+87% (83%-90%)
+</td>
+<td style="text-align:left;">
+13% (10%-17%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.1146283
+</td>
+<td style="text-align:right;">
+0.7350244
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="child_health.malnutrition" class="section level2">
+<h2>child_health.malnutrition</h2>
+<div id="na-5" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+83% (78%-88%)
+</td>
+<td style="text-align:left;">
+17% (12%-22%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+87% (84%-89%)
+</td>
+<td style="text-align:left;">
+13% (11%-16%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+3.554066
+</td>
+<td style="text-align:right;">
+0.0597633
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="child_health.respiratory_problems" class="section level2">
+<h2>child_health.respiratory_problems</h2>
+<div id="na-6" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+92% (87%-96%)
+</td>
+<td style="text-align:left;">
+8% (4%-13%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+94% (91%-97%)
+</td>
+<td style="text-align:left;">
+6% (3%-9%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.287345
+</td>
+<td style="text-align:right;">
+0.2568789
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+797
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="child_health_access" class="section level2">
+<h2>child_health_access</h2>
+<div id="na-7" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+50% (41%-58%)
+</td>
+<td style="text-align:left;">
+50% (42%-59%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+43% (37%-50%)
+</td>
+<td style="text-align:left;">
+57% (50%-63%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.402613
+</td>
+<td style="text-align:right;">
+0.2366926
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+693
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="pregnancy_health" class="section level2">
+<h2>pregnancy_health</h2>
+<div id="na-8" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+8% (4%-12%)
+</td>
+<td style="text-align:left;">
+75% (69%-80%)
+</td>
+<td style="text-align:left;">
+17% (12%-23%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+83% (81%-85%)
+</td>
+<td style="text-align:left;">
+14% (12%-16%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+6.670961
+</td>
+<td style="text-align:right;">
+0.0016095
+</td>
+<td style="text-align:right;">
+1.895332
+</td>
+<td style="text-align:right;">
+1537.114
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="pregnancy_health_access" class="section level2">
+<h2>pregnancy_health_access</h2>
+<div id="na-9" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+38% (18%-58%)
+</td>
+<td style="text-align:left;">
+62% (42%-82%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+38% (28%-47%)
+</td>
+<td style="text-align:left;">
+62% (53%-72%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.0008264
+</td>
+<td style="text-align:right;">
+0.9770812
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+393
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh" class="section level2">
+<h2>adult_heatlh</h2>
+<div id="na-10" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Acute Watery Diarrhoea (3 or more liqid stools)
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+Fever
+</th>
+<th style="text-align:left;">
+Gastrointestinal Problems
+</th>
+<th style="text-align:left;">
+Malaria
+</th>
+<th style="text-align:left;">
+Malnutrition (diagnosed by health or nutrition center)
+</th>
+<th style="text-align:left;">
+None
+</th>
+<th style="text-align:left;">
+Other
+</th>
+<th style="text-align:left;">
+Respiratory problems
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+9% (6%-12%)
+</td>
+<td style="text-align:left;">
+6% (4%-9%)
+</td>
+<td style="text-align:left;">
+33% (28%-38%)
+</td>
+<td style="text-align:left;">
+6% (3%-9%)
+</td>
+<td style="text-align:left;">
+34% (28%-40%)
+</td>
+<td style="text-align:left;">
+12% (8%-15%)
+</td>
+<td style="text-align:left;">
+37% (32%-42%)
+</td>
+<td style="text-align:left;">
+3% (1%-6%)
+</td>
+<td style="text-align:left;">
+5% (2%-7%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+8% (6%-10%)
+</td>
+<td style="text-align:left;">
+8% (6%-10%)
+</td>
+<td style="text-align:left;">
+25% (20%-29%)
+</td>
+<td style="text-align:left;">
+4% (2%-6%)
+</td>
+<td style="text-align:left;">
+23% (17%-28%)
+</td>
+<td style="text-align:left;">
+9% (7%-11%)
+</td>
+<td style="text-align:left;">
+49% (44%-54%)
+</td>
+<td style="text-align:left;">
+3% (2%-5%)
+</td>
+<td style="text-align:left;">
+5% (2%-7%)
+</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+F
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.malaria
+</td>
+<td style="text-align:right;">
+13.1270206
+</td>
+<td style="text-align:right;">
+0.0003088
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.fever
+</td>
+<td style="text-align:right;">
+5.3276831
+</td>
+<td style="text-align:right;">
+0.0212343
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.awd
+</td>
+<td style="text-align:right;">
+0.1889820
+</td>
+<td style="text-align:right;">
+0.6638782
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.respiratory_problems
+</td>
+<td style="text-align:right;">
+0.0220338
+</td>
+<td style="text-align:right;">
+0.8820331
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.malnutrition
+</td>
+<td style="text-align:right;">
+1.7736901
+</td>
+<td style="text-align:right;">
+0.1832917
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.gastrointestinal
+</td>
+<td style="text-align:right;">
+1.4781129
+</td>
+<td style="text-align:right;">
+0.2244157
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.other
+</td>
+<td style="text-align:right;">
+0.0054937
+</td>
+<td style="text-align:right;">
+0.9409330
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.dnk
+</td>
+<td style="text-align:right;">
+0.6147424
+</td>
+<td style="text-align:right;">
+0.4332315
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+adult_heatlh.none
+</td>
+<td style="text-align:right;">
+9.4601353
+</td>
+<td style="text-align:right;">
+0.0021687
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh.gastrointestinal" class="section level2">
+<h2>adult_heatlh.gastrointestinal</h2>
+<div id="na-11" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+94% (91%-97%)
+</td>
+<td style="text-align:left;">
+6% (3%-9%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+96% (94%-98%)
+</td>
+<td style="text-align:left;">
+4% (2%-6%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.478113
+</td>
+<td style="text-align:right;">
+0.2244157
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh.malaria" class="section level2">
+<h2>adult_heatlh.malaria</h2>
+<div id="na-12" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+66% (60%-72%)
+</td>
+<td style="text-align:left;">
+34% (28%-40%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+77% (72%-83%)
+</td>
+<td style="text-align:left;">
+23% (17%-28%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+13.12702
+</td>
+<td style="text-align:right;">
+0.0003088
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh.awd" class="section level2">
+<h2>adult_heatlh.awd</h2>
+<div id="na-13" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+91% (88%-94%)
+</td>
+<td style="text-align:left;">
+9% (6%-12%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+92% (90%-94%)
+</td>
+<td style="text-align:left;">
+8% (6%-10%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.188982
+</td>
+<td style="text-align:right;">
+0.6638782
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh.fever" class="section level2">
+<h2>adult_heatlh.fever</h2>
+<div id="na-14" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+67% (62%-72%)
+</td>
+<td style="text-align:left;">
+33% (28%-38%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+75% (71%-80%)
+</td>
+<td style="text-align:left;">
+25% (20%-29%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+5.327683
+</td>
+<td style="text-align:right;">
+0.0212343
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh.malnutrition" class="section level2">
+<h2>adult_heatlh.malnutrition</h2>
+<div id="na-15" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+88% (85%-92%)
+</td>
+<td style="text-align:left;">
+12% (8%-15%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+91% (89%-93%)
+</td>
+<td style="text-align:left;">
+9% (7%-11%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.77369
+</td>
+<td style="text-align:right;">
+0.1832917
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_heatlh.respiratory_problems" class="section level2">
+<h2>adult_heatlh.respiratory_problems</h2>
+<div id="na-16" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+0
+</th>
+<th style="text-align:left;">
+1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+95% (93%-98%)
+</td>
+<td style="text-align:left;">
+5% (2%-7%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+95% (93%-98%)
+</td>
+<td style="text-align:left;">
+5% (2%-7%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.0220338
+</td>
+<td style="text-align:right;">
+0.8820331
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="adult_health_access" class="section level2">
+<h2>adult_health_access</h2>
+<div id="na-17" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+43% (37%-50%)
+</td>
+<td style="text-align:left;">
+57% (50%-63%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+47% (40%-54%)
+</td>
+<td style="text-align:left;">
+53% (46%-60%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.061235
+</td>
+<td style="text-align:right;">
+0.3032931
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+693
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="vaccination_children" class="section level2">
+<h2>vaccination_children</h2>
+<div id="na-18" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+All
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+None
+</th>
+<th style="text-align:left;">
+Some
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+50% (43%-57%)
+</td>
+<td style="text-align:left;">
+7% (4%-10%)
+</td>
+<td style="text-align:left;">
+18% (15%-22%)
+</td>
+<td style="text-align:left;">
+24% (20%-29%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+58% (52%-63%)
+</td>
+<td style="text-align:left;">
+4% (3%-6%)
+</td>
+<td style="text-align:left;">
+16% (13%-19%)
+</td>
+<td style="text-align:left;">
+22% (18%-25%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+2.85594
+</td>
+<td style="text-align:right;">
+0.0443409
+</td>
+<td style="text-align:right;">
+2.55373
+</td>
+<td style="text-align:right;">
+2096.613
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="vaccination_card" class="section level2">
+<h2>vaccination_card</h2>
+<div id="na-19" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+All
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+None
+</th>
+<th style="text-align:left;">
+Some
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+44% (36%-52%)
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
+</td>
+<td style="text-align:left;">
+16% (11%-21%)
+</td>
+<td style="text-align:left;">
+38% (31%-45%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+55% (50%-60%)
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
+</td>
+<td style="text-align:left;">
+11% (8%-14%)
+</td>
+<td style="text-align:left;">
+31% (27%-36%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+2.536358
+</td>
+<td style="text-align:right;">
+0.0649258
+</td>
+<td style="text-align:right;">
+2.55277
+</td>
+<td style="text-align:right;">
+1935
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="using_chains" class="section level2">
+<h2>using_chains</h2>
+<div id="na-20" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+9% (5%-12%)
+</td>
+<td style="text-align:left;">
+87% (83%-90%)
+</td>
+<td style="text-align:left;">
+5% (2%-7%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+93% (92%-95%)
+</td>
+<td style="text-align:left;">
+4% (3%-5%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+18.08013
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.954306
+</td>
+<td style="text-align:right;">
+1622.074
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="birth_where" class="section level2">
+<h2>birth_where</h2>
+<div id="na-21" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+At home
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+Health center / Hospital
+</th>
+<th style="text-align:left;">
+health_centre
+</th>
+<th style="text-align:left;">
+There was no birth last year
+</th>
+<th style="text-align:left;">
+Traditional birth attendent house/center
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+38% (33%-44%)
+</td>
+<td style="text-align:left;">
+4% (2%-6%)
+</td>
+<td style="text-align:left;">
+38% (34%-43%)
+</td>
+<td style="text-align:left;">
+0%
+</td>
+<td style="text-align:left;">
+3% (2%-5%)
+</td>
+<td style="text-align:left;">
+15% (12%-19%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+35% (28%-42%)
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+49% (40%-57%)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+5% (4%-6%)
+</td>
+<td style="text-align:left;">
+8% (6%-10%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+5.661999
+</td>
+<td style="text-align:right;">
+0.0006463
+</td>
+<td style="text-align:right;">
+3.077682
+</td>
+<td style="text-align:right;">
+2554.476
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="pay_health" class="section level2">
+<h2>pay_health</h2>
+<div id="na-22" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+No
+</th>
+<th style="text-align:left;">
+Yes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+45% (40%-49%)
+</td>
+<td style="text-align:left;">
+55% (51%-60%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+33% (27%-38%)
+</td>
+<td style="text-align:left;">
+67% (62%-73%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+10.37427
+</td>
+<td style="text-align:right;">
+0.0013276
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+830
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="cash_bracket_treatment" class="section level2">
+<h2>cash_bracket_treatment</h2>
+<div id="na-23" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+$10-$50
+</th>
+<th style="text-align:left;">
+$50-$100
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+Less than $10
+</th>
+<th style="text-align:left;">
+More than $100
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+54% (49%-59%)
+</td>
+<td style="text-align:left;">
+15% (11%-19%)
+</td>
+<td style="text-align:left;">
+2% (1%-4%)
+</td>
+<td style="text-align:left;">
+24% (19%-29%)
+</td>
+<td style="text-align:left;">
+4% (1%-8%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+53% (50%-57%)
+</td>
+<td style="text-align:left;">
+19% (16%-22%)
+</td>
+<td style="text-align:left;">
+3% (1%-5%)
+</td>
+<td style="text-align:left;">
+20% (16%-24%)
+</td>
+<td style="text-align:left;">
+4% (3%-6%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.9266214
+</td>
+<td style="text-align:right;">
+0.4355424
+</td>
+<td style="text-align:right;">
+3.37817
+</td>
+<td style="text-align:right;">
+2455.93
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="health_price_change" class="section level2">
+<h2>health_price_change</h2>
+<div id="na-24" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Decreased
+</th>
+<th style="text-align:left;">
+Don’t know
+</th>
+<th style="text-align:left;">
+Increased
+</th>
+<th style="text-align:left;">
+Stay the same
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+5% (1%-8%)
+</td>
+<td style="text-align:left;">
+7% (5%-10%)
+</td>
+<td style="text-align:left;">
+54% (47%-60%)
+</td>
+<td style="text-align:left;">
+34% (29%-40%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+7% (4%-10%)
+</td>
+<td style="text-align:left;">
+55% (50%-61%)
+</td>
+<td style="text-align:left;">
+34% (29%-40%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.3232478
+</td>
+<td style="text-align:right;">
+0.8025136
+</td>
+<td style="text-align:right;">
+2.910166
+</td>
+<td style="text-align:right;">
+2115.69
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="time_health" class="section level2">
+<h2>time_health</h2>
+<div id="na-25" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+From 1 hour to 3 hours
+</th>
+<th style="text-align:left;">
+From 15 minutes to 30 minutes
+</th>
+<th style="text-align:left;">
+From 30 minutes to 1 hour
+</th>
+<th style="text-align:left;">
+Less than 15 minutes
+</th>
+<th style="text-align:left;">
+More than 3 hours
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+5% (4%-7%)
+</td>
+<td style="text-align:left;">
+36% (31%-41%)
+</td>
+<td style="text-align:left;">
+19% (15%-23%)
+</td>
+<td style="text-align:left;">
+37% (32%-42%)
+</td>
+<td style="text-align:left;">
+2% (1%-4%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+8% (5%-10%)
+</td>
+<td style="text-align:left;">
+35% (31%-40%)
+</td>
+<td style="text-align:left;">
+19% (16%-22%)
+</td>
+<td style="text-align:left;">
+32% (28%-36%)
+</td>
+<td style="text-align:left;">
+6% (4%-8%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+2.748338
+</td>
+<td style="text-align:right;">
+0.0374478
+</td>
+<td style="text-align:right;">
+3.230929
+</td>
+<td style="text-align:right;">
+2681.671
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="transport_health" class="section level2">
+<h2>transport_health</h2>
+<div id="na-26" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Bicycle
+</th>
+<th style="text-align:left;">
+Bus
+</th>
+<th style="text-align:left;">
+Car
+</th>
+<th style="text-align:left;">
+Cart
+</th>
+<th style="text-align:left;">
+Moto
+</th>
+<th style="text-align:left;">
+Walking
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+6% (3%-9%)
+</td>
+<td style="text-align:left;">
+16% (13%-20%)
+</td>
+<td style="text-align:left;">
+0%
+</td>
+<td style="text-align:left;">
+4% (1%-6%)
+</td>
+<td style="text-align:left;">
+74% (69%-79%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+0% (0%-1%)
+</td>
+<td style="text-align:left;">
+6% (1%-12%)
+</td>
+<td style="text-align:left;">
+22% (19%-26%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+4% (2%-6%)
+</td>
+<td style="text-align:left;">
+67% (61%-73%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+0.923864
+</td>
+<td style="text-align:right;">
+0.4188203
+</td>
+<td style="text-align:right;">
+2.639447
+</td>
+<td style="text-align:right;">
+2190.741
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="health_facility" class="section level2">
+<h2>health_facility</h2>
+<div id="na-27" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Government clinic or hospital
+</th>
+<th style="text-align:left;">
+NGO run clinic or hospital
+</th>
+<th style="text-align:left;">
+Other
+</th>
+<th style="text-align:left;">
+Pharmacy
+</th>
+<th style="text-align:left;">
+Private clinic or hospital
+</th>
+<th style="text-align:left;">
+Shop selling medication
+</th>
+<th style="text-align:left;">
+Traditional healer
+</th>
+<th style="text-align:left;">
+Traditional mid-wife
 </th>
 </tr>
 </thead>
@@ -507,562 +3405,54 @@ IDP
 27% (23%-31%)
 </td>
 <td style="text-align:left;">
-37% (33%-42%)
+33% (27%-38%)
 </td>
 <td style="text-align:left;">
-33% (30%-37%)
-</td>
-<td style="text-align:left;">
-2% (1%-3%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-32% (29%-36%)
-</td>
-<td style="text-align:left;">
-36% (34%-39%)
-</td>
-<td style="text-align:left;">
-29% (25%-33%)
+1% (0%-1%)
 </td>
 <td style="text-align:left;">
 2% (1%-3%)
 </td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
 <td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-2.11365
-</td>
-<td style="text-align:right;">
-0.1061328
-</td>
-<td style="text-align:right;">
-2.584559
-</td>
-<td style="text-align:right;">
-2145.184
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="health_score" class="section level2">
-<h2>health_score</h2>
-<div id="na-3" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-1
-</th>
-<th style="text-align:left;">
-2
-</th>
-<th style="text-align:left;">
-3
-</th>
-<th style="text-align:left;">
-4
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-66% (61%-71%)
-</td>
-<td style="text-align:left;">
-33% (28%-38%)
-</td>
-<td style="text-align:left;">
-2% (1%-2%)
-</td>
-<td style="text-align:left;">
-0%
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-75% (70%-80%)
-</td>
-<td style="text-align:left;">
-24% (19%-29%)
-</td>
-<td style="text-align:left;">
-1% (1%-1%)
-</td>
-<td style="text-align:left;">
-0%
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-5.030836
-</td>
-<td style="text-align:right;">
-0.0145225
-</td>
-<td style="text-align:right;">
-1.412735
-</td>
-<td style="text-align:right;">
-1172.57
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="snfi_score" class="section level2">
-<h2>snfi_score</h2>
-<div id="na-4" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-1
-</th>
-<th style="text-align:left;">
-2
-</th>
-<th style="text-align:left;">
-3
-</th>
-<th style="text-align:left;">
-4
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-10% (6%-14%)
-</td>
-<td style="text-align:left;">
-56% (50%-61%)
-</td>
-<td style="text-align:left;">
-34% (28%-40%)
+20% (16%-24%)
 </td>
 <td style="text-align:left;">
 0% (0%-1%)
 </td>
+<td style="text-align:left;">
+4% (1%-7%)
+</td>
+<td style="text-align:left;">
+14% (10%-17%)
+</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 not_displaced
 </td>
 <td style="text-align:left;">
-23% (19%-26%)
+43% (35%-50%)
 </td>
 <td style="text-align:left;">
-61% (59%-64%)
-</td>
-<td style="text-align:left;">
-16% (13%-19%)
+19% (13%-24%)
 </td>
 <td style="text-align:left;">
 0%
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-26.69828
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2.221477
-</td>
-<td style="text-align:right;">
-1843.826
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="wash_score" class="section level2">
-<h2>wash_score</h2>
-<div id="na-5" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-1
-</th>
-<th style="text-align:left;">
-2
-</th>
-<th style="text-align:left;">
-3
-</th>
-<th style="text-align:left;">
-4
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-17% (11%-22%)
-</td>
-<td style="text-align:left;">
-72% (66%-78%)
-</td>
-<td style="text-align:left;">
-12% (9%-14%)
-</td>
-<td style="text-align:left;">
-NA
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-37% (29%-45%)
-</td>
-<td style="text-align:left;">
-57% (50%-65%)
-</td>
-<td style="text-align:left;">
-5% (3%-7%)
-</td>
-<td style="text-align:left;">
-0%
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-15.05973
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2.608985
-</td>
-<td style="text-align:right;">
-2165.457
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="fsl_score" class="section level2">
-<h2>fsl_score</h2>
-<div id="na-6" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-1
-</th>
-<th style="text-align:left;">
-2
-</th>
-<th style="text-align:left;">
-3
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-18% (14%-22%)
-</td>
-<td style="text-align:left;">
-75% (71%-79%)
-</td>
-<td style="text-align:left;">
-7% (4%-10%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-34% (27%-41%)
-</td>
-<td style="text-align:left;">
-62% (55%-69%)
 </td>
 <td style="text-align:left;">
 4% (2%-5%)
 </td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
 <td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-11.80172
-</td>
-<td style="text-align:right;">
-1.63e-05
-</td>
-<td style="text-align:right;">
-1.838285
-</td>
-<td style="text-align:right;">
-1525.776
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="prot_score" class="section level2">
-<h2>prot_score</h2>
-<div id="na-7" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-1
-</th>
-<th style="text-align:left;">
-2
-</th>
-<th style="text-align:left;">
-3
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-29% (25%-34%)
-</td>
-<td style="text-align:left;">
-71% (66%-75%)
+24% (20%-29%)
 </td>
 <td style="text-align:left;">
 0%
 </td>
-</tr>
-<tr>
 <td style="text-align:left;">
-not_displaced
+2% (1%-3%)
 </td>
 <td style="text-align:left;">
-44% (39%-49%)
-</td>
-<td style="text-align:left;">
-56% (51%-60%)
-</td>
-<td style="text-align:left;">
-0%
+8% (6%-11%)
 </td>
 </tr>
 </tbody>
@@ -1096,16 +3486,16 @@ name
 F
 </td>
 <td style="text-align:right;">
-15.80547
+7.019679
 </td>
 <td style="text-align:right;">
 8.2e-06
 </td>
 <td style="text-align:right;">
-1.360085
+4.207334
 </td>
 <td style="text-align:right;">
-1128.87
+3492.087
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
@@ -1115,9 +3505,9 @@ Pearson’s X^2: Rao &amp; Scott adjustment
 </table>
 </div>
 </div>
-<div id="mcsi_score" class="section level2">
-<h2>mcsi_score</h2>
-<div id="na-8" class="section level3">
+<div id="mobile_health_outreach" class="section level2">
+<h2>mobile_health_outreach</h2>
+<div id="na-28" class="section level3">
 <h3>NA</h3>
 by population_group
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1127,16 +3517,13 @@ by population_group
 Subset
 </th>
 <th style="text-align:left;">
-1
+Don’t know
 </th>
 <th style="text-align:left;">
-2
+No
 </th>
 <th style="text-align:left;">
-3
-</th>
-<th style="text-align:left;">
-4
+Yes
 </th>
 </tr>
 </thead>
@@ -1144,18 +3531,15 @@ Subset
 <tr>
 <td style="text-align:left;">
 IDP
-</td>
-<td style="text-align:left;">
-46% (41%-51%)
-</td>
-<td style="text-align:left;">
-46% (42%-51%)
 </td>
 <td style="text-align:left;">
 7% (5%-9%)
 </td>
 <td style="text-align:left;">
-1% (0%-2%)
+71% (66%-76%)
+</td>
+<td style="text-align:left;">
+22% (18%-26%)
 </td>
 </tr>
 <tr>
@@ -1163,16 +3547,13 @@ IDP
 not_displaced
 </td>
 <td style="text-align:left;">
-72% (67%-78%)
+2% (1%-3%)
 </td>
 <td style="text-align:left;">
-25% (20%-30%)
+69% (65%-72%)
 </td>
 <td style="text-align:left;">
-2% (2%-3%)
-</td>
-<td style="text-align:left;">
-0%
+29% (26%-33%)
 </td>
 </tr>
 </tbody>
@@ -1206,16 +3587,16 @@ name
 F
 </td>
 <td style="text-align:right;">
-33.76125
+12.35159
 </td>
 <td style="text-align:right;">
-0
+2.5e-05
 </td>
 <td style="text-align:right;">
-1.732521
+1.635112
 </td>
 <td style="text-align:right;">
-1437.993
+1357.143
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
@@ -1225,9 +3606,391 @@ Pearson’s X^2: Rao &amp; Scott adjustment
 </table>
 </div>
 </div>
-<div id="impact_score" class="section level2">
-<h2>impact_score</h2>
-<div id="na-9" class="section level3">
+<div id="cash_health" class="section level2">
+<h2>cash_health</h2>
+<div id="na-29" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Cash for doctor’s fees
+</th>
+<th style="text-align:left;">
+Cash for medicines
+</th>
+<th style="text-align:left;">
+Direct provision (Medicines)
+</th>
+<th style="text-align:left;">
+Do not want support
+</th>
+<th style="text-align:left;">
+Increased access for minority groups/clans
+</th>
+<th style="text-align:left;">
+Increased access for physically disabled persons
+</th>
+<th style="text-align:left;">
+Increased services for addictions and consumption of khat
+</th>
+<th style="text-align:left;">
+Increased services for mentally disabled persons
+</th>
+<th style="text-align:left;">
+Increased services for pregnant or lactating women
+</th>
+<th style="text-align:left;">
+Infrastructure provision (More healthcare facilities, Near healthcare facilities)
+</th>
+<th style="text-align:left;">
+More qualified healthcare workers at facilities
+</th>
+<th style="text-align:left;">
+More qualified healthcare workers for home-visits
+</th>
+<th style="text-align:left;">
+Other – specify
+</th>
+<th style="text-align:left;">
+Transport to facilities
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+16% (11%-20%)
+</td>
+<td style="text-align:left;">
+41% (37%-46%)
+</td>
+<td style="text-align:left;">
+25% (20%-30%)
+</td>
+<td style="text-align:left;">
+0% (0%-1%)
+</td>
+<td style="text-align:left;">
+0%
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+0%
+</td>
+<td style="text-align:left;">
+0% (0%-1%)
+</td>
+<td style="text-align:left;">
+1% (1%-2%)
+</td>
+<td style="text-align:left;">
+4% (3%-6%)
+</td>
+<td style="text-align:left;">
+5% (2%-7%)
+</td>
+<td style="text-align:left;">
+4% (2%-5%)
+</td>
+<td style="text-align:left;">
+0%
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+19% (16%-22%)
+</td>
+<td style="text-align:left;">
+34% (30%-37%)
+</td>
+<td style="text-align:left;">
+22% (20%-25%)
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
+</td>
+<td style="text-align:left;">
+0%
+</td>
+<td style="text-align:left;">
+0% (0%-1%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+3% (2%-5%)
+</td>
+<td style="text-align:left;">
+5% (3%-6%)
+</td>
+<td style="text-align:left;">
+5% (4%-6%)
+</td>
+<td style="text-align:left;">
+4% (2%-5%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+4% (3%-6%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+2.849477
+</td>
+<td style="text-align:right;">
+0.0035218
+</td>
+<td style="text-align:right;">
+8.096871
+</td>
+<td style="text-align:right;">
+6720.403
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="cash_vaccination" class="section level2">
+<h2>cash_vaccination</h2>
+<div id="na-30" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+Cash for doctor’s fees
+</th>
+<th style="text-align:left;">
+Cash for vaccines
+</th>
+<th style="text-align:left;">
+Direct provision (Vaccines)
+</th>
+<th style="text-align:left;">
+Do not want support
+</th>
+<th style="text-align:left;">
+Home visits for vaccinations
+</th>
+<th style="text-align:left;">
+Increased access for minority groups/clans
+</th>
+<th style="text-align:left;">
+Increased access for physically disabled persons
+</th>
+<th style="text-align:left;">
+Infrastructure provision (More healthcare facilities, Near healthcare facilities)
+</th>
+<th style="text-align:left;">
+More qualified healthcare workers at facilities
+</th>
+<th style="text-align:left;">
+More qualified healthcare workers for home-visits
+</th>
+<th style="text-align:left;">
+Other – specify
+</th>
+<th style="text-align:left;">
+Transport to facilities
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+17% (12%-21%)
+</td>
+<td style="text-align:left;">
+8% (6%-10%)
+</td>
+<td style="text-align:left;">
+39% (33%-45%)
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
+</td>
+<td style="text-align:left;">
+3% (1%-4%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+4% (1%-6%)
+</td>
+<td style="text-align:left;">
+4% (2%-5%)
+</td>
+<td style="text-align:left;">
+9% (6%-12%)
+</td>
+<td style="text-align:left;">
+7% (5%-8%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+7% (5%-9%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+15% (12%-17%)
+</td>
+<td style="text-align:left;">
+11% (10%-13%)
+</td>
+<td style="text-align:left;">
+34% (29%-38%)
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+5% (3%-6%)
+</td>
+<td style="text-align:left;">
+0% (0%-1%)
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+6% (3%-8%)
+</td>
+<td style="text-align:left;">
+8% (7%-10%)
+</td>
+<td style="text-align:left;">
+6% (5%-8%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
+</td>
+<td style="text-align:left;">
+8% (6%-10%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.412101
+</td>
+<td style="text-align:right;">
+0.1890753
+</td>
+<td style="text-align:right;">
+7.645927
+</td>
+<td style="text-align:right;">
+6346.119
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="u5_morbidity_score" class="section level2">
+<h2>u5_morbidity_score</h2>
+<div id="na-31" class="section level3">
 <h3>NA</h3>
 by population_group
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1240,10 +4003,16 @@ Subset
 1
 </th>
 <th style="text-align:left;">
-2
+3
 </th>
 <th style="text-align:left;">
-3
+5
+</th>
+<th style="text-align:left;">
+7
+</th>
+<th style="text-align:left;">
+8
 </th>
 </tr>
 </thead>
@@ -1253,13 +4022,19 @@ Subset
 IDP
 </td>
 <td style="text-align:left;">
-32% (27%-38%)
+33% (29%-38%)
 </td>
 <td style="text-align:left;">
-62% (57%-67%)
+31% (27%-36%)
 </td>
 <td style="text-align:left;">
-6% (4%-8%)
+22% (17%-27%)
+</td>
+<td style="text-align:left;">
+10% (7%-13%)
+</td>
+<td style="text-align:left;">
+4% (1%-7%)
 </td>
 </tr>
 <tr>
@@ -1267,13 +4042,19 @@ IDP
 not_displaced
 </td>
 <td style="text-align:left;">
-83% (78%-88%)
+47% (41%-52%)
 </td>
 <td style="text-align:left;">
-16% (12%-21%)
+27% (24%-30%)
 </td>
 <td style="text-align:left;">
-1% (0%-2%)
+15% (13%-18%)
+</td>
+<td style="text-align:left;">
+7% (5%-9%)
+</td>
+<td style="text-align:left;">
+4% (1%-6%)
 </td>
 </tr>
 </tbody>
@@ -1307,16 +4088,16 @@ name
 F
 </td>
 <td style="text-align:right;">
-150.1637
+4.328666
 </td>
 <td style="text-align:right;">
-0
+0.0038369
 </td>
 <td style="text-align:right;">
-1.736216
+3.205818
 </td>
 <td style="text-align:right;">
-1441.059
+2555.037
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
@@ -1326,9 +4107,321 @@ Pearson’s X^2: Rao &amp; Scott adjustment
 </table>
 </div>
 </div>
-<div id="msni" class="section level2">
-<h2>msni</h2>
-<div id="na-10" class="section level3">
+<div id="adult_morbidity_score" class="section level2">
+<h2>adult_morbidity_score</h2>
+<div id="na-32" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+1
+</th>
+<th style="text-align:left;">
+3
+</th>
+<th style="text-align:left;">
+5
+</th>
+<th style="text-align:left;">
+6
+</th>
+<th style="text-align:left;">
+7
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+43% (38%-49%)
+</td>
+<td style="text-align:left;">
+27% (23%-31%)
+</td>
+<td style="text-align:left;">
+19% (13%-24%)
+</td>
+<td style="text-align:left;">
+8% (5%-10%)
+</td>
+<td style="text-align:left;">
+3% (1%-5%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+57% (51%-63%)
+</td>
+<td style="text-align:left;">
+23% (20%-26%)
+</td>
+<td style="text-align:left;">
+11% (9%-13%)
+</td>
+<td style="text-align:left;">
+6% (4%-8%)
+</td>
+<td style="text-align:left;">
+3% (1%-5%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+4.993257
+</td>
+<td style="text-align:right;">
+0.0027246
+</td>
+<td style="text-align:right;">
+2.709716
+</td>
+<td style="text-align:right;">
+2249.064
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="pregnancy_health_score" class="section level2">
+<h2>pregnancy_health_score</h2>
+<div id="na-33" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+1
+</th>
+<th style="text-align:left;">
+6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+59% (48%-70%)
+</td>
+<td style="text-align:left;">
+41% (30%-52%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+67% (62%-73%)
+</td>
+<td style="text-align:left;">
+33% (27%-38%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.640402
+</td>
+<td style="text-align:right;">
+0.2008347
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+526
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="birth_location_score" class="section level2">
+<h2>birth_location_score</h2>
+<div id="na-34" class="section level3">
+<h3>NA</h3>
+by population_group
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+Subset
+</th>
+<th style="text-align:left;">
+1
+</th>
+<th style="text-align:left;">
+3
+</th>
+<th style="text-align:left;">
+6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+IDP
+</td>
+<td style="text-align:left;">
+47% (36%-58%)
+</td>
+<td style="text-align:left;">
+10% (6%-14%)
+</td>
+<td style="text-align:left;">
+43% (32%-53%)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+not_displaced
+</td>
+<td style="text-align:left;">
+53% (43%-63%)
+</td>
+<td style="text-align:left;">
+7% (5%-9%)
+</td>
+<td style="text-align:left;">
+40% (31%-49%)
+</td>
+</tr>
+</tbody>
+</table>
+Pearson’s X^2: Rao &amp; Scott adjustment P Value:
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+result.F
+</th>
+<th style="text-align:right;">
+result.p.value
+</th>
+<th style="text-align:right;">
+parameters.ndf
+</th>
+<th style="text-align:right;">
+parameters.ddf
+</th>
+<th style="text-align:left;">
+name
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:right;">
+1.003419
+</td>
+<td style="text-align:right;">
+0.3530669
+</td>
+<td style="text-align:right;">
+1.618963
+</td>
+<td style="text-align:right;">
+838.623
+</td>
+<td style="text-align:left;">
+Pearson’s X^2: Rao &amp; Scott adjustment
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="mental_health_score" class="section level2">
+<h2>mental_health_score</h2>
+<div id="na-35" class="section level3">
 <h3>NA</h3>
 by population_group
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -1349,109 +4442,17 @@ Subset
 <th style="text-align:left;">
 4
 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-2% (1%-3%)
-</td>
-<td style="text-align:left;">
-75% (71%-80%)
-</td>
-<td style="text-align:left;">
-22% (18%-26%)
-</td>
-<td style="text-align:left;">
-1% (0%-2%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-13% (7%-18%)
-</td>
-<td style="text-align:left;">
-76% (73%-80%)
-</td>
-<td style="text-align:left;">
-11% (8%-13%)
-</td>
-<td style="text-align:left;">
-0%
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
 <th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
+5
 </th>
 <th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-29.45434
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2.234048
-</td>
-<td style="text-align:right;">
-1854.26
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="pev_score_2_cat" class="section level2">
-<h2>pev_score_2_cat</h2>
-<div id="na-11" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
+6
 </th>
 <th style="text-align:left;">
-in_need
+7
 </th>
 <th style="text-align:left;">
-not_in_need
+8
 </th>
 </tr>
 </thead>
@@ -1461,665 +4462,57 @@ not_in_need
 IDP
 </td>
 <td style="text-align:left;">
-62% (57%-67%)
-</td>
-<td style="text-align:left;">
-38% (33%-43%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-17% (14%-20%)
-</td>
-<td style="text-align:left;">
-83% (80%-86%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-208.7858
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="edu_score_2_cat" class="section level2">
-<h2>edu_score_2_cat</h2>
-<div id="na-12" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-4% (2%-6%)
-</td>
-<td style="text-align:left;">
-96% (94%-98%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
+81% (78%-84%)
 </td>
 <td style="text-align:left;">
 3% (2%-4%)
 </td>
 <td style="text-align:left;">
-97% (96%-98%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-1.446063
-</td>
-<td style="text-align:right;">
-0.2295036
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
+9% (6%-12%)
 </td>
 <td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="nut_score_2_cat" class="section level2">
-<h2>nut_score_2_cat</h2>
-<div id="na-13" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
+2% (1%-4%)
 </td>
 <td style="text-align:left;">
-36% (32%-39%)
-</td>
-<td style="text-align:left;">
-64% (61%-68%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-31% (27%-36%)
-</td>
-<td style="text-align:left;">
-69% (64%-73%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-2.31012
-</td>
-<td style="text-align:right;">
-0.1289149
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="health_score_2_cat" class="section level2">
-<h2>health_score_2_cat</h2>
-<div id="na-14" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-2% (1%-2%)
-</td>
-<td style="text-align:left;">
-98% (98%-99%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-1% (1%-1%)
-</td>
-<td style="text-align:left;">
-99% (99%-99%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-1.724674
-</td>
-<td style="text-align:right;">
-0.1894554
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="snfi_score_2_cat" class="section level2">
-<h2>snfi_score_2_cat</h2>
-<div id="na-15" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-34% (29%-40%)
-</td>
-<td style="text-align:left;">
-66% (60%-71%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-16% (13%-19%)
-</td>
-<td style="text-align:left;">
-84% (81%-87%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-54.82476
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="wash_score_2_cat" class="section level2">
-<h2>wash_score_2_cat</h2>
-<div id="na-16" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-12% (9%-14%)
-</td>
-<td style="text-align:left;">
-88% (86%-91%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-5% (3%-7%)
-</td>
-<td style="text-align:left;">
-95% (93%-97%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-18.73857
-</td>
-<td style="text-align:right;">
-1.68e-05
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="fsl_score_2_cat" class="section level2">
-<h2>fsl_score_2_cat</h2>
-<div id="na-17" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-7% (4%-10%)
-</td>
-<td style="text-align:left;">
-93% (90%-96%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-4% (2%-5%)
-</td>
-<td style="text-align:left;">
-96% (95%-98%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-4.700153
-</td>
-<td style="text-align:right;">
-0.0304435
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="prot_score_2_cat" class="section level2">
-<h2>prot_score_2_cat</h2>
-<div id="na-18" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
+0% (0%-1%)
 </td>
 <td style="text-align:left;">
 0%
 </td>
 <td style="text-align:left;">
-100% (100%-100%)
+4% (2%-7%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 not_displaced
+</td>
+<td style="text-align:left;">
+86% (83%-89%)
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+6% (5%-8%)
+</td>
+<td style="text-align:left;">
+1% (1%-2%)
 </td>
 <td style="text-align:left;">
 0%
 </td>
 <td style="text-align:left;">
-100% (100%-100%)
+0% (0%-1%)
+</td>
+<td style="text-align:left;">
+2% (1%-4%)
+</td>
+<td style="text-align:left;">
+1% (0%-1%)
 </td>
 </tr>
 </tbody>
@@ -2153,16 +4546,16 @@ name
 F
 </td>
 <td style="text-align:right;">
-2.566693
+2.394414
 </td>
 <td style="text-align:right;">
-0.1095161
+0.037764
 </td>
 <td style="text-align:right;">
-1
+4.788518
 </td>
 <td style="text-align:right;">
-830
+3974.47
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
@@ -2172,9 +4565,9 @@ Pearson’s X^2: Rao &amp; Scott adjustment
 </table>
 </div>
 </div>
-<div id="mcsi_score_2_cat" class="section level2">
-<h2>mcsi_score_2_cat</h2>
-<div id="na-19" class="section level3">
+<div id="time_to_health_score" class="section level2">
+<h2>time_to_health_score</h2>
+<div id="na-36" class="section level3">
 <h3>NA</h3>
 by population_group
 <table class="table" style="margin-left: auto; margin-right: auto;">
@@ -2184,102 +4577,28 @@ by population_group
 Subset
 </th>
 <th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-8% (5%-10%)
-</td>
-<td style="text-align:left;">
-92% (90%-95%)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-not_displaced
-</td>
-<td style="text-align:left;">
-3% (2%-3%)
-</td>
-<td style="text-align:left;">
-97% (97%-98%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-26.34629
-</td>
-<td style="text-align:right;">
-4e-07
-</td>
-<td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="impact_score_2_cat" class="section level2">
-<h2>impact_score_2_cat</h2>
-<div id="na-20" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
 </th>
 <th style="text-align:left;">
-in_need
+2
 </th>
 <th style="text-align:left;">
-not_in_need
+3
+</th>
+<th style="text-align:left;">
+4
+</th>
+<th style="text-align:left;">
+5
+</th>
+<th style="text-align:left;">
+6
+</th>
+<th style="text-align:left;">
+7
+</th>
+<th style="text-align:left;">
+8
 </th>
 </tr>
 </thead>
@@ -2289,113 +4608,57 @@ not_in_need
 IDP
 </td>
 <td style="text-align:left;">
-6% (4%-8%)
+37% (32%-42%)
 </td>
 <td style="text-align:left;">
-94% (92%-96%)
+36% (31%-41%)
 </td>
-</tr>
-<tr>
 <td style="text-align:left;">
-not_displaced
+9% (6%-13%)
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
+</td>
+<td style="text-align:left;">
+10% (7%-13%)
+</td>
+<td style="text-align:left;">
+1% (1%-2%)
+</td>
+<td style="text-align:left;">
+3% (2%-5%)
 </td>
 <td style="text-align:left;">
 1% (0%-2%)
 </td>
-<td style="text-align:left;">
-99% (98%-100%)
-</td>
-</tr>
-</tbody>
-</table>
-Pearson’s X^2: Rao &amp; Scott adjustment P Value:
-<table>
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:right;">
-result.F
-</th>
-<th style="text-align:right;">
-result.p.value
-</th>
-<th style="text-align:right;">
-parameters.ndf
-</th>
-<th style="text-align:right;">
-parameters.ddf
-</th>
-<th style="text-align:left;">
-name
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-F
-</td>
-<td style="text-align:right;">
-48.45425
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
-830
-</td>
-<td style="text-align:left;">
-Pearson’s X^2: Rao &amp; Scott adjustment
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="msni_2_cat" class="section level2">
-<h2>msni_2_cat</h2>
-<div id="na-21" class="section level3">
-<h3>NA</h3>
-by population_group
-<table class="table" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-Subset
-</th>
-<th style="text-align:left;">
-in_need
-</th>
-<th style="text-align:left;">
-not_in_need
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-IDP
-</td>
-<td style="text-align:left;">
-23% (19%-27%)
-</td>
-<td style="text-align:left;">
-77% (73%-81%)
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
 not_displaced
 </td>
 <td style="text-align:left;">
-11% (8%-14%)
+32% (28%-36%)
 </td>
 <td style="text-align:left;">
-89% (86%-92%)
+35% (31%-40%)
+</td>
+<td style="text-align:left;">
+6% (5%-8%)
+</td>
+<td style="text-align:left;">
+5% (3%-6%)
+</td>
+<td style="text-align:left;">
+12% (9%-16%)
+</td>
+<td style="text-align:left;">
+4% (3%-5%)
+</td>
+<td style="text-align:left;">
+3% (2%-4%)
+</td>
+<td style="text-align:left;">
+2% (1%-3%)
 </td>
 </tr>
 </tbody>
@@ -2429,16 +4692,16 @@ name
 F
 </td>
 <td style="text-align:right;">
-28.19328
+3.375526
 </td>
 <td style="text-align:right;">
-1e-07
+0.0035118
 </td>
 <td style="text-align:right;">
-1
+5.485615
 </td>
 <td style="text-align:right;">
-830
+4553.061
 </td>
 <td style="text-align:left;">
 Pearson’s X^2: Rao &amp; Scott adjustment
