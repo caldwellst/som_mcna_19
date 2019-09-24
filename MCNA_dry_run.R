@@ -74,7 +74,7 @@ source("source/sampling.R")
 response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 
 #small typo correction
-response$vaccination_children[response$vaccination_children == "All"] <- "all"
+# response$vaccination_children[response$vaccination_children == "All"] <- "all"
 
 
 response_hc_idp <- response %>%
@@ -92,8 +92,9 @@ source("source/look_up_table.R")
 # source("source/merge_FS.R")
 # source("make_graphs.R")
 # source("source/hno_table.R")
+# source("aap.R")
 
-analysisplan <- read.csv("input/data_health.csv", stringsAsFactors = F)
+analysisplan <- read.csv("input/dap_disa.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
