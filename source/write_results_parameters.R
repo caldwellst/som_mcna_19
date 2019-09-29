@@ -6,7 +6,7 @@ get_parameters <- function(x) {
   return(all_together)
 }
 
-parameters_results <- lapply(results_hc_idp$results, get_parameters) %>% do.call(rbind,.)
+parameters_results <- lapply(results_hc_idp$results, get_parameters) %>% do.call(bind_rows,.)
 
 analysiplan_parameters_results <- cbind(analysisplan, parameters_results)
 
