@@ -94,7 +94,7 @@ source("source/look_up_table.R")
 # source("source/hno_table.R")
 # source("aap.R")
 
-analysisplan <- read.csv("input/dap_disa.csv", stringsAsFactors = F)
+analysisplan <- read.csv("input/dap_hno.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
@@ -132,6 +132,7 @@ browseURL("hc_idp_test.html")
 big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
 write.csv(big_table, "output/big_table.csv", row.names = F)
 source("source/make_large_table.R")
+source("source/write_results_parameters.R")
 # 
 # some_results_refugee_returnee <- results_refugee_returnee[1:200]
 # 

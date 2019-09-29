@@ -1,0 +1,50 @@
+Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
+,Pre-existing vulnerabilities,,region,population_group,categorical,pev_score,categorical,group_difference
+,Education,,region,population_group,categorical,edu_score,categorical,group_difference
+,Nutrition,,region,population_group,categorical,nut_score,categorical,group_difference
+,Health,,region,population_group,categorical,health_score,categorical,group_difference
+,Shelter_NFI,,region,population_group,categorical,snfi_score,categorical,group_difference
+,WASH,,region,population_group,categorical,wash_score,categorical,group_difference
+,Food Security Livelihoods,,region,population_group,categorical,fsl_score,categorical,group_difference
+,Protection,,region,population_group,categorical,prot_score,categorical,group_difference
+,MCSI,,region,population_group,categorical,mcsi_score,categorical,group_difference
+,Impact,,region,population_group,categorical,impact_score,categorical,group_difference
+,MSNI,,region,population_group,categorical,msni,categorical,group_difference
+,Pre-existing vulnerabilities binary,,region,population_group,categorical,pev_score_2_cat,categorical,group_difference
+,Education binary,,region,population_group,categorical,edu_score_2_cat,categorical,group_difference
+,Nutrition binary,,region,population_group,categorical,nut_score_2_cat,categorical,group_difference
+,Health binary,,region,population_group,categorical,health_score_2_cat,categorical,group_difference
+,Shelter_NFI binary,,region,population_group,categorical,snfi_score_2_cat,categorical,group_difference
+,WASH binary,,region,population_group,categorical,wash_score_2_cat,categorical,group_difference
+,Food Security Livelihoods binary,,region,population_group,categorical,fsl_score_2_cat,categorical,group_difference
+,Protection binary,,region,population_group,categorical,prot_score_2_cat,categorical,group_difference
+,MCSI binary,,region,population_group,categorical,mcsi_score_2_cat,categorical,group_difference
+,Impact binary,,region,population_group,categorical,impact_score_2_cat,categorical,group_difference
+,MSNI binary,,region,population_group,categorical,msni_2_cat,categorical,group_difference
+,Pre-existing vulnerabilities,,region,,,pev_score,categorical,direct_reporting
+,Education,,region,,,edu_score,categorical,direct_reporting
+,Nutrition,,region,,,nut_score,categorical,direct_reporting
+,Health,,region,,,health_score,categorical,direct_reporting
+,Shelter_NFI,,region,,,snfi_score,categorical,direct_reporting
+,WASH,,region,,,wash_score,categorical,direct_reporting
+,Food Security Livelihoods,,region,,,fsl_score,categorical,direct_reporting
+,Protection,,region,,,prot_score,categorical,direct_reporting
+,MCSI,,region,,,mcsi_score,categorical,direct_reporting
+,Impact,,region,,,impact_score,categorical,direct_reporting
+,MSNI,,region,,,msni,categorical,direct_reporting
+,MSNI_cat,,region,,,msni_2_cat,categorical,direct_reporting
+,One lsg above 3,,region,,,at_least_lsg_above_sev_3,categorical,direct_reporting
+,Pre-existing vulnerabilities binary,,region,,,pev_score_2_cat,categorical,direct_reporting
+,Education binary,,region,,,edu_score_2_cat,categorical,direct_reporting
+,Nutrition binary,,region,,,nut_score_2_cat,categorical,direct_reporting
+,Health binary,,region,,,health_score_2_cat,categorical,direct_reporting
+,Shelter_NFI binary,,region,,,snfi_score_2_cat,categorical,direct_reporting
+,WASH binary,,region,,,wash_score_2_cat,categorical,direct_reporting
+,Food Security Livelihoods binary,,region,,,fsl_score_2_cat,categorical,direct_reporting
+,Protection binary,,region,,,prot_score_2_cat,categorical,direct_reporting
+,MCSI binary,,region,,,mcsi_score_2_cat,categorical,direct_reporting
+,Impact binary,,region,,,impact_score_2_cat,categorical,direct_reporting
+,average size,,region,,,total_hh,numerical,direct_reporting
+,female hh,,region,,,female_hh,categorical,direct_reporting
+,lsg and cg,,region,,,lsg_cg,categorical,direct_reporting
+,lsg or cg,,region,,,lsg_or_cg,categorical,direct_reporting
