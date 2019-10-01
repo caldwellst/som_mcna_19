@@ -74,7 +74,7 @@ source("source/sampling.R")
 response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
 
 #small typo correction
-# response$vaccination_children[response$vaccination_children == "All"] <- "all"
+response$vaccination_children[response$vaccination_children == "All"] <- "all"
 
 
 response_hc_idp <- response %>%
