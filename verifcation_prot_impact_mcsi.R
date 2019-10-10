@@ -66,8 +66,11 @@ lvg_names <- c("pev_score",
                "impact_score" )
 
 
-lvg<- lapply(X = lvg_names, FUN = function(x) table(response_hc_idp[[x]], useNA = "ifany"))
+lvg<- lapply(X = lvg_names, FUN = function(x) table(response_hc_idp2[[x]], useNA = "ifany"))
 names(lvg) <- lvg_names
-lvg
+lvg %>% unlist() %>% write.csv("lvg.csv")
 
-
+response_hc_idp2 <- readRDS("input/data/02-data_final_scoring29082019.RDS")
+response_hc_idp2 <- response_hc_idp2 %>%
+  dplyr::filter(strata %in% samplingframe$strata) %>%
+  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
