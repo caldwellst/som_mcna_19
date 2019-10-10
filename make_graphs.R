@@ -15,17 +15,18 @@ source("functions/analysisplan_factory.R")  # generate analysis plans
 library(lubridate)
 
 
-response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
+response <- readRDS("input/data/02-data_final_scoring09102019.RDS")
 #small typo correction
 response$vaccination_children[response$vaccination_children == "All"] <- "all"
 source("source/sampling.R")
 response$region %>%  unique()
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
-  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") %>%
-  filter(region == "bakool")
-
-region_name <- "bakool"
+  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") 
+# %>%
+#   filter(region == "bakool")
+# 
+region_name <- ""
 
 weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.frame = samplingframe,
                                                                       data = response_hc_idp,
@@ -51,7 +52,7 @@ msni19::sunburst_msni(df_to_plot,
 msni19::index_chart(df_to_plot,
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
-                    group_labels = c("Non-displaced","IDPs"),
+                    group_labels = c("Non-displaced","IDP"),
                     index = "msni", 
                     index_max = 4,
                     weighting_function = weighting_function,
@@ -64,7 +65,7 @@ msni19::index_chart(df_to_plot,
 msni19::index_chart(df_to_plot,
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
-                    group_labels = c("Non-displaced","IDPs"),
+                    group_labels = c("Non-displaced","IDP"),
                     index = "msni", 
                     index_max = 4,
                     weighting_function = weighting_function,
@@ -112,7 +113,7 @@ make_bar_line_graph <- function(df, page, lsg_to_graph) {
   bar_gr <- msni19::index_chart(df,
                                 group = "yes_no_host",
                                 group_order = c("yes", "no"),
-                                group_labels = c("Non-displaced","IDPs"),
+                                group_labels = c("Non-displaced","IDP"),
                                 index = lsg_to_graph, 
                                 index_max = 4,
                                 weighting_function = weighting_function,
@@ -125,7 +126,7 @@ make_bar_line_graph <- function(df, page, lsg_to_graph) {
   # line_gr <- msni19::index_chart(df,
                                  # group = "yes_no_host",
                                  # group_order = c("yes", "no"),
-                                 # group_labels = c("Non-displaced","IDPs"),
+                                 # group_labels = c("Non-displaced","IDP"),
                                  # index = lsg_to_graph, 
                                  # index_max = 4,
                                  # weighting_function = weighting_function,
@@ -164,7 +165,7 @@ msni19::radar_graph(df_to_plot,
                                    "Prot"),
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
-                    group_labels = c("Non-displaced","IDPs"),
+                    group_labels = c("Non-displaced","IDP"),
                     weighting_function = weighting_function,
                     print_plot = T,
                     plot_name = paste0(region_name, "page11_radar"),
@@ -181,7 +182,7 @@ msni19::severity_lines(df_to_plot,
                        lsg,
                        group = "yes_no_host",
                        group_order = c("yes", "no"),
-                       group_labels = c("Non-displaced","IDPs"),
+                       group_labels = c("Non-displaced","IDP"),
                        weighting_function = weighting_function,
                        print_plot = T,
                        plot_name = paste0(region_name, "page11_over3"),

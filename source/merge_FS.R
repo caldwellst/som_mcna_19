@@ -1,4 +1,4 @@
-analysisplan <- read.csv("input/dap_merge_FS.csv", stringsAsFactors = F)
+analysisplan <- read.csv("input/dap_merge_FS_part1.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
