@@ -26,50 +26,50 @@ source("source/sampling.R")
 # load the sampling frame into an object called samplingframe
 # load the cluster sampling frame into an object called clustersamplingframe
 # read data
-###############################   it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/00-raw_data.RDS")
-
-names(response)<-to_alphanumeric_lowercase(names(response))
-
-response <- response %>%
-  select(-ends_with("note")) %>%
-  select(-starts_with("sv_")) %>%
-  select(-starts_with("_"), "_uuid") %>%
-  select(- c(start, end, deviceid, consensus))
-
-response <- response %>%
-  left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
-response %>% filter(is.na(strata)) %>% nrow()
-##to be removed when complete dataset and sampling frame
-response <- response %>%
-  filter(!is.na(strata))
-response %>% filter(is.na(strata)) %>% nrow()
-
-samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-######
-
-##source("unicefledd thinkgs)
-
-# add cluster ids
-
-# horizontal operations / recoding
-
-source("source/composite variables/01-horizontal_general.R")
-source("source/composite variables/02-preexisting.R")
-source("source/composite variables/03-education.R")
-source("source/composite variables/04-nutrition.R")
-source("source/composite variables/05-health.R")
-source("source/composite variables/06-shelter_nfi.R")
-source("source/composite variables/07-fsl.R")
-source("source/composite variables/08-wash.R")
-source("source/composite variables/09-protection.R")
-source("source/composite variables/10-mcsi.R")
-source("source/composite variables/11-item_repo.R")
-source("source/composite variables/12-impact.R")
-source("source/composite variables/13-skip_logic.R")
-source("source/composite variables/14-final.R")
-response %>% saveRDS("input/data/02-data_final_scoring09102019.RDS")
-response %>% write.csv("output/dataset_with_var.csv", row.names = F)
+# ###############################   it takes 25 minutes to compute all variables, dont run this all the time
+# response <- readRDS("input/data/00-raw_data.RDS")
+# 
+# names(response)<-to_alphanumeric_lowercase(names(response))
+# 
+# response <- response %>%
+#   select(-ends_with("note")) %>%
+#   select(-starts_with("sv_")) %>%
+#   select(-starts_with("_"), "_uuid") %>%
+#   select(- c(start, end, deviceid, consensus))
+# 
+# response <- response %>%
+#   left_join(select(clustersamplingframe, "P_CODE", "strata"), by = c("settlement" = "P_CODE"))
+# response %>% filter(is.na(strata)) %>% nrow()
+# ##to be removed when complete dataset and sampling frame
+# response <- response %>%
+#   filter(!is.na(strata))
+# response %>% filter(is.na(strata)) %>% nrow()
+# 
+# samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
+# ######
+# 
+# ##source("unicefledd thinkgs)
+# 
+# # add cluster ids
+# 
+# # horizontal operations / recoding
+# 
+# source("source/composite variables/01-horizontal_general.R")
+# source("source/composite variables/02-preexisting.R")
+# source("source/composite variables/03-education.R")
+# source("source/composite variables/04-nutrition.R")
+# source("source/composite variables/05-health.R")
+# source("source/composite variables/06-shelter_nfi.R")
+# source("source/composite variables/07-fsl.R")
+# source("source/composite variables/08-wash.R")
+# source("source/composite variables/09-protection.R")
+# source("source/composite variables/10-mcsi.R")
+# source("source/composite variables/11-item_repo.R")
+# source("source/composite variables/12-impact.R")
+# source("source/composite variables/13-skip_logic.R")
+# source("source/composite variables/14-final.R")
+# response %>% saveRDS("input/data/02-data_final_scoring09102019.RDS")
+# response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 ############################## END--  it takes 25 minutes to compute all variables, dont run this all the time
 response <- readRDS("input/data/02-data_final_scoring09102019.RDS")
 
