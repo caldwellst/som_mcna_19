@@ -81,7 +81,7 @@ response <-
   recode_to(to = 8, where.selected.any = c("minors_beg", "exploit_hum")) %>%
   #1.9 resources
   new_recoding(target = mcsi_resources_score, source = coping_general) %>%
-  recode_to(to = 1, where.selected.any = "borrow_mat_cash") %>%
+  recode_to(to = 1, where.selected.any = c("none", "borrow_mat_cash")) %>%
   recode_to(to = 2, where.selected.any = "extra_time_secure") %>%
   recode_to(to = 3, where.selected.any = "hum_assistance") %>%
   recode_to(to = 4, where.selected.any = c("adult_extra_job", "use_money_other")) %>%

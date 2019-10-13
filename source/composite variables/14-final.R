@@ -332,3 +332,21 @@ response$lsg_cg[response$at_least_lsg_above_sev_3 == F & response$mcsi_score_2_c
 
 response$lsg_or_cg <- FALSE
 response$lsg_or_cg[response$at_least_lsg_above_sev_3 == T | response$mcsi_score_2_cat == "in_need"] <- TRUE
+
+
+
+response <- response %>%
+  ## pev_score
+  new_recoding(target = pev_score_no_disp) %>%
+    recode_directly(to_expression = round(sum(c(hhvulnerability_score_pev, legal_status_score_pev, dependency_levels_score_pev, 
+                                                poverty_score_pev, hhexpenditure_score_pev), na.rm = T) / 19)) %>%
+  #impact
+  ## impact score
+  new_recoding(target = impact_score_no_disp) %>%
+  recode_directly(to_expression = round(sum(c(drought_score, conflict_environment_score, reason_separation_score,
+                                              reason_lost_employment_score, reason_shelter_damage_score, barriers_hum_score), 
+                                            na.rm = T) / 9)) %>%  
+  end_recoding()
+response$pev_score_no_disp <- ifelse(response$pev_score_no_disp == 0, 1, response$pev_score_no_disp)
+response$impact_score_no_disp <- ifelse(response$impact_score_no_disp == 0, 1, response$impact_score_no_disp)
+
