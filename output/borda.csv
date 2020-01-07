@@ -1,37 +1,7 @@
-"vars","repeat_var","disaggregation","rank_1","rank_2","percent_1","percent_2"
-"disp_why1 disp_why2",NA,"yes","NA",NA,"",NA
-"disp_why1 disp_why2",NA,"no","conflict_community","drought","17.0%","14.3%"
-"dest_loc_why1 dest_loc_why2","hiraan","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","middle_shabelle","no","no_conflict","food_dist","49.2%","16.1%"
-"dest_loc_why1 dest_loc_why2","middle_shabelle","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","hiraan","no","no_conflict","food_dist","29.9%","16.5%"
-"dest_loc_why1 dest_loc_why2","nugaal","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","nugaal","no","shelter","local_food","30.1%","18.0%"
-"dest_loc_why1 dest_loc_why2","bari","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","bari","no","work_income","no_conflict","31.1%","30.4%"
-"dest_loc_why1 dest_loc_why2","sanaag","no","water","local_food","25.6%","19.0%"
-"dest_loc_why1 dest_loc_why2","sanaag","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","togdheer","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","togdheer","no","water","work_income","17.9%","15.8%"
-"dest_loc_why1 dest_loc_why2","sool","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","sool","no","no_conflict","health_ser","34.5%","28.2%"
-"dest_loc_why1 dest_loc_why2","woqooyi_galbeed","no","work_income","health_ser","22.6%","20.8%"
-"dest_loc_why1 dest_loc_why2","awdal","no","educ_ser","food_dist","22.0%","20.4%"
-"dest_loc_why1 dest_loc_why2","woqooyi_galbeed","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","awdal","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","gedo","no","no_conflict","work_income","32.6%","23.7%"
-"dest_loc_why1 dest_loc_why2","gedo","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","lower_juba","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","lower_juba","no","work_income","health_ser","23.8%","13.9%"
-"dest_loc_why1 dest_loc_why2","galgaduud","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","galgaduud","no","educ_ser","work_income","14.1%","13.1%"
-"dest_loc_why1 dest_loc_why2","mudug","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","mudug","no","no_conflict","work_income","23.0%","21.1%"
-"dest_loc_why1 dest_loc_why2","banadir","no","no_conflict","work_income","19.5%","17.0%"
-"dest_loc_why1 dest_loc_why2","lower_shabelle","no","no_conflict","shelter","23.9%","12.8%"
-"dest_loc_why1 dest_loc_why2","lower_shabelle","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","banadir","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","bay","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","bay","no","work_income","no_conflict","30.1%","29.7%"
-"dest_loc_why1 dest_loc_why2","bakool","yes","NA",NA,"",NA
-"dest_loc_why1 dest_loc_why2","bakool","no","no_conflict","food_dist","43.0%","18.0%"
+"vars","repeat_var","disaggregation","rank_1","rank_2","rank_3","percent_1","percent_2","percent_3"
+"disp_why1 disp_why2",NA,"not_displaced","NA",NA,NA,"",NA,NA
+"disp_why1 disp_why2",NA,"IDP","conflict_community","drought","lack_job","17.0%","14.3%","11.0%"
+"dest_loc_why1 dest_loc_why2",NA,"not_displaced","NA",NA,NA,"",NA,NA
+"dest_loc_why1 dest_loc_why2",NA,"IDP","no_conflict","work_income","health_ser","18.5%","17.8%","10.8%"
+"school_barrier_first school_barrier_second school_barrier_third",NA,"not_displaced","fees","no_school","not_functioning","20.3%","13.8%","10.6%"
+"school_barrier_first school_barrier_second school_barrier_third",NA,"IDP","no_school","not_functioning","fees","18.9%","16.8%","14.4%"

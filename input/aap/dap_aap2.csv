@@ -1,0 +1,23 @@
+Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
+,,,,population_group,categorical,household_been_consulted_water,categorical,group_difference
+,,,,population_group,categorical,household_been_consulted_sanitaiton,categorical,group_difference
+,,,,population_group,categorical,water_sourcces_well_developed,categorical,group_difference
+,,,,population_group,categorical,aap_contact,categorical,group_difference
+,,,,population_group,categorical,aap_grievance,categorical,group_difference
+,,,,population_group,categorical,aap_neg_outcome,categorical,group_difference
+,,,,population_group,categorical,barrier_hum.barrier_sec_route,categorical,group_difference
+,,,,population_group,categorical,barrier_hum.barrier_excluded,categorical,group_difference
+,,,,population_group,categorical,barrier_hum.barrier_physical,categorical,group_difference
+,,,,population_group,categorical,barrier_hum.barrier_info,categorical,group_difference
+,,,,population_group,categorical,barrier_hum.barrier_sec_point,categorical,group_difference
+,,,,,,household_been_consulted_water,categorical,direct_reporting
+,,,,,,household_been_consulted_sanitaiton,categorical,direct_reporting
+,,,,,,water_sourcces_well_developed,categorical,direct_reporting
+,,,,,,aap_contact,categorical,direct_reporting
+,,,,,,aap_grievance,categorical,direct_reporting
+,,,,,,aap_neg_outcome,categorical,direct_reporting
+,,,,,,barrier_hum.barrier_sec_route,categorical,direct_reporting
+,,,,,,barrier_hum.barrier_excluded,categorical,direct_reporting
+,,,,,,barrier_hum.barrier_physical,categorical,direct_reporting
+,,,,,,barrier_hum.barrier_info,categorical,direct_reporting
+,,,,,,barrier_hum.barrier_sec_point,categorical,direct_reporting

@@ -20,15 +20,15 @@ response <-
   recode_to(to = 2, where.selected.any = c("left_study", "left_work"), source = separation_reasons) %>%
   #3.1 safety and security concern
   new_recoding(target = safety_security_concern_score) %>%
-  recode_to(to = 8, where = sgbv == "always" | grave_injury == "always" | abductions == "always" | 
-              uxo == "always" | death == "always") %>%
-  recode_to(to = 7, where = uxo == "sometimes" | abductions == "sometimes" | death == "sometimes") %>%
-  recode_to(to = 6, where = sgbv == "sometimes" | grave_injury == "sometimes") %>%
-  recode_to(to = 5, where = theft_harassment == "always" | light_injury == "always") %>%
-  recode_to(to = 4, where = light_injury == "sometimes") %>%
-  recode_to(to = 3, where = theft_harassment == "sometimes") %>%
   recode_to(to = 1, where = sgbv == "never" & grave_injury == "never" & abductions == "never" & 
               uxo == "never" & death == "never" & theft_harassment == "never" & light_injury == "never") %>%
+  recode_to(to = 3, where = theft_harassment == "sometimes") %>%
+  recode_to(to = 4, where = light_injury == "sometimes") %>%
+  recode_to(to = 5, where = theft_harassment == "always" | light_injury == "always") %>%
+  recode_to(to = 6, where = sgbv == "sometimes" | grave_injury == "sometimes") %>%
+  recode_to(to = 7, where = uxo == "sometimes" | abductions == "sometimes" | death == "sometimes") %>%
+  recode_to(to = 8, where = sgbv == "always" | grave_injury == "always" | abductions == "always" | 
+              uxo == "always" | death == "always") %>%
   #4.1 hazardous or exploitive work 
   new_recoding(target = hazardous_work_score) %>%
   recode_to(to = 1, where = hazardous_work == "no") %>%

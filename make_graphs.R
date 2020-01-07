@@ -15,11 +15,18 @@ source("functions/analysisplan_factory.R")  # generate analysis plans
 library(lubridate)
 
 
-response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
+response <- readRDS("input/data/02-data_final_scoring09102019.RDS")
+#small typo correction
+response$vaccination_children[response$vaccination_children == "All"] <- "all"
 source("source/sampling.R")
+response$region %>%  unique()
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
-  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
+  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") 
+# %>%
+#   filter(region == "bakool")
+# 
+region_name <- ""
 
 weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.frame = samplingframe,
                                                                       data = response_hc_idp,
@@ -38,67 +45,67 @@ msni19::sunburst_msni(df_to_plot,
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page1_full_sunburst",
+                      plot_name = paste0(region_name, "page1_full_sunburst"),
                       path = "output/graphs/")
 
 # line chart page 2
 msni19::index_chart(df_to_plot,
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
-                    group_labels = c("Non-displaced","IDPs"),
+                    group_labels = c("Non-displaced","IDP"),
                     index = "msni", 
                     index_max = 4,
                     weighting_function = weighting_function,
                     bar_graph = F,
                     print_plot = T,
-                    plot_name = "page2_msni_line",
+                    plot_name = paste0(region_name, "page2_msni_line"),
                     path = "output/graphs/")
 
 # bar chart page 2
 msni19::index_chart(df_to_plot,
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
-                    group_labels = c("Non-displaced","IDPs"),
+                    group_labels = c("Non-displaced","IDP"),
                     index = "msni", 
                     index_max = 4,
                     weighting_function = weighting_function,
                     bar_graph = T,
                     print_plot = T,
-                    plot_name = "page2_msni_bar",
+                    plot_name = paste0(region_name, "page2_msni_bar"),
                     path = "output/graphs/")
 
 
 
 # sunburst page 2 group A : 
-msni19::sunburst_msni(df_to_plot,
+msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "IDP"),
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page2_full_sunburst_A",
+                      plot_name = paste0(region_name, "page2_full_sunburst_A_idp"),
                       path = "output/graphs/")
 # sunburst page 2 group B :
-msni19::sunburst_msni(df_to_plot,
+msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "not_displaced"),
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
                       fsl_wash_branch = T,
                       weighting_function = weighting_function,
                       print_plot = T,
-                      plot_name = "page2_full_sunburst_B",
+                      plot_name = paste0(region_name, "page2_full_sunburst_B_hc"),
                       path = "output/graphs/")
-# sunburst page 2 group C :
-msni19::sunburst_msni(df_to_plot,
-                      msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
-                      protection_lsg = "prot_score", shelter_lsg = "snfi_score",
-                      wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
-                      fsl_wash_branch = T,
-                      weighting_function = weighting_function,
-                      print_plot = T,
-                      plot_name = "page2_full_sunburst_C",
-                      path = "output/graphs/")
+# # sunburst page 2 group C :
+# msni19::sunburst_msni(df_to_plot,
+#                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
+#                       protection_lsg = "prot_score", shelter_lsg = "snfi_score",
+#                       wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
+#                       fsl_wash_branch = T,
+#                       weighting_function = weighting_function,
+#                       print_plot = T,
+#                       plot_name = "page2_full_sunburst_C",
+#                       path = "output/graphs/")
 
 # any lsg graph bar and line
 make_bar_line_graph <- function(df, page, lsg_to_graph) {
@@ -106,29 +113,29 @@ make_bar_line_graph <- function(df, page, lsg_to_graph) {
   bar_gr <- msni19::index_chart(df,
                                 group = "yes_no_host",
                                 group_order = c("yes", "no"),
-                                group_labels = c("Non-displaced","IDPs"),
+                                group_labels = c("Non-displaced","IDP"),
                                 index = lsg_to_graph, 
                                 index_max = 4,
                                 weighting_function = weighting_function,
                                 bar_graph = T,
                                 print_plot = T,
-                                plot_name = graph_name_bar,
+                                plot_name = paste0(region_name, graph_name_bar),
                                 path = "output/graphs/")
-  line_name_bar <- paste0(page, "_", lsg_to_graph, "_line")
+  # line_name_bar <- paste0(page, "_", lsg_to_graph, "_line")
   
-  line_gr <- msni19::index_chart(df,
-                                 group = "yes_no_host",
-                                 group_order = c("yes", "no"),
-                                 group_labels = c("Non-displaced","IDPs"),
-                                 index = lsg_to_graph, 
-                                 index_max = 4,
-                                 weighting_function = weighting_function,
-                                 bar_graph = F,
-                                 print_plot = T,
-                                 plot_name = line_name_bar,
-                                 path = "output/graphs/")
+  # line_gr <- msni19::index_chart(df,
+                                 # group = "yes_no_host",
+                                 # group_order = c("yes", "no"),
+                                 # group_labels = c("Non-displaced","IDP"),
+                                 # index = lsg_to_graph, 
+                                 # index_max = 4,
+                                 # weighting_function = weighting_function,
+                                 # bar_graph = F,
+                                 # print_plot = T,
+                                 # plot_name = paste0(region_name, line_name_bar),
+                                 # path = "output/graphs/")
   print(bar_gr)
-  print(line_gr)
+  # print(line_gr)
 }
 
 
@@ -158,10 +165,10 @@ msni19::radar_graph(df_to_plot,
                                    "Prot"),
                     group = "yes_no_host",
                     group_order = c("yes", "no"),
-                    group_labels = c("Non-displaced","IDPs"),
+                    group_labels = c("Non-displaced","IDP"),
                     weighting_function = weighting_function,
                     print_plot = T,
-                    plot_name = "page11_radar",
+                    plot_name = paste0(region_name, "page11_radar"),
                     legend_position = "bottom", 
                     path = "output/graphs/")
 
@@ -175,10 +182,10 @@ msni19::severity_lines(df_to_plot,
                        lsg,
                        group = "yes_no_host",
                        group_order = c("yes", "no"),
-                       group_labels = c("Non-displaced","IDPs"),
+                       group_labels = c("Non-displaced","IDP"),
                        weighting_function = weighting_function,
                        print_plot = T,
-                       plot_name = "page11_over3",
+                       plot_name = paste0(region_name, "page11_over3"),
                        path = "output/graphs/")
 
 #page 11 venn
@@ -195,5 +202,24 @@ msni19::venn_msni(df_to_plot,
                   capacity_gaps = "mcsi_score",
                   weighting_function = weighting_function,
                   print_plot = T,
-                  plot_name = "page11_venn",
+                  plot_name = paste0(region_name, "page11_venn"),
                   path = "output/graphs/")
+
+
+#page 11 intersection
+msni19::index_intersections(df_to_plot,
+                            lsg =  c("edu_score", "snfi_score", "fsl_score", "health_score",
+                                     "prot_score", "wash_score", "nut_score"),
+                            lsg_labels = c("Education",
+                                           "Shelter",
+                                           "Food",
+                                           "Health",
+                                           "Protection",
+                                           "WASH",
+                                           "Nutrition"),
+                            weighting_function = weighting_function,
+                            print_plot = F,
+                            plot_name = paste0(region_name, "page11_intersection"),
+                            path = "output/graphs/")
+
+

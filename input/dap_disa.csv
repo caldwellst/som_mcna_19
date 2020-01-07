@@ -1,0 +1,7 @@
+Indicator.Group...Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
+,,,,,,pwd_hh,categorical,direct_reporting
+,,,,,,no_difficulty_hh,categorical,direct_reporting
+,,,,,,minor_difficulties_hh,categorical,direct_reporting
+,,,,,,some_difficulties_hh,categorical,direct_reporting
+,,,,,,a_lot_hh,categorical,direct_reporting
+,,,,,,cannot_carry_hh,categorical,direct_reporting

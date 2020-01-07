@@ -1,0 +1,13 @@
+Indicator Group / Sector,research.question,sub.research.question,repeat.for.variable,independent.variable,independent.variable.type,dependent.variable,dependent.variable.type,hypothesis.type
+,,,district_ocha,,,household_been_consulted_water,categorical,direct_reporting
+,,,district_ocha,,,household_been_consulted_sanitaiton,categorical,direct_reporting
+,,,district_ocha,,,water_sourcces_well_developed,categorical,direct_reporting
+,,,district_ocha,,,aap_contact,categorical,direct_reporting
+,,,district_ocha,,,aap_grievance,categorical,direct_reporting
+,,,district_ocha,,,aap_neg_outcome,categorical,direct_reporting
+,,,district_ocha,,,barrier_hum.barrier_sec_route,categorical,direct_reporting
+,,,district_ocha,,,barrier_hum.barrier_excluded,categorical,direct_reporting
+,,,district_ocha,,,barrier_hum.barrier_physical,categorical,direct_reporting
+,,,district_ocha,,,barrier_hum.barrier_info,categorical,direct_reporting
+,,,district_ocha,,,barrier_hum.barrier_sec_point,categorical,direct_reporting
+,,,,,,,,

@@ -156,4 +156,3 @@ response <-
   recode_to(to = 7, where = diff_current_aoo_months > 3 & diff_current_aoo_months <= 6) %>%
   recode_to(to = 8, where = diff_current_aoo_months <= 3) %>%
   end_recoding()
-

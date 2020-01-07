@@ -26,7 +26,7 @@ source("source/sampling.R")
 # load the sampling frame into an object called samplingframe
 # load the cluster sampling frame into an object called clustersamplingframe
 # read data
-# #################################   it takes 25 minutes to compute all variables, dont run this all the time
+# ###############################   it takes 25 minutes to compute all variables, dont run this all the time
 # response <- readRDS("input/data/00-raw_data.RDS")
 # 
 # names(response)<-to_alphanumeric_lowercase(names(response))
@@ -46,14 +46,14 @@ source("source/sampling.R")
 # response %>% filter(is.na(strata)) %>% nrow()
 # 
 # samplingframe <- samplingframe %>% dplyr::filter(strata %in% response$strata)
-# # ######
-# #
-# # ##source("unicefledd thinkgs)
-# #
-# # # add cluster ids
-# #
+# ######
+# 
+# ##source("unicefledd thinkgs)
+# 
+# # add cluster ids
+# 
 # # horizontal operations / recoding
-# #
+# 
 # source("source/composite variables/01-horizontal_general.R")
 # source("source/composite variables/02-preexisting.R")
 # source("source/composite variables/03-education.R")
@@ -68,10 +68,14 @@ source("source/sampling.R")
 # source("source/composite variables/12-impact.R")
 # source("source/composite variables/13-skip_logic.R")
 # source("source/composite variables/14-final.R")
-# response %>% saveRDS("input/data/02-data_final_scoring29082019.RDS")
+# response %>% saveRDS("input/data/02-data_final_scoring09102019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
-################################ END--  it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/02-data_final_scoring29082019.RDS")
+############################## END--  it takes 25 minutes to compute all variables, dont run this all the time
+response <- readRDS("input/data/02-data_final_scoring09102019.RDS")
+
+#small typo correction
+response$vaccination_children[response$vaccination_children == "All"] <- "all"
+
 
 response_hc_idp <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
@@ -86,8 +90,11 @@ questionnaire <- load_questionnaire(response_hc_idp,questions,choices)
 source("source/look_up_table.R")
 # source("source/maps_FS.R")
 # source("source/merge_FS.R")
+# source("make_graphs.R")
+# source("source/hno_table.R")
+# source("aap.R")
 
-analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
+analysisplan <- read.csv2("input/dap.csv", stringsAsFactors = F)
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
@@ -124,6 +131,8 @@ browseURL("hc_idp_test.html")
 
 big_table <- results_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
 write.csv(big_table, "output/big_table.csv", row.names = F)
+source("source/make_large_table.R")
+source("source/write_results_parameters.R")
 # 
 # some_results_refugee_returnee <- results_refugee_returnee[1:200]
 # 
