@@ -26,7 +26,6 @@ response_hc_idp <- response %>%
 # %>%
 #   filter(region == "bakool")
 # 
-region_name <- ""
 
 weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.frame = samplingframe,
                                                                       data = response_hc_idp,
@@ -35,7 +34,9 @@ weighting_function <- surveyweights::weighting_fun_from_samplingframe(sampling.f
                                                                       data.stratum.column = "strata")
 
 
-df_to_plot <- response_hc_idp
+regions <- unique(response_hc_idp$region)
+region_name <- regions[1]
+df_to_plot <- filter(response_hc_idp, region == region_name)
 
 # sunburst page 1
 msni19::sunburst_msni(df_to_plot, 
@@ -86,6 +87,7 @@ msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "IDP"),
                       print_plot = T,
                       plot_name = paste0(region_name, "page2_full_sunburst_A_idp"),
                       path = "output/graphs/")
+
 # sunburst page 2 group B :
 msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "not_displaced"),
                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
@@ -96,6 +98,7 @@ msni19::sunburst_msni(dplyr::filter(df_to_plot, population_group == "not_displac
                       print_plot = T,
                       plot_name = paste0(region_name, "page2_full_sunburst_B_hc"),
                       path = "output/graphs/")
+
 # # sunburst page 2 group C :
 # msni19::sunburst_msni(df_to_plot,
 #                       msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
@@ -221,5 +224,6 @@ msni19::index_intersections(df_to_plot,
                             print_plot = F,
                             plot_name = paste0(region_name, "page11_intersection"),
                             path = "output/graphs/")
+
 
 

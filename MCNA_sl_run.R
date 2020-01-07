@@ -71,7 +71,7 @@ source("source/sampling.R")
 # response %>% saveRDS("input/data/02-data_final_scoring25082019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 ################################# END--  it takes 25 minutes to compute all variables, dont run this all the time
-response <- readRDS("input/data/02-data_final_scoring25082019.RDS")
+response <- readRDS("input/data/02-data_final_scoring09102019.RDS")
 
 #
 response_sl <- response %>% 
@@ -85,8 +85,8 @@ response_sl_hc_idp <- response_sl %>%
 
 questionnaire <- load_questionnaire(response_sl_hc_idp,questions,choices)
 
-#load analysispla
-analysisplan <- read.csv("input/dap.csv", stringsAsFactors = F)
+#load analysisplan
+analysisplan <- readr::read_delim("input/dap.csv", delim = ";")
 
 strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.population.column = "Population",
@@ -97,11 +97,11 @@ response_sl_hc_idp$general_weights <- strata_weight_fun(response_sl_hc_idp)
 
 
 results_sl_hc_idp <- from_analysisplan_map_to_output(response_sl_hc_idp, 
-                                                  analysisplan = analysisplan,
-                                                  weighting = strata_weight_fun,
-                                                  cluster_variable_name = "settlement",
-                                                  questionnaire,
-                                                  confidence_level = 0.9)
+                                                     analysisplan = analysisplan,
+                                                     weighting = strata_weight_fun,
+                                                     cluster_variable_name = "settlement",
+                                                     questionnaire,
+                                                     confidence_level = 0.9)
 
 # results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
 #                                                             analysisplan = analysisplan_refugee_returnee,
@@ -116,13 +116,12 @@ hypegrammaR:::map_to_generic_hierarchical_html(results_sl_hc_idp,
                                                questionnaire = questionnaire,
                                                label_varnames = TRUE,
                                                dir = "./output",
-                                               filename = "hc_idp_test.html")
-
+                                               filename = "hc_idp_state_OLD.html")
 
 browseURL("hc_idp_test.html")
 
 big_table <- results_sl_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
-write.csv(big_table, "output/big_table.csv", row.names = F)
+write.csv(big_table, "output/big_table_state_OLD.csv", row.names = F)
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 # 
 # some_results_refugee_returnee <- results_refugee_returnee[1:200]
@@ -144,3 +143,83 @@ write.csv(big_table, "output/big_table.csv", row.names = F)
 #                                                filename = "refugee_returnee_test.html")
 # 
 # browseURL("refugee_returnee_test.html")
+
+## REGIONAL ANALYSIS
+
+analysisplan <- mutate(analysisplan, repeat.for.variable = "region")
+
+results_sl_hc_idp_region <- from_analysisplan_map_to_output(response_sl_hc_idp, 
+                                                     analysisplan = analysisplan,
+                                                     weighting = strata_weight_fun,
+                                                     cluster_variable_name = "settlement",
+                                                     questionnaire,
+                                                     confidence_level = 0.9)
+
+big_table_region <- results_sl_hc_idp_region$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+write.csv(big_table_region, "output/big_table_region_OLD.csv", row.names = F)
+
+
+### DOING THE NEW ANALYSIS
+
+df <- readxl::read_excel("input/som_mcna_data.xlsx")
+
+df <- df %>%
+  filter(!is.na(strata_new))
+
+new_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+                                   sampling.frame.population.column = "Population",
+                                   sampling.frame.stratum.column = "strata",
+                                   data.stratum.column = "strata_new")
+## REGION LEVEL
+
+results_region_new <- from_analysisplan_map_to_output(df, 
+                                                      analysisplan = analysisplan,
+                                                      weighting = new_weight_fun,
+                                                      cluster_variable_name = "settlement",
+                                                      questionnaire,
+                                                      confidence_level = 0.9)
+
+big_table_region_new <- results_region_new$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+write.csv(big_table_region_new, "output/big_table_region_NEW.csv", row.names = F)
+
+## STATE LEVEL
+
+analysisplan <- mutate(analysisplan, repeat.for.variable = "statex7")
+
+results_state_new <- from_analysisplan_map_to_output(df, 
+                                                     analysisplan = analysisplan,
+                                                     weighting = new_weight_fun,
+                                                     cluster_variable_name = "settlement",
+                                                     questionnaire,
+                                                     confidence_level = 0.9)
+
+big_table_state_new <- results_state_new$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+write.csv(big_table_state_new, "output/big_table_state_NEW.csv", row.names = F)
+
+## NATIONAL LEVEL
+
+analysisplan <- mutate(analysisplan, repeat.for.variable = NA)
+
+results_new <- from_analysisplan_map_to_output(df, 
+                                               analysisplan = analysisplan,
+                                               weighting = new_weight_fun,
+                                               cluster_variable_name = "settlement",
+                                               questionnaire,
+                                               confidence_level = 0.9)
+
+big_table_new <- results_new$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+write.csv(big_table_new, "output/big_table_NEW.csv", row.names = F)
+
+## NATIONAL LEVEL (NO DISAGGREGATION)
+
+analysisplan <- mutate(analysisplan, independent.variable = NA, independent.variable.type = NA, hypothesis.type = "direct_reporting")
+
+results_no_disagg_new <- from_analysisplan_map_to_output(df, 
+                                               analysisplan = analysisplan,
+                                               weighting = new_weight_fun,
+                                               cluster_variable_name = "settlement",
+                                               questionnaire,
+                                               confidence_level = 0.9)
+
+big_table_no_disagg_new <- results_no_disagg_new$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+write.csv(big_table_no_disagg_new, "output/big_table_no_disagg_NEW.csv", row.names = F)
