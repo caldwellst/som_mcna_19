@@ -1,6 +1,6 @@
 # setup
 
-remotes::install_github("mabafaba/hypegrammaR", ref = "custom_confidence_levels")
+# remotes::install_github("mabafaba/hypegrammaR", ref = "custom_confidence_levels")
 
 library(dplyr)
 library(koboquest) # manage kobo questionnairs
@@ -73,13 +73,7 @@ source("source/sampling.R")
 ################################# END--  it takes 25 minutes to compute all variables, dont run this all the time
 response <- readRDS("input/data/02-data_final_scoring09102019.RDS")
 
-#
-response_sl <- response %>% 
-  filter(region %in% c("awdal", "sanaag", "sool", "togdheer", "woqooyi_galbeed"))
-
-response_sl %>% select(region) %>% table()
-
-response_sl_hc_idp <- response_sl %>%
+response <- response %>%
   dplyr::filter(strata %in% samplingframe$strata) %>%
   dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes")
 
@@ -93,35 +87,35 @@ strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
                                       sampling.frame.stratum.column = "strata",
                                       data.stratum.column = "strata")
 
-response_sl_hc_idp$general_weights <- strata_weight_fun(response_sl_hc_idp)
+response$general_weights <- strata_weight_fun(response)
 
+## NATIONAL LEVEL OLD
 
-results_sl_hc_idp <- from_analysisplan_map_to_output(response_sl_hc_idp, 
-                                                     analysisplan = analysisplan,
-                                                     weighting = strata_weight_fun,
-                                                     cluster_variable_name = "settlement",
-                                                     questionnaire,
-                                                     confidence_level = 0.9)
+results__old <- from_analysisplan_map_to_output(response, 
+                                                analysisplan = analysisplan,
+                                                weighting = strata_weight_fun,
+                                                cluster_variable_name = "settlement",
+                                                questionnaire,
+                                                confidence_level = 0.9)
 
-# results_refugee_returnee <- from_analysisplan_map_to_output(response_refugee_returnee,
-#                                                             analysisplan = analysisplan_refugee_returnee,
-#                                                             questionnaire = questionnaire)
+big_table <- results_old$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+write.csv(big_table, "output/big_table_OLD.csv", row.names = F)
 
+## STATE LEVEL OLD
 
-hypegrammaR:::map_to_generic_hierarchical_html(results_sl_hc_idp,
-                                               render_result_with = hypegrammaR:::from_result_map_to_md_table,
-                                               by_analysisplan_columns = c("dependent.var","repeat.var.value"),
-                                               by_prefix =  c("",""),
-                                               level = 2,
-                                               questionnaire = questionnaire,
-                                               label_varnames = TRUE,
-                                               dir = "./output",
-                                               filename = "hc_idp_state_OLD.html")
+analysisplan <- mutate(analysisplan, repeat.for.variable = "statex7")
 
-browseURL("hc_idp_test.html")
+results_state_old <- from_analysisplan_map_to_output(response, 
+                                                analysisplan = analysisplan,
+                                                weighting = strata_weight_fun,
+                                                cluster_variable_name = "settlement",
+                                                questionnaire,
+                                                confidence_level = 0.9)
 
-big_table <- results_sl_hc_idp$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
+big_table <- results_state_old$results %>% lapply(function(x) x[["summary.statistic"]]) %>% do.call(rbind, .)
 write.csv(big_table, "output/big_table_state_OLD.csv", row.names = F)
+
+
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 # 
 # some_results_refugee_returnee <- results_refugee_returnee[1:200]
