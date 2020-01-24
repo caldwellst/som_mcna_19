@@ -65,6 +65,18 @@ library(lubridate)
 # source("source/composite variables/10-mcsi.R")
 # source("source/composite variables/11-item_repo.R")
 # source("source/composite variables/12-final.R")
+# # LOAD SAMPLING FRAME
+# source("source/sampling.R")
+# response <- response %>%
+#   dplyr::filter(strata %in% samplingframe$strata) %>%
+#   dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") %>%
+#   select(-`_uuid`)
+# strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+#                                      sampling.frame.population.column = "Population",
+#                                      sampling.frame.stratum.column = "strata",
+#                                      data.stratum.column = "strata")
+#
+# response$general_weights <- strata_weight_fun(response)
 # response %>% saveRDS("input/data/02-data_final_scoring25082019.RDS")
 # response %>% write.csv("output/dataset_with_var.csv", row.names = F)
 ################################# END--  it takes 25 minutes to compute all variables, dont run this all the time

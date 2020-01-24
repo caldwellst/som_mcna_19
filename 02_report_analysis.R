@@ -28,16 +28,8 @@ choices <- read.csv("input/questionnaire/SOM_JMCNA_HH_Tool_FIN_2019_settlements_
   select(list_name, name, label = `label::english`) %>%
   distinct()
 
-# LOAD SAMPLING FRAME
-source("source/sampling.R")
-
 # LOAD AND MANIPULATE DATA
-df <- readRDS("input/data/02-data_final_scoring09102019.RDS")
-
-df <- df %>%
-  dplyr::filter(strata %in% samplingframe$strata) %>%
-  dplyr::filter(yes_no_host == "yes" | yes_no_idp == "yes") %>%
-  select(-`_uuid`)
+df <- readRDS("input/data/final_dataset_analysis.RDS")
 
 questionnaire <- load_questionnaire(df, questions, choices)
 
@@ -47,12 +39,16 @@ analysisplan <- readr::read_delim("input/dap.csv", delim = ";") %>%
 
 # WEIGHTING
 
-strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
-                                      sampling.frame.population.column = "Population",
-                                      sampling.frame.stratum.column = "strata",
-                                      data.stratum.column = "strata")
+source("source/sampling.R")
 
-df$general_weights <- strata_weight_fun(df)
+strata_weight_fun <- map_to_weighting(sampling.frame = samplingframe,
+                                     sampling.frame.population.column = "Population",
+                                     sampling.frame.stratum.column = "strata",
+                                     data.stratum.column = "strata")
+
+normal_weight_fun <- function(df) {
+  df$general_weights
+}
 
 #################
 ### FUNCTIONS ###
@@ -98,6 +94,13 @@ national_disaggregated_results <- from_analysisplan_map_to_output(df,
                                                                   cluster_variable_name = "settlement",
                                                                   questionnaire,
                                                                   confidence_level = 0.9)
+
+nat_disagg_test <- from_analysisplan_map_to_output(df, 
+                                                   analysisplan = national_disaggregated_dap,
+                                                   weighting = normal_weight_fun,
+                                                   cluster_variable_name = "settlement",
+                                                   questionnaire,
+                                                   confidence_level = 0.9)
 
 national_overall_results <- from_analysisplan_map_to_output(df,
                                                             analysisplan = national_overall_dap,
