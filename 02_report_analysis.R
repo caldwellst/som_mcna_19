@@ -89,7 +89,7 @@ national_overall_dap <- mutate(national_disaggregated_dap, independent.variable 
                                hypothesis.type = "direct_reporting")
 
 national_disaggregated_results <- from_analysisplan_map_to_output(df, 
-                                                                  analysisplan = filter(national_disaggregated_dap, dependent.variable != "separation_age_gender"),
+                                                                  analysisplan = national_disaggregated_dap,
                                                                   weighting = strata_weight_fun,
                                                                   cluster_variable_name = "settlement",
                                                                   questionnaire,
