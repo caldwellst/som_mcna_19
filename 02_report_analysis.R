@@ -95,13 +95,6 @@ national_disaggregated_results <- from_analysisplan_map_to_output(df,
                                                                   questionnaire,
                                                                   confidence_level = 0.9)
 
-nat_disagg_test <- from_analysisplan_map_to_output(df, 
-                                                   analysisplan = national_disaggregated_dap,
-                                                   weighting = normal_weight_fun,
-                                                   cluster_variable_name = "settlement",
-                                                   questionnaire,
-                                                   confidence_level = 0.9)
-
 national_overall_results <- from_analysisplan_map_to_output(df,
                                                             analysisplan = national_overall_dap,
                                                             weighting = strata_weight_fun,

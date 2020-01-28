@@ -105,17 +105,17 @@ for (i in seq_along(unique(regions))) {
   # any lsg graph bar and line
   make_bar_line_graph <- function(df, page, lsg_to_graph) {
     graph_name_bar <- paste0(page, "_", lsg_to_graph, "_bar")
-    bar_gr <- msni19::index_chart(df,
-                                  group = "yes_no_host",
-                                  group_order = c("yes", "no"),
-                                  group_labels = c("Non-displaced","IDP"),
-                                  index = lsg_to_graph, 
-                                  index_max = 4,
-                                  weighting_function = weighting_function,
-                                  bar_graph = T,
-                                  print_plot = T,
-                                  plot_name = paste0(regions[i],"graph_name_bar"),
-                                  path = "output/graphs/")
+    msni19::index_chart(df,
+                        group = "yes_no_host",
+                        group_order = c("yes", "no"),
+                        group_labels = c("Non-displaced","IDP"),
+                        index = lsg_to_graph, 
+                        index_max = 4,
+                        weighting_function = weighting_function,
+                        bar_graph = T,
+                        print_plot = T,
+                        plot_name = paste0(regions[i], graph_name_bar),
+                        path = "output/graphs/")
     # line_name_bar <- paste0(page, "_", lsg_to_graph, "_line")
     
     # line_gr <- msni19::index_chart(df,
@@ -129,7 +129,6 @@ for (i in seq_along(unique(regions))) {
     # print_plot = T,
     # plot_name = paste0(region_name, line_name_bar),
     # path = "output/graphs/")
-    print(bar_gr)
     # print(line_gr)
   }
   
