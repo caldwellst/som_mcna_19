@@ -173,7 +173,7 @@ region_disaggregated_dap <- mutate(national_disaggregated_dap, repeat.for.variab
 region_overall_dap <- mutate(national_overall_dap, repeat.for.variable = "region")
 
 region_disaggregated_results <- from_analysisplan_map_to_output(df, 
-                                                                analysisplan = region_disaggregated_dap,
+                                                                analysisplan = filter(region_disaggregated_dap, dependent.variable == "wash_score"),
                                                                 weighting = strata_weight_fun,
                                                                 cluster_variable_name = "settlement",
                                                                 questionnaire,

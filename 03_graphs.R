@@ -106,8 +106,8 @@ for (i in seq_along(unique(regions))) {
   make_bar_line_graph <- function(df, page, lsg_to_graph) {
     graph_name_bar <- paste0(page, "_", lsg_to_graph, "_bar")
     msni19::index_chart(df,
-                        group = "yes_no_host",
-                        group_order = c("yes", "no"),
+                        group = "idp_settlement",
+                        group_order = c("no", "yes"),
                         group_labels = c("Non-displaced","IDP"),
                         index = lsg_to_graph, 
                         index_max = 4,
