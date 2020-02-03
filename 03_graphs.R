@@ -191,6 +191,29 @@ for (i in seq_along(unique(regions))) {
                               path = "output/graphs/")
 }
 
+# National radar graph
 
-
+msni19::radar_graph(df, 
+                    lsg = c("edu_score", 
+                            "nut_score", 
+                            "health_score", 
+                            "snfi_score",
+                            "fsl_score",
+                            "wash_score", 
+                            "prot_score"),
+                    lsg_labels = c("Edu",
+                                   "Nutri",
+                                   "Health",
+                                   "SNFI",
+                                   "Food sec", 
+                                   "WASH", 
+                                   "Prot"),
+                    group = "idp_settlement",
+                    group_order = c("no", "yes"),
+                    group_labels = c("Non-IDP settlement","IDP settlement"),
+                    weighting_function = weighting_function,
+                    print_plot = T,
+                    plot_name = "national_radar",
+                    legend_position = "bottom", 
+                    path = "output/graphs/")
 
