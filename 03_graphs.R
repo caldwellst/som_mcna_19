@@ -1,18 +1,7 @@
 #make the graphs
 
 library(dplyr)
-library(koboquest) # manage kobo questionnairs
-library(kobostandards) # check inputs for inconsistencies
-library(xlsformfill) # generate fake data for kobo
-library(hypegrammaR) # stats 4 complex samples
-library(composr) # horziontal operations
 library(msni19) # tata!
-library(surveyweights)
-library(plotly)
-library(lubridate)
-
-source("functions/to_alphanumeric_lowercase.R") # function to standardise column headers (like check.names)
-source("functions/analysisplan_factory.R")  # generate analysis plans
 
 df <- readRDS("input/data/final_dataset_analysis.RDS")
 
@@ -23,14 +12,12 @@ weighting_function <- function(df) {
 ## Settings to make Regions Plots
 
 regions <- unique(df$region)
-# region_name <- regions[1]
-# df_to_plot <- filter(response_hc_idp, region == region_name)
 
 for (i in seq_along(unique(regions))) {
   df_to_plot <- filter(df, region == regions[i])
   
   # sunburst page 1
-  msni19::sunburst_msni(df, 
+  msni19::sunburst_msni(df_to_plot, 
                         msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                         protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                         wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
@@ -42,10 +29,10 @@ for (i in seq_along(unique(regions))) {
   
   
   # line chart page 2
-  msni19::index_chart(df,
-                      group = "yes_no_host",
-                      group_order = c("yes", "no"),
-                      group_labels = c("Non-displaced","IDP"),
+  msni19::index_chart(df_to_plot,
+                      group = "idp_settlement",
+                      group_order = c("no", "yes"),
+                      group_labels = c("Non-IDP settlement","IDP settlement"),
                       index = "msni", 
                       index_max = 4,
                       weighting_function = weighting_function,
@@ -55,10 +42,10 @@ for (i in seq_along(unique(regions))) {
                       path = "output/graphs/")
   
   # bar chart page 2
-  msni19::index_chart(df,
-                      group = "yes_no_host",
-                      group_order = c("yes", "no"),
-                      group_labels = c("Non-displaced","IDP"),
+  msni19::index_chart(df_to_plot,
+                      group = "idp_settlement",
+                      group_order = c("no", "yes"),
+                      group_labels = c("Non-IDP settlement","IDP settlement"),
                       index = "msni", 
                       index_max = 4,
                       weighting_function = weighting_function,
@@ -70,7 +57,7 @@ for (i in seq_along(unique(regions))) {
   
   
   # sunburst page 2 group A : 
-  msni19::sunburst_msni(dplyr::filter(df, population_group == "IDP"),
+  msni19::sunburst_msni(dplyr::filter(df_to_plot, idp_settlement == "yes"),
                         msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                         protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                         wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
@@ -81,7 +68,7 @@ for (i in seq_along(unique(regions))) {
                         path = "output/graphs/")
   
   # sunburst page 2 group B :
-  msni19::sunburst_msni(dplyr::filter(df, population_group == "not_displaced"),
+  msni19::sunburst_msni(dplyr::filter(df_to_plot, idp_settlement == "no"),
                         msni = "msni", fsl_lsg = "fsl_score", health_lsg = "health_score", 
                         protection_lsg = "prot_score", shelter_lsg = "snfi_score",
                         wash_lsg = "wash_score", capacity_gaps = "mcsi_score", impact = "impact_score", 
@@ -103,33 +90,20 @@ for (i in seq_along(unique(regions))) {
   #                       path = "output/graphs/")
   
   # any lsg graph bar and line
-  make_bar_line_graph <- function(df, page, lsg_to_graph) {
+  make_bar_line_graph <- function(df, page, lsg_to_graph, region) {
     graph_name_bar <- paste0(page, "_", lsg_to_graph, "_bar")
     msni19::index_chart(df,
                         group = "idp_settlement",
                         group_order = c("no", "yes"),
-                        group_labels = c("Non-displaced","IDP"),
+                        group_labels = c("Non-IDP settlement","IDP settlement"),
                         index = lsg_to_graph, 
                         index_max = 4,
                         weighting_function = weighting_function,
                         bar_graph = T,
                         print_plot = T,
-                        plot_name = paste0(regions[i], graph_name_bar),
+                        plot_name = paste0(region, graph_name_bar),
+                        width = 4,
                         path = "output/graphs/")
-    # line_name_bar <- paste0(page, "_", lsg_to_graph, "_line")
-    
-    # line_gr <- msni19::index_chart(df,
-    # group = "yes_no_host",
-    # group_order = c("yes", "no"),
-    # group_labels = c("Non-displaced","IDP"),
-    # index = lsg_to_graph, 
-    # index_max = 4,
-    # weighting_function = weighting_function,
-    # bar_graph = F,
-    # print_plot = T,
-    # plot_name = paste0(region_name, line_name_bar),
-    # path = "output/graphs/")
-    # print(line_gr)
   }
   
   
@@ -139,10 +113,10 @@ for (i in seq_along(unique(regions))) {
                                       stringsAsFactors = F)
   
   mapply(make_bar_line_graph, page = simple_chart_and_page$page, lsg_to_graph = simple_chart_and_page$lsg, 
-         MoreArgs = list(df = df))
+         MoreArgs = list(df = df_to_plot, region = regions[i]))
   
   #page 11 radar
-  msni19::radar_graph(df, 
+  msni19::radar_graph(df_to_plot, 
                       lsg = c("edu_score", 
                               "nut_score", 
                               "health_score", 
@@ -157,9 +131,9 @@ for (i in seq_along(unique(regions))) {
                                      "Food sec", 
                                      "WASH", 
                                      "Prot"),
-                      group = "yes_no_host",
-                      group_order = c("yes", "no"),
-                      group_labels = c("Non-displaced","IDP"),
+                      group = "idp_settlement",
+                      group_order = c("no", "yes"),
+                      group_labels = c("Non-IDP settlement","IDP settlement"),
                       weighting_function = weighting_function,
                       print_plot = T,
                       plot_name = paste0(regions[i], "page11_radar"),
@@ -172,11 +146,11 @@ for (i in seq_along(unique(regions))) {
            "wash_score", "prot_score")
   
   # Making graph of % of households by # of indices that are >= 3
-  msni19::severity_lines(df,
+  msni19::severity_lines(df_to_plot,
                          lsg,
-                         group = "yes_no_host",
-                         group_order = c("yes", "no"),
-                         group_labels = c("Non-displaced","IDP"),
+                         group = "idp_settlement",
+                         group_order = c("no", "yes"),
+                         group_labels = c("Non-IDP settlement","IDP settlement"),
                          weighting_function = weighting_function,
                          print_plot = T,
                          plot_name = paste0(regions[i], "page11_over3"),
@@ -185,7 +159,7 @@ for (i in seq_along(unique(regions))) {
   #page 11 venn
   # venn diagram of households with any LSG >= 3 (REACH red) and those with capacity gaps >= 3 (REACH light grey)
   
-  msni19::venn_msni(df,
+  msni19::venn_msni(df_to_plot,
                     lsg = c("edu_score", 
                             "snfi_score", 
                             "fsl_score", 
@@ -201,7 +175,7 @@ for (i in seq_along(unique(regions))) {
   
   
   #page 11 intersection
-  msni19::index_intersections(df,
+  msni19::index_intersections(df_to_plot,
                               lsg =  c("edu_score", "snfi_score", "fsl_score", "health_score",
                                        "prot_score", "wash_score", "nut_score"),
                               lsg_labels = c("Education",
